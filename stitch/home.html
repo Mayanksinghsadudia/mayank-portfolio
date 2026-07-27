@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jabil Khan | Visual Storytelling Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#c8c6c5",
+                        "on-primary-fixed-variant": "#7a3000",
+                        "on-primary-container": "#572000",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary": "#2f3131",
+                        "surface-container-high": "#2a2a2a",
+                        "outline-variant": "#5a4136",
+                        "surface-elevated": "#121212",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-error": "#690005",
+                        "primary": "#ffb693",
+                        "on-secondary-container": "#b4b5b5",
+                        "surface-variant": "#353534",
+                        "error": "#ffb4ab",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "surface": "#131313",
+                        "on-tertiary": "#313030",
+                        "inverse-primary": "#a04100",
+                        "secondary": "#c6c6c7",
+                        "on-tertiary-container": "#313131",
+                        "on-primary": "#561f00",
+                        "secondary-container": "#454747",
+                        "surface-container-lowest": "#0e0e0e",
+                        "text-secondary": "#A6A6A6",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#9a9898",
+                        "primary-fixed": "#ffdbcc",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#e2bfb0",
+                        "on-primary-fixed": "#351000",
+                        "primary-container": "#ff6b00",
+                        "surface-dim": "#131313",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "primary-fixed-dim": "#ffb693",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-background": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-surface": "#e5e2e1",
+                        "error-container": "#93000a",
+                        "border-muted": "#262626",
+                        "surface-bright": "#3a3939",
+                        "background": "#131313",
+                        "outline": "#a98a7d",
+                        "surface-container": "#201f1f",
+                        "surface-container-low": "#1c1b1b",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-tint": "#ffb693",
+                        "surface-container-highest": "#353534"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "32px",
+                        "section-gap": "120px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "caption": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "display-hero": ["Montserrat"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "display-hero": ["84px", {"lineHeight": "92px", "letterSpacing": "-0.03em", "fontWeight": "900"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            overflow-x: hidden;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .outlined-text {
+            -webkit-text-stroke: 1px rgba(255, 182, 147, 0.3);
+            color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border-muted flex justify-between items-center px-margin-mobile h-16">
+<div class="text-headline-md font-headline-md font-black tracking-tighter text-on-surface">
+            Visual Storytelling
+        </div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary">menu</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-muted">
+<img class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of Jabil Khan, a creative graphic designer, set against a dark obsidian background. He has a focused expression, wearing a minimalist black shirt. The lighting is dramatic and cinematic, highlighting his facial features with high-contrast orange and white rim light, consistent with a premium portfolio aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJNChV7Z9jgt1M74CkUfyCIgprv8lvKnL0N6vuX7FPOEay1Ym2kwRNrynzzgLWFK1XE6-xzmoGfLJDHCYolAas051EgNY6dnTFA9dcRvjz2nTDWSJVyjF9K5VzDPkwdU0Y-6f8x7sYUDpS7hn3BW5QeAkSYfiCrwezAkv_hJIQAw-SGZyQWmIKFGKPlDjLgCYAGfCeHlZLwupQycQoO2FrkSgf5ADIMUX-tWoIjFUMV03OdfEGvl585F7Ynr31bVgklmJ7Iau84iG0"/>
+</div>
+</div>
+</header>
+<main class="pt-16 pb-24">
+<!-- Hero Section -->
+<section class="relative min-h-[707px] flex flex-col justify-center px-margin-mobile overflow-hidden">
+<div class="absolute right-0 top-1/2 -translate-y-1/2 opacity-40 w-full h-full -z-10 flex justify-end">
+<img class="h-full object-cover grayscale brightness-75" data-alt="A large, high-contrast black and white portrait of a male graphic designer, looking thoughtfully into the distance. The image is cropped dramatically, showing only half his face. Soft orange light leaks dance across the edges, creating a professional, artistic, and moody atmospheric tone that serves as a backdrop for bold typography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClyVur0g2GVY-grdMP2B48xtLk58yyGEUtVoJpSu9qflMzK87SQr1Qco_R7573wkeDWipbnIsZnQCvRebHeZHjuUpjBX1PRD1e7VUwI2nd5UW2Sm0SOT2aTXsx7qggJcr4APbRo1Ly12aswCIr2K180lacUCJI-T2-birto4DYePApc3qXphWhB-oJAd9866PM4EvafcY6zGhTc3vvLZrH05mGqEhXV8cU_rV0H-WP6RXksCjFzXJ0jg50IK_arUy8-jQek0gnpEtI"/>
+</div>
+<div class="relative z-10 space-y-6">
+<div class="inline-block px-3 py-1 bg-surface-container border border-border-muted font-label-caps text-label-caps text-primary uppercase">
+                    Portfolio 2024
+                </div>
+<h1 class="font-display-hero text-headline-lg-mobile md:text-display-hero leading-tight tracking-tighter max-w-[80%] uppercase">
+                    Graphic Design <span class="text-primary-container">Portfolio</span>
+</h1>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-md">
+                    Crafting cinematic visual identities and bold storytelling for global brands.
+                </p>
+<div class="pt-4">
+<button class="bg-primary-container text-on-primary-container font-headline-md px-8 py-4 border-2 border-primary-container hover:bg-transparent hover:text-primary transition-all duration-300">
+                        Hire Jabil
+                    </button>
+</div>
+</div>
+</section>
+<!-- Featured Categories (Bento Style) -->
+<section class="px-margin-mobile py-section-gap">
+<div class="flex items-baseline justify-between mb-8">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile uppercase italic outlined-text">01</h2>
+<h3 class="font-headline-md text-headline-md uppercase">Core Expertise</h3>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-2 aspect-video bg-surface-container border border-border-muted flex flex-col justify-end p-6 group cursor-pointer overflow-hidden relative">
+<div class="absolute inset-0 bg-primary-container/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<span class="material-symbols-outlined text-4xl text-primary mb-4">brush</span>
+<h4 class="font-headline-md text-headline-md uppercase group-hover:text-primary transition-colors">Branding</h4>
+<p class="text-text-secondary font-caption text-caption uppercase mt-1">Identity • Strategy • Logo</p>
+</div>
+<div class="aspect-square bg-surface-container border border-border-muted flex flex-col justify-end p-6 group cursor-pointer overflow-hidden relative">
+<span class="material-symbols-outlined text-3xl text-primary mb-4">share</span>
+<h4 class="font-headline-md text-headline-md uppercase group-hover:text-primary transition-colors">Social</h4>
+<p class="text-text-secondary font-caption text-caption uppercase mt-1">Engagement</p>
+</div>
+<div class="aspect-square bg-surface-container border border-border-muted flex flex-col justify-end p-6 group cursor-pointer overflow-hidden relative">
+<span class="material-symbols-outlined text-3xl text-primary mb-4">palette</span>
+<h4 class="font-headline-md text-headline-md uppercase group-hover:text-primary transition-colors">Poster</h4>
+<p class="text-text-secondary font-caption text-caption uppercase mt-1">Visual Art</p>
+</div>
+</div>
+</section>
+<!-- Work Carousel: Sokir Nomad -->
+<section class="py-section-gap bg-surface-container-lowest overflow-hidden">
+<div class="px-margin-mobile mb-8">
+<div class="flex items-center gap-4">
+<div class="h-[1px] flex-grow bg-border-muted"></div>
+<h3 class="font-headline-md text-headline-md uppercase whitespace-nowrap">Recent Projects</h3>
+</div>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-6 px-margin-mobile snap-x">
+<!-- Card 1 -->
+<div class="min-w-[85vw] md:min-w-[400px] snap-center group">
+<div class="relative aspect-[4/5] overflow-hidden border border-border-muted bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A professional brand identity showcase for 'Sokir Nomad', a travel agency. The image displays a clean, minimalist blue and white logo on a high-end stationery set including business cards, a letterhead, and a mobile app mockup. The layout is architectural and precise, featuring a sophisticated color palette of deep navy and crisp white against a neutral gray background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3sY8m1xTwIASruxJCsHAZQ66xxuaKB60AiTScZ8AKhRLTAwHkj-fmo9KsGWFaeaQeXllQ2OisSxukNHHntt2Lzx2rQIR7zBcC1FZwY7xEYgtBmIC6Ktn9x01nlc-jQAN-l2qg2227JsmeK9z_o44Muyq7M8wJgBBEoIdc6bQfoeGQHEHynVFTL-mnr2ZU6H8daiCV48FJPr_DQ3DGvEMod3ptskZMnXECHp7Ha5O4jJOz3L74r9xVqjR076inxDptgD2tJ9TAh-WJ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+<div class="absolute bottom-6 left-6">
+<h5 class="font-headline-md text-headline-md text-white">Sokir Nomad</h5>
+<p class="text-primary font-label-caps text-label-caps uppercase">Full Brand Identity</p>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="min-w-[85vw] md:min-w-[400px] snap-center group">
+<div class="relative aspect-[4/5] overflow-hidden border border-border-muted bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A curated grid of vibrant Instagram feed posts for a luxury brand. The social media designs feature high-quality lifestyle photography, bold sans-serif typography, and a consistent warm orange and charcoal color scheme. The composition is dynamic and rhythmic, suggesting a professional social media strategy designed for high engagement and visual impact." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2T1fvDNsyV1lnCPgganAuc9XaV_ckm_E2X4D07U5jCXVv5JUda69uQOJ4VePRg4ZmIKIri2o19XT0O1ta-sa5UDNN1paGLog3_BypEAErJMrC3fNi-l5NlHvykCz0RjuNATsMEMwywgCgnyA5GUhtPiF7Dn_cnM4MOkZ2YHHXJQtGMPZMhI0mwKLl3RahybIPuibWbIl_JFDbl5_lWsFbu82Xv5oJXPHpENTawCsOGTJQjQ3W3WY7RU_cZHlMd8ZZ0eoLFS9NyrZm"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+<div class="absolute bottom-6 left-6">
+<h5 class="font-headline-md text-headline-md text-white">IG Campaign</h5>
+<p class="text-primary font-label-caps text-label-caps uppercase">Social Media Marketing</p>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="min-w-[85vw] md:min-w-[400px] snap-center group">
+<div class="relative aspect-[4/5] overflow-hidden border border-border-muted bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A striking minimal poster design titled 'Static'. The artwork features a centered vintage television set with distorted signal noise on the screen, rendered in a high-contrast black and white palette with sharp orange accents. The design is clean, using ample negative space and bold Swiss-style typography, creating a sophisticated and professional editorial feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCskFMLQGOM-L9qtxSbaoshwhGIy2Wx3eThNvdiKu1RiFYgBNmJeIcfZQTNZtper2gRAvJw1FGwFc6fw66fUjy45N21N0JTYGQLbhkyO5STht0Fu-6WuH8r-bLfg-Du2OhJoEWRk5Mk-1tP3a3gr-TNclNKOSCdsGT2VyZTI_K0DKH7Xtqd8_R3dXmpbg15TmTI5ONscgXNVqCQ_n-1wqgZR3MSkUNQIlzKCM-4Z2llGZ1_kj9lMgJ6KHd6pRUCjle_tocoypNeqmqL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+<div class="absolute bottom-6 left-6">
+<h5 class="font-headline-md text-headline-md text-white">Static Art</h5>
+<p class="text-primary font-label-caps text-label-caps uppercase">Poster Design</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats / Experience -->
+<section class="px-margin-mobile py-section-gap grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="space-y-6">
+<h3 class="font-headline-md text-headline-md uppercase border-l-4 border-primary pl-4">About the Vision</h3>
+<p class="text-body-lg font-body-lg text-text-secondary">
+                    I am Jabil Khan, a New Delhi-based graphic designer pushing the boundaries of branding and visual storytelling. My mission is to translate complex brand values into high-impact visual languages.
+                </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 border border-border-muted bg-surface-container">
+<p class="font-headline-lg text-primary">50+</p>
+<p class="font-label-caps text-label-caps uppercase">Projects</p>
+</div>
+<div class="p-4 border border-border-muted bg-surface-container">
+<p class="font-headline-lg text-primary">05</p>
+<p class="font-label-caps text-label-caps uppercase">Years</p>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-caps text-label-caps uppercase text-primary">Core Skills</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 border border-border-muted bg-surface-container-low font-label-caps text-label-caps">Adobe Illustrator</span>
+<span class="px-4 py-2 border border-border-muted bg-surface-container-low font-label-caps text-label-caps">Photoshop</span>
+<span class="px-4 py-2 border border-border-muted bg-surface-container-low font-label-caps text-label-caps">After Effects</span>
+<span class="px-4 py-2 border border-border-muted bg-surface-container-low font-label-caps text-label-caps">Premiere Pro</span>
+<span class="px-4 py-2 border border-border-muted bg-surface-container-low font-label-caps text-label-caps">UI/UX Design</span>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="mx-margin-mobile my-section-gap p-12 bg-primary-container text-on-primary-container relative overflow-hidden group">
+<div class="absolute -right-20 -top-20 w-64 h-64 border-[40px] border-on-primary-container/10 rounded-full"></div>
+<div class="relative z-10 text-center space-y-6">
+<h2 class="font-display-hero text-headline-lg-mobile uppercase">Let's Create</h2>
+<p class="font-body-lg max-w-sm mx-auto">Ready to elevate your brand storytelling with precision and impact?</p>
+<button class="bg-on-primary-container text-primary-container font-headline-md px-10 py-5 uppercase hover:bg-transparent hover:text-on-primary-container border-2 border-on-primary-container transition-all">
+                    Start a Project
+                </button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface border-t border-border-muted flex justify-around items-center px-4 py-2 md:hidden">
+<div class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl p-2 scale-90 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all">
+<span class="material-symbols-outlined">grid_view</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all">
+<span class="material-symbols-outlined">search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all">
+<span class="material-symbols-outlined">person</span>
+</div>
+</nav>
+<!-- Global Footer -->
+<footer class="bg-surface-container-lowest py-16 px-margin-mobile border-t border-border-muted mt-24">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+<div class="space-y-4">
+<div class="text-headline-md font-headline-md font-black tracking-tighter text-on-surface">
+                    Jabil Khan
+                </div>
+<p class="text-text-secondary font-body-md max-w-xs">
+                    Graphic Designer based in New Delhi. Shaping the visual landscape of modern brands.
+                </p>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-x-12 gap-y-4">
+<a class="font-label-caps text-label-caps uppercase hover:text-primary transition-colors" href="#">Branding</a>
+<a class="font-label-caps text-label-caps uppercase hover:text-primary transition-colors" href="#">Social Media</a>
+<a class="font-label-caps text-label-caps uppercase hover:text-primary transition-colors" href="#">Poster Design</a>
+<a class="font-label-caps text-label-caps uppercase hover:text-primary transition-colors" href="#">Print Media</a>
+<a class="font-label-caps text-label-caps uppercase hover:text-primary transition-colors" href="#">About</a>
+<a class="font-label-caps text-label-caps uppercase hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+</div>
+<div class="max-w-container-max mx-auto mt-16 pt-8 border-t border-border-muted flex justify-between items-center text-caption font-caption text-text-secondary uppercase">
+<span>© 2024 Jabil Khan</span>
+<span>Handcrafted with precision</span>
+</div>
+</footer>
+<script>
+        // Subtle interaction for portfolio cards
+        const cards = document.querySelectorAll('.snap-center');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => {
+            card.style.opacity = '0.5';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
+</body></html>

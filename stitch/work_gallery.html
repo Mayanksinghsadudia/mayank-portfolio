@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jabil Khan | Visual Storytelling Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#c8c6c5",
+                        "on-primary-fixed-variant": "#7a3000",
+                        "on-primary-container": "#572000",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary": "#2f3131",
+                        "surface-container-high": "#2a2a2a",
+                        "outline-variant": "#5a4136",
+                        "surface-elevated": "#121212",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-error": "#690005",
+                        "primary": "#ffb693",
+                        "on-secondary-container": "#b4b5b5",
+                        "surface-variant": "#353534",
+                        "error": "#ffb4ab",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "surface": "#131313",
+                        "on-tertiary": "#313030",
+                        "inverse-primary": "#a04100",
+                        "secondary": "#c6c6c7",
+                        "on-tertiary-container": "#313131",
+                        "on-primary": "#561f00",
+                        "secondary-container": "#454747",
+                        "surface-container-lowest": "#0e0e0e",
+                        "text-secondary": "#A6A6A6",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#9a9898",
+                        "primary-fixed": "#ffdbcc",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#e2bfb0",
+                        "on-primary-fixed": "#351000",
+                        "primary-container": "#ff6b00",
+                        "surface-dim": "#131313",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "primary-fixed-dim": "#ffb693",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-background": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-surface": "#e5e2e1",
+                        "error-container": "#93000a",
+                        "border-muted": "#262626",
+                        "surface-bright": "#3a3939",
+                        "background": "#131313",
+                        "outline": "#a98a7d",
+                        "surface-container": "#201f1f",
+                        "surface-container-low": "#1c1b1b",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-tint": "#ffb693",
+                        "surface-container-highest": "#353534"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "32px",
+                        "section-gap": "120px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "caption": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "display-hero": ["Montserrat"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "display-hero": ["84px", {"lineHeight": "92px", "letterSpacing": "-0.03em", "fontWeight": "900"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 16px;
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 16px;
+        }
+
+        .active-tab-indicator {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff6b00;
+        }
+
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(25, 25, 25, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #262626;
+        }
+
+        .outline-text {
+            -webkit-text-stroke: 1px #ffb693;
+            color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="pb-24">
+<!-- Top Navigation Anchor (Shared Component: TopAppBar) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background/95 backdrop-blur-md border-b border-border-muted h-16 flex justify-between items-center px-margin-mobile">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">menu</span>
+<span class="text-headline-md font-headline-md font-black tracking-tighter text-on-surface">Visual Storytelling</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-border-muted">
+<img class="w-full h-full object-cover" data-alt="A professional close-up portrait of a male graphic designer with dark hair and a beard, looking off-camera with a creative expression. The lighting is dramatic, high-contrast, and cinematic, emphasizing textures and sharp lines against a deep obsidian background, matching the portfolio's obsidian and orange visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl7EBi8AKqkZD2Qc-B6UEl8xV0F-RS8DF1Bc51JpzB7mLft4WkqhUlcFrSyq7Rj1xnNsSYHSp8e2rJMPYKDguDIr-4Z9drJ7qT_9pkjalK5uIIklwYtrv_Vz8DjC3UQ7JYSO2v80MVSq-ouWTp400PDfaDy46TouUKLSnL5MqNHFd4ppAhr9hhLPBeg3WeJzBEZfy0QcRlM3oZAnDOwN6p1M2v_-9jm0BlIQEObQwq4lnfBx1o_c_F9CJP_DJFxhtNo7LuUG5VroWK"/>
+</div>
+</header>
+<main class="mt-20 px-margin-mobile">
+<!-- Welcome Hero Section (Mobile Focused) -->
+<section class="py-8">
+<div class="flex flex-col gap-2">
+<span class="text-label-caps font-label-caps text-primary tracking-widest">CREATIVE PORTFOLIO</span>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">Jabil Khan</h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-[80%]">Pushing the boundaries of graphic design through bold visual storytelling.</p>
+</div>
+</section>
+<!-- Category Filter Tabs -->
+<div class="sticky top-16 z-40 bg-background/95 backdrop-blur-md -mx-margin-mobile px-margin-mobile py-4 border-b border-border-muted overflow-x-auto no-scrollbar">
+<div class="flex gap-8 items-center min-w-max">
+<button class="relative pb-2 text-primary font-bold text-body-md font-body-md">
+                    All
+                    <div class="active-tab-indicator"></div>
+</button>
+<button class="pb-2 text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors">Branding</button>
+<button class="pb-2 text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors">Social Media</button>
+<button class="pb-2 text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors">Poster Design</button>
+<button class="pb-2 text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors">Print Media</button>
+</div>
+</div>
+<!-- Portfolio Gallery (Masonry Grid) -->
+<section class="mt-8">
+<div class="masonry-grid">
+<!-- Project 1: Branding -->
+<div class="masonry-item group relative overflow-hidden bg-surface-container border border-border-muted">
+<img class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sophisticated branding mock-up of a minimalist coffee shop identity. The project features clean typography, a monochrome black and white color palette with sharp lines, and premium packaging designs. The lighting is soft and studio-quality, highlighting the texture of the matte black coffee bags against a dark granite surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXTn7zThc_Omv-A16xSkw39lMpR3GJgCqFqw7a55g_6KIbV4Lf6KnmtGd8k6-hmTNldwXl8XmAy5so9JEIRPqt-BVvqegYF3sD941YcBAfgMpu4JAZREw0NeAwykzW2-eYu4HDYZssTcQzWCZnoRytmPI-oZGbDxGoUeZ7YDkUg0wj-8wq1QUu_Kd9raoaIhe7sfyLxuk1exlEIqNIUYlywKsg-lolLBjsrKkoL9BhFLa95waEH_iB-CMh4u2yFMqLQi7Ldmre4a-N"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<span class="text-label-caps font-label-caps text-primary">BRANDING</span>
+<h3 class="text-body-md font-bold text-on-surface">Noir Coffee Lab</h3>
+</div>
+</div>
+<!-- Project 2: Poster -->
+<div class="masonry-item group relative overflow-hidden bg-surface-container border border-border-muted">
+<img class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A bold, aggressive poster design for a techno music event. Large, distorted typography in vibrant orange cuts across a deep black background. Digital artifacts and glitch textures add a modern, high-contrast urban feel. The composition is dynamic and architectural, utilizing purposeful white space and intense highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAaMruWgsRNwJFb0EhFqSLMHmCHTlKCJLlQJE9AGJ7zFZIuG7wjc_2R74I1TG-FmvOgt8rCPHLAfgjUr7W-e5WK4NvQUt4mYs7OZXmR0LMB9a6Y6qBUYI8GrJ0x1PawfGtjSsgyvJRhzzfOONitRKhNc7Unwinj5C-tEbXVcfJxa_JC9t0uX-jp6EM4Eha4civ5sV3bkAPR7pTBsbtX5hl1vZlshyIQjrOM3HObGWSq4fwWB9jNUJrqHGBUkq7nneZRDKVi9V1wJYC"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<span class="text-label-caps font-label-caps text-primary">POSTER</span>
+<h3 class="text-body-md font-bold text-on-surface">Subzero Techno</h3>
+</div>
+</div>
+<!-- Project 3: Social Media -->
+<div class="masonry-item group relative overflow-hidden bg-surface-container border border-border-muted">
+<img class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A collection of dynamic social media post designs for a high-end fashion brand. The layout uses a 2x2 grid format showcasing models in sharp, high-contrast monochrome outfits. Neon orange accents highlight key promotional text. The style is editorial and cinematic, reflecting a professional creative portfolio aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn2qIkug3aT4FnN64AnVYC_5fZMb9XcarlgMprW6lf7m5thSRdWHg2WN67y9vLoRlvtRO13FZ6u927nBr8La1joAvUApoKmdCxsu7KIPCVj6TUomgbGLtp01Tv3mAMj6B4jzTjdnyrdf5aEQNVWL01II4t1OUlcYOREGkiEZ_tBud-OkYlPERbkV0wee_xv0gtmZeloOfmyZ9xZBaSqdjzvtCOGtrTMbUsc88LYP_XFYy62TGUlZs-QUe5i-pBEq3hle7coPxOrKnR"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<span class="text-label-caps font-label-caps text-primary">SOCIAL</span>
+<h3 class="text-body-md font-bold text-on-surface">Aura Fashion</h3>
+</div>
+</div>
+<!-- Project 4: Logo -->
+<div class="masonry-item group relative overflow-hidden bg-surface-container border border-border-muted">
+<img class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sleek, minimalist logo design for a tech startup named 'Vortex'. The logo consists of sharp, interlocking geometric lines forming an abstract 'V'. The presentation is clean, using a 1px solid white border against a deep obsidian background, creating a blueprint-inspired professional aesthetic with high-chroma orange highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0IRPg57S66XCqeozhL3bLU88PFqzEaU7wtne8GKmYuGWZxlBDY9nTSvBZT_QSJshLRjOPK0hLH5VMnPvAW5BygqNwmsBzJRlc20ocESBN_6gGtI9Z6Hix7uTdO3ql8nx2tn9MDu6GRYacP9QwKa3HHmcQc5z9t4t4CI-Zb9Yk97Pq3SaZl9rjf0HgUGYBIyhAvOMeYJeztbKD7tulaDWPl4YnSRNqv1Zwqw2Mdb2E0_ZxtHa4cXBJZq02Kt54RmfzUKdgbHqwrLxr"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<span class="text-label-caps font-label-caps text-primary">IDENTITY</span>
+<h3 class="text-body-md font-bold text-on-surface">Vortex Systems</h3>
+</div>
+</div>
+<!-- Project 5: Print Media -->
+<div class="masonry-item group relative overflow-hidden bg-surface-container border border-border-muted">
+<img class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An elegant, high-quality brochure design for a real estate development. The design features large, immersive architectural photography, sharp typography, and generous breathing room. The color palette is monochromatic with thin 1px horizontal dividers, giving it a premium gallery-like feel consistent with professional minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEe2KeFiQLQ3LT2SO_2Y4AtS4mupXKxNdhiWWPnn2FzWnsADYA47nIqlePjZOG035fdVrAnMih3NS85J9C257_MK7Zf2nZR_4gnZ97jsXqut7-YRBKWVOtHcWXzzZ2N-f3hg5e6CQug6bqbmCuNtD_K2ScIKej6-q_j7Z8Fr8wqOlj6DvyQSFUjsI8aX6AtFxeD_ioN5ijBF4OgMPSWuabmy8UOseyQS2q9_8yEhUfGlb4rzYhqfyKoQgUOGF97ZLnMFv4N_ddapE3"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<span class="text-label-caps font-label-caps text-primary">PRINT</span>
+<h3 class="text-body-md font-bold text-on-surface">Harbor Heights</h3>
+</div>
+</div>
+<!-- Project 6: Branding -->
+<div class="masonry-item group relative overflow-hidden bg-surface-container border border-border-muted">
+<img class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A creative stationary branding set including business cards, letterheads, and envelopes. All elements feature a consistent orange-on-black color scheme with aggressive, oversized typography anchors. The set is neatly arranged on a neutral surface with sharp shadows, emphasizing the precision and professional craft of the design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMWCkVA8uz1ZpRZr6S9Phi04179vgKgoN3SoK48fLWv7mcxV-EJlUGvqubK6vn7OrBaUcNeWdSaDmlcr4UYitR2d1fVtFe_ijr6pbz6LEkruy1NoeL8L6cL8kP42G1KSKsYTcNoV5W4BtTz2r8AyVPhupEVD7NV3vaf0Ga2syPjXO7u9E7xu7TsB6ojC-oFn9VX0wPA8Kedulq6cjK9f1PPseUF24Zij_QPi7JW88Q8zbLtBEst0qEgXft8m32bxGKw4WBu145O_5O"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<span class="text-label-caps font-label-caps text-primary">BRANDING</span>
+<h3 class="text-body-md font-bold text-on-surface">Identity Pack</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- "Thanks for Scrolling" Micro-Interaction Section -->
+<section class="py-section-gap mt-12 flex flex-col items-center text-center">
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-4">Let's Collaborate</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mb-8 max-w-[280px]">Have a project in mind? Let's bring your visual story to life with precision and bold creativity.</p>
+<button class="px-8 py-3 bg-transparent border-2 border-primary text-on-surface font-bold text-body-md hover:bg-primary hover:text-background transition-all duration-300 active:scale-95">
+                START A PROJECT
+            </button>
+</section>
+</main>
+<!-- Bottom Navigation Shell (Shared Component: BottomNavBar) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface border-t border-border-muted flex justify-around items-center px-4 py-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-caption font-caption mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl p-2 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="text-caption font-caption mt-1">Work</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span class="text-caption font-caption mt-1">Contact</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-caption font-caption mt-1">About</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-caption font-caption mt-1">Search</span>
+</a>
+</nav>
+<!-- Floating Action Button for Contact (Contextual) -->
+<div class="fixed bottom-24 right-6 z-40">
+<button class="w-14 h-14 bg-primary-container text-background rounded-full flex items-center justify-center shadow-2xl active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</button>
+</div>
+<script>
+        // Simple micro-interaction for tab switching visual feedback
+        const tabs = document.querySelectorAll('button.pb-2');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('text-primary', 'font-bold');
+                    t.classList.add('text-on-surface-variant');
+                    const indicator = t.querySelector('.active-tab-indicator');
+                    if(indicator) indicator.remove();
+                });
+                tab.classList.add('text-primary', 'font-bold');
+                tab.classList.remove('text-on-surface-variant');
+                const newIndicator = document.createElement('div');
+                newIndicator.className = 'active-tab-indicator';
+                tab.appendChild(newIndicator);
+            });
+        });
+
+        // Parallax effect for gallery items
+        window.addEventListener('scroll', () => {
+            const items = document.querySelectorAll('.masonry-item img');
+            items.forEach(img => {
+                const speed = 0.05;
+                const rect = img.getBoundingClientRect();
+                const visible = rect.top < window.innerHeight && rect.bottom > 0;
+                if (visible) {
+                    const shift = (rect.top - window.innerHeight / 2) * speed;
+                    img.style.transform = `scale(1.1) translateY(${shift}px)`;
+                }
+            });
+        });
+    </script>
+</body></html>

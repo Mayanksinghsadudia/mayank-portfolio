@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sokir Nomad - Visual Storytelling Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#c8c6c5",
+                        "on-primary-fixed-variant": "#7a3000",
+                        "on-primary-container": "#572000",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary": "#2f3131",
+                        "surface-container-high": "#2a2a2a",
+                        "outline-variant": "#5a4136",
+                        "surface-elevated": "#121212",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-error": "#690005",
+                        "primary": "#ffb693",
+                        "on-secondary-container": "#b4b5b5",
+                        "surface-variant": "#353534",
+                        "error": "#ffb4ab",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "surface": "#131313",
+                        "on-tertiary": "#313030",
+                        "inverse-primary": "#a04100",
+                        "secondary": "#c6c6c7",
+                        "on-tertiary-container": "#313131",
+                        "on-primary": "#561f00",
+                        "secondary-container": "#454747",
+                        "surface-container-lowest": "#0e0e0e",
+                        "text-secondary": "#A6A6A6",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#9a9898",
+                        "primary-fixed": "#ffdbcc",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#e2bfb0",
+                        "on-primary-fixed": "#351000",
+                        "primary-container": "#ff6b00",
+                        "surface-dim": "#131313",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "primary-fixed-dim": "#ffb693",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-background": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-surface": "#e5e2e1",
+                        "error-container": "#93000a",
+                        "border-muted": "#262626",
+                        "surface-bright": "#3a3939",
+                        "background": "#131313",
+                        "outline": "#a98a7d",
+                        "surface-container": "#201f1f",
+                        "surface-container-low": "#1c1b1b",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-tint": "#ffb693",
+                        "surface-container-highest": "#353534"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "32px",
+                        "section-gap": "120px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "caption": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "display-hero": ["Montserrat"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "display-hero": ["84px", {"lineHeight": "92px", "letterSpacing": "-0.03em", "fontWeight": "900"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0e0e0e; }
+        ::-webkit-scrollbar-thumb { background: #262626; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ff6b00; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md">
+<!-- Top Navigation Shell -->
+<header class="bg-background dark:bg-background text-primary dark:text-primary flex justify-between items-center w-full px-5 h-16 fixed top-0 z-[100] border-b border-border-muted dark:border-border-muted">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">arrow_back</button>
+<span class="text-headline-md font-headline-md font-black tracking-tighter text-on-surface dark:text-on-surface">Visual Storytelling</span>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-muted">
+<img class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of Jabil Khan, a graphic designer with a confident expression. The lighting is dramatic and high-contrast, typical of a creative professional's profile. He has a neatly trimmed beard and is wearing a dark, minimal shirt against a neutral grey background, embodying a sophisticated and modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn94RHYIc9ycS27E2G0xeNi-eNpnhjXtYlm3EiIuqFZuzqPTiJva4ac7FDqpDytjEyDld1rxj59KPY-FIkFXqSepFK4ylitKziIAMTlHjclLXjWY9CiaQo3MRUDV9D8s0RpQkqV69p_PcCgeKfd6yY-B4HKX5NtV2GuprCAROTnzhgZ5dZksGBHBTYK0KN-c-O56PeTPIZkGX-HZCi3lhd0G01XC8JYoR4t6EUFwCULMd_aaLx1oO3BjSy3EGH9wmTd0vWyvuN3aGg"/>
+</div>
+</header>
+<main class="pt-16 pb-24">
+<!-- Hero Section: Project Header -->
+<section class="relative w-full aspect-[4/5] md:aspect-video overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
+<img class="w-full h-full object-cover" data-alt="A high-resolution brand mockup image for Sokir Nomad, showcasing an outdoor signage board in a modern city street at dusk. The logo is elegantly displayed on a circular backlit sign with a dark blue and orange color scheme. The surrounding architecture is contemporary with soft bokeh city lights in the background, creating a premium and adventurous travel brand atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2vwAZGvvRE_YJlVMyhRubfSs8ydV4uQwYhCKC5KQeoMBlT9ToCs039_RQd37sMfXiXrtkEqg-MudxqHZkmvHpRHHMuek1FAk05GlWVk33yHVAiA5UB5L7s3_Y7p7XAcCvxT2SGF5ZmBc1Wt71eSL2NwISbqBPvtZrsizR62YidvnuLHY_1IK1HmvRe-z-IEAM_NRuHGssiSm8e9_X1UyAxjUPOfEqHk9VAqeODnDX-2VQbEl5CYlm7TkoVvfu3-xTH_R6DSU9DXlp"/>
+<div class="absolute bottom-0 left-0 w-full p-margin-mobile z-20">
+<div class="inline-block bg-primary-container px-3 py-1 mb-4">
+<span class="font-label-caps text-label-caps text-on-primary-container">BRANDING PROJECT</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Sokir Nomad</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Creating an impactful visual identity for a nomadic travel brand that values freedom, exploration, and modern connectivity.</p>
+</div>
+</section>
+<!-- Project Overview / Section 01 -->
+<section class="px-margin-mobile py-16">
+<div class="flex items-center gap-4 mb-8">
+<span class="font-headline-md text-headline-md text-outline-variant opacity-30">01</span>
+<div class="h-px flex-1 bg-border-muted"></div>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary">Overview</span>
+</div>
+<div class="grid grid-cols-1 gap-8">
+<div class="space-y-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">The Challenge</h2>
+<p class="text-on-surface-variant font-body-md leading-relaxed">Sokir Nomad needed a brand that spoke to the modern digital nomad—someone who bridges the gap between rugged outdoor exploration and high-tech urban living. The identity had to be versatile enough for high-end gear and accessible digital interfaces.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-6 bg-surface-container-low border border-border-muted">
+<span class="block font-label-caps text-label-caps text-primary mb-2">CLIENT</span>
+<span class="font-body-md text-on-surface">Nomad Ventures</span>
+</div>
+<div class="p-6 bg-surface-container-low border border-border-muted">
+<span class="block font-label-caps text-label-caps text-primary mb-2">YEAR</span>
+<span class="font-body-md text-on-surface">2024</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Identity / Section 02 -->
+<section class="bg-surface-container-lowest py-16">
+<div class="px-margin-mobile">
+<div class="flex items-center gap-4 mb-12">
+<span class="font-headline-md text-headline-md text-outline-variant opacity-30">02</span>
+<div class="h-px flex-1 bg-border-muted"></div>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary">Identity</span>
+</div>
+<!-- Logo Variations -->
+<div class="mb-16">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6 text-center">Logo Variations</h3>
+<div class="grid grid-cols-1 gap-4">
+<div class="bg-white p-12 flex items-center justify-center">
+<img class="max-h-24" data-alt="A minimalist logo design for Sokir Nomad on a clean white background. The logo features a stylized, sharp 'S' that incorporates a compass needle element. Below it, the word 'Sokir Nomad' is written in a bold, custom geometric sans-serif font. The color is a deep midnight blue, conveying professional stability and trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATMgqH1n2n5TqxtcibauELE27rgprRIfK-3IpvwNtcAZPt-tevIUT67jwvVxgKdj63XyWpIYPEVk_yJRez-g2z-UrANIO_POy5FFZAQbR10647kggbjyyNLKwMAXVAqVJmHSFmqMuknaGWUP12ALaSwqu_hDEUGtjXytjLwGoHJwoN7DtcIPXzE5TkhWLhjJuEpIfuqL6UN4nXIwdYWu4h7J_c1CmD0phjLt8v7wF9zODIYXI7BeEEmZGwddfQ4LzAgxeHf31b6JYd"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-[#1a1a1a] p-8 border border-border-muted flex items-center justify-center">
+<img class="max-h-12" data-alt="The secondary white-out version of the Sokir Nomad logo centered on a dark charcoal background. The clean lines of the compass-S icon are prominent. The high contrast between the white logo and the dark background highlights the precision of the design, maintaining clarity and brand recognition in low-light environments." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA0M2oI_NQ1DNltC38U6pc4t1nxWiVlJYtKaZlZsrv8PW5OWiefiZWTGYOG0CY2DMxwNvRgX6gkSxfiB_vD9m7nLnhs9WcCo0W3j8HXlFDYfdQbl6Ka3xz5oZYVWZxn25ylVnUm29bhh02tEYwOnhMFDEUz5mWlx256YOG4LuuePJMv_OAG7uRmeHpvtpHq-PtLTkGAIFLYz6O-acAvmG1N1eQzKcweNszrM9tFc4ZnqRebS2PZtnkklwHQHpIg-yyVet6kuwwzqI_"/>
+</div>
+<div class="bg-primary-container p-8 flex items-center justify-center">
+<img class="max-h-12" data-alt="The monochrome black version of the Sokir Nomad logo placed on a vibrant orange background. The bold silhouette of the brand mark stands out with aggressive clarity. This color combination emphasizes the 'Nomad' energy of the brand, suggesting action, warmth, and adventurous spirit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ9_9u07oll5GNodxW4WzXxdYlKIF9GrqfT1umZ-0yaSOLqWrVo9D1BOASdgL_rcdZuVInEyEyFO4UzDayWQeUKQJY8VQoJ1F0_I54v5BwwxDrr3R_-sbvPKz-LQMONcbr98zGJ_sViEKYNi8naBz_p8ipJ-eEdooYNWPLti-igR7pxZMtV4eYxSkI00f-XYcnwMg6pNzFFIbgwmrv9h-d2p6SLvhnWGk723N-xDIQtpR5XOpwk8U5TIw_EOc4SK0m9fEs_qXymI5Q"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Typography & Color -->
+<div class="grid grid-cols-1 gap-12">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Typography</h3>
+<div class="space-y-6">
+<div class="border-b border-border-muted pb-4">
+<p class="font-headline-lg text-headline-md text-on-surface mb-1">Montserrat Bold</p>
+<p class="text-on-surface-variant font-label-caps">HEADLINES / AGGRESSIVE ANCHORS</p>
+</div>
+<div class="border-b border-border-muted pb-4">
+<p class="font-body-lg text-body-lg text-on-surface mb-1">Inter Regular</p>
+<p class="text-on-surface-variant font-label-caps">BODY CONTENT / CLARITY</p>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Color Palette</h3>
+<div class="flex gap-2">
+<div class="group relative flex-1 h-24 bg-[#0D0D0D] border border-border-muted">
+<span class="absolute bottom-2 left-2 text-[10px] font-label-caps opacity-0 group-hover:opacity-100 transition-opacity">#0D0D0D</span>
+</div>
+<div class="group relative flex-1 h-24 bg-[#FF6B00] border border-border-muted">
+<span class="absolute bottom-2 left-2 text-[10px] font-label-caps text-black opacity-0 group-hover:opacity-100 transition-opacity">#FF6B00</span>
+</div>
+<div class="group relative flex-1 h-24 bg-[#E5E2E1] border border-border-muted">
+<span class="absolute bottom-2 left-2 text-[10px] font-label-caps text-black opacity-0 group-hover:opacity-100 transition-opacity">#E5E2E1</span>
+</div>
+<div class="group relative flex-1 h-24 bg-[#2F3131] border border-border-muted">
+<span class="absolute bottom-2 left-2 text-[10px] font-label-caps opacity-0 group-hover:opacity-100 transition-opacity">#2F3131</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Brand Applications / Section 03 -->
+<section class="py-16">
+<div class="px-margin-mobile">
+<div class="flex items-center gap-4 mb-12">
+<span class="font-headline-md text-headline-md text-outline-variant opacity-30">03</span>
+<div class="h-px flex-1 bg-border-muted"></div>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary">Applications</span>
+</div>
+<div class="space-y-12">
+<!-- Physical Mockup 1 -->
+<div class="relative group">
+<img class="w-full aspect-square object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A premium branding mockup of a Sokir Nomad stationary set. The composition includes a sleek black business card with an orange edge paint, a minimalist letterhead on textured cream paper, and a matte black envelope. All items are arranged neatly on a dark slate surface with professional architectural lighting and long, soft shadows, evoking a sense of high-end design craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-XP5XFI2lSts26gYTkMBr1VHkojIG1gwaOCctEBCCp6TXE9UpnLxUcD60lePbVUhKt45LRtZOKFXfdp75U5x_W-06vVV4xXRl73LTZe3APXzBqExqvHATjbCDoyhEBsmD9FSZVtE9QKQuPNDOAxBxMCQd_ZfGpYNgJI8LevbN1I-PRsj2uWxdgWzJcd7rsA9p5VUenEk2CyhNNhOEK-y6ZU5KF59pWeqwulH7bfukr_xDe0pp7DV6GItl99bshCgbbcWd5cj0Uj2P"/>
+<div class="mt-4">
+<h4 class="font-headline-md text-headline-md text-on-surface">Stationary Design</h4>
+<p class="text-on-surface-variant font-caption mt-1">Tactile experience for premium clients.</p>
+</div>
+</div>
+<!-- Digital Ad Mockup -->
+<div class="bg-surface-container-high p-4">
+<div class="flex gap-4 mb-4">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-black">travel_explore</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface">SOCIAL CAMPAIGN</p>
+<p class="text-on-surface-variant text-caption">Digital Presence</p>
+</div>
+</div>
+<img class="w-full h-auto" data-alt="A collage of three social media story designs for Sokir Nomad. Each design features a breathtaking landscape photo of a mountain range or a modern cabin, overlaid with the brand's bold typography and orange accent lines. The designs are clean and mobile-first, with clear call-to-actions like 'Start Your Journey' and 'Explore More' in the brand's signature font." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIhlbXbPEVzXdj2ozsLJlocKpIRL1GyI66quBnX-mOFhEjOKT9Z4AmMxc8ORY2Ai8rOuoQxHdAmwI4EuH0GmzJN34xsxA1f6h1_1BoMb7SDyxQR-ALdu5WHd941FgY5C87R9sjdCpJ-kBPgHbH1CfhivwmCY35b6LYstOeDtZ1vWN8F6p6uq2NEr5TyVhlQzh50FRzxZL7TbJOvwnkzTP65HZw-MBxhDWbawCmJB_uAULUKQPrEklrMRHkmlwGbr9VnKxT5nMh1VzS"/>
+</div>
+<!-- Physical Mockup 2 -->
+<div class="border-l-2 border-primary pl-6 py-4">
+<img class="w-full aspect-video object-cover mb-4" data-alt="A photo of a Sokir Nomad branded travel backpack and a stainless steel water bottle. Both items are in a dark forest green color with the Sokir Nomad logo laser-engraved in a subtle, tone-on-tone finish. The gear is placed on a rugged rock surface in a misty highland environment, emphasizing the brand's connection to nature and adventure through durable, stylish products." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzYGtbhzjK-EWizAL6vN6_DkqILQe9tuvw4A2iyNbVFcNWNH0W2ottWyunYO4psXGAF-Ckb1MDOprvjLOrxR8W2gkOC9QL-6X_Io88rgbHnkXk8FVByR-ZGGtH9-YPzCgCCA5GPI3qZs_mQ2T3v-ryc8SVuQbQSGTdrmBrpjA7oNt3PnRUErXX_fsLH_pcEhbcqgm2RyS7hfRupniag9GCdBPINhZbpJt_wjFaPFwRVg3Di7apZsu7bPf4pH3AUQ5KjlISRA24ozMQ"/>
+<h4 class="font-headline-md text-headline-md text-on-surface">Product Branding</h4>
+<p class="text-on-surface-variant font-body-md mt-2">Durable gear branding for the modern explorer, focusing on subtle yet permanent marking techniques.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Final Thoughts / Footer -->
+<section class="px-margin-mobile py-16 border-t border-border-muted mt-12 text-center">
+<h2 class="font-display-hero text-headline-lg-mobile text-on-surface opacity-10 mb-8 uppercase">NOMAD</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant italic mb-8">"Design is the silent ambassador of your brand."</p>
+<div class="flex justify-center gap-6">
+<button class="bg-background border-2 border-primary px-8 py-3 font-label-caps text-label-caps text-on-background hover:bg-primary hover:text-black transition-all">Next Project</button>
+</div>
+</section>
+</main>
+<!-- Navigation Drawer (Side Nav Simulation for Mobile) -->
+<div class="fixed top-0 left-0 h-full w-80 bg-surface-container-low dark:bg-surface-container-low z-[200] transform -translate-x-full transition-transform duration-300 shadow-2xl md:hidden" id="drawer">
+<div class="flex flex-col h-full py-8">
+<div class="px-6 mb-12 flex flex-col gap-2">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-primary">
+<img class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of Jabil Khan, a graphic designer with a confident expression. The lighting is dramatic and high-contrast, typical of a creative professional's profile. He has a neatly trimmed beard and is wearing a dark, minimal shirt against a neutral grey background, embodying a sophisticated and modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgexjHvrY5fjG2o8omx-22aYqqvqejoi05WKb7ZuE9LxAuR-iQA1lV9S0e234iAMfvKF0UKpMU-ksGMG-PpIKrFeEI_8ca5FAVqu9nqeUtB7Q1im_8AuEOdvC9hgTd-FMBf6gYRR5LI2b1W7YJIZ7NuP9hrbvHRXZH2TPgcG1VOewQX9HxmRL6YjuX5mC3aT3LD06nD-ooi1PjMwkDvwfXj8ZOsnYFm1nlx-2xSIEJ6dVVHphJMKQuGLF8UMZZ2cW79WBC0EkOZvif"/>
+</div>
+<h3 class="text-primary font-headline-md font-headline-md">Jabil Khan</h3>
+<p class="text-on-surface-variant text-body-md font-body-md">Graphic Designer</p>
+<p class="text-on-surface-variant text-caption opacity-60">New Delhi, India</p>
+</div>
+<nav class="flex-1">
+<a class="text-on-primary-container bg-primary-container flex items-center gap-4 px-6 py-4 border-l-4 border-primary group" href="#">
+<span class="material-symbols-outlined">brush</span>
+<span class="font-body-md">Branding</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-4 px-6 py-4 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">share</span>
+<span class="font-body-md">Social Media</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-4 px-6 py-4 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">palette</span>
+<span class="font-body-md">Poster Design</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-4 px-6 py-4 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-body-md">About</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-4 px-6 py-4 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">send</span>
+<span class="font-body-md">Contact</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Overlay for drawer -->
+<div class="fixed inset-0 bg-black/60 z-[150] hidden opacity-0 transition-opacity duration-300" id="drawer-overlay"></div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface dark:bg-surface border-t border-border-muted dark:border-border-muted flex justify-around items-center px-4 py-2">
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all">
+<span class="material-symbols-outlined">home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl p-2 scale-90 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-all">
+<span class="material-symbols-outlined">search</span>
+</button>
+</nav>
+<script>
+        // Simple drawer toggle logic
+        const menuBtn = document.querySelector('header button');
+        const drawer = document.getElementById('drawer');
+        const overlay = document.getElementById('drawer-overlay');
+
+        function toggleDrawer() {
+            const isOpen = drawer.classList.contains('translate-x-0');
+            if (isOpen) {
+                drawer.classList.remove('translate-x-0');
+                drawer.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                overlay.classList.remove('opacity-100');
+            } else {
+                drawer.classList.remove('-translate-x-full');
+                drawer.classList.add('translate-x-0');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.add('opacity-100'), 10);
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleDrawer);
+        overlay.addEventListener('click', toggleDrawer);
+
+        // Micro-interaction for scroll depth visualization
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement, 
+                  b = document.body,
+                  st = 'scrollTop',
+                  sh = 'scrollHeight';
+            const percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+            // You could use this percent to update a progress bar if desired
+        });
+    </script>
+</body></html>
