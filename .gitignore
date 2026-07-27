@@ -1,3 +1,4 @@
+deploy_clean_github.py
 *.zip
 *.log
 scratch/
