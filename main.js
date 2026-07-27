@@ -257,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value || 'Not provided';
       const projectType = document.getElementById('project-type').value;
       const message = document.getElementById('message').value;
 
@@ -271,6 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify({
           name: name,
           email: email,
+          phone: phone,
           project_type: projectType,
           message: message,
           _subject: `New Portfolio Design Inquiry from ${name} [${projectType.toUpperCase()}]`
@@ -284,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(() => {
         // Fallback to mailto trigger
         const subject = `Design Inquiry from ${name} [${projectType.toUpperCase()}]`;
-        const body = `Hi Mayank,\n\nName: ${name}\nEmail: ${email}\nProject Type: ${projectType}\n\nMessage:\n${message}\n\nSent from Portfolio Website`;
+        const body = `Hi Mayank,\n\nName: ${name}\nEmail: ${email}\nPhone/WhatsApp: ${phone}\nProject Type: ${projectType}\n\nMessage:\n${message}\n\nSent from Portfolio Website`;
         window.location.href = `mailto:mayanksadudia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         showToast('Opening your email client to send message to Mayank.');
         contactForm.reset();
