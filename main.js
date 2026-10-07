@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
   projectCards.forEach(card => {
     card.addEventListener('click', (e) => {
       // Don't trigger modal if user clicks directly on video controls or PDF download links
-      if (e.target.tagName === 'VIDEO' || e.target.tagName === 'A') return;
+      if (e.target.closest('a, button, video')) return;
 
       const media = card.querySelector('.project-img, video');
       const title = card.querySelector('h3');

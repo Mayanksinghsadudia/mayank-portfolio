@@ -14,6 +14,7 @@
 
   <!-- Custom Design System Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="presenter.css" />
 </head>
 <body>
 
@@ -64,6 +65,10 @@
               <a href="#contact" class="btn-secondary">
                 <span class="material-symbols-outlined">mail</span>
                 Get In Touch
+              </a>
+              <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer" class="btn-secondary" aria-label="Visit Mayank's GitHub profile">
+                <span class="material-symbols-outlined">code</span>
+                GitHub
               </a>
             </div>
 
@@ -317,7 +322,8 @@
 
         <!-- Category Filters -->
         <div class="filter-bar">
-          <button class="filter-btn active" data-filter="all">ALL PROJECTS (31)</button>
+          <button class="filter-btn active" data-filter="all">ALL PROJECTS (32)</button>
+          <button class="filter-btn" data-filter="analytics">DATA ANALYSIS</button>
           <button class="filter-btn" data-filter="branding">BRANDING & LOGOS</button>
           <button class="filter-btn" data-filter="packaging">PACKAGING</button>
           <button class="filter-btn" data-filter="digital-art">DIGITAL ART & MATTE</button>
@@ -328,6 +334,27 @@
 
         <!-- Projects Grid -->
         <div class="projects-grid">
+          <!-- Data analyst portfolio case study -->
+          <div class="project-card" data-category="analytics" data-id="retail-sales-analysis">
+            <div class="project-img-wrapper">
+              <img src="retail-analysis-preview.png" alt="Chart from the Online Retail Sales Analysis project" class="project-img" style="object-fit: contain; background: #121212;" />
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-card-content">
+              <span class="text-label-caps text-accent">DATA ANALYSIS · PYTHON &amp; SQL</span>
+              <h3 class="font-headline text-headline-md" style="margin-top: 4px;">Online Retail Sales Analysis</h3>
+              <p style="color: var(--color-text-muted); font-size: 13px; margin-top: 6px;">
+                A portfolio study of 541,909 historical UCI invoice lines: data preparation, monthly sales, country mix, and repeat purchasing, with documented definitions and limitations.
+              </p>
+              <div class="project-meta" style="flex-wrap: wrap; gap: 12px;">
+                <a href="retail-analysis.html" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">View Analysis</a>
+                <a href="https://github.com/Mayanksinghsadudia/retail-sales-analysis" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">GitHub Source ↗</a>
+                <span style="font-size: 11px;">Python &amp; SQL &amp; Pandas</span>
+              </div>
+            </div>
+          </div>
+
+
           <!-- Card: REVA 3D Exploding Speaker Website -->
           <div class="project-card" data-category="uiux" data-id="reva-3d-speaker">
             <div class="project-img-wrapper">
@@ -893,7 +920,7 @@
         <div style="text-align: center; margin-top: 40px;" id="view-all-container">
           <button id="view-all-projects-btn" class="btn-primary" style="padding: 14px 32px; font-size: 14px; letter-spacing: 1px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;">
             <span class="material-symbols-outlined">grid_view</span>
-            View All Projects (31)
+            View All Projects (32)
           </button>
         </div>
 
@@ -1006,6 +1033,18 @@
               </a>
             </div>
 
+            <div class="info-box">
+              <div>
+                <span class="text-label-caps text-accent">GITHUB PROFILE</span>
+                <h4 class="font-headline" style="font-size: 1rem; margin-top: 2px;">
+                  <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Mayanksinghsadudia</a>
+                </h4>
+              </div>
+              <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer" class="btn-secondary" aria-label="Open GitHub profile">
+                <span class="material-symbols-outlined">open_in_new</span>
+              </a>
+            </div>
+
             <!-- Resume Download Highlight Box -->
             <div class="about-card" style="margin-top: 24px; border-color: var(--color-primary); background-color: rgba(255, 107, 0, 0.05);">
               <h4 class="font-headline text-headline-md" style="color: var(--color-primary);">Looking for complete CV?</h4>
@@ -1070,6 +1109,8 @@
 
   <!-- Main JavaScript File -->
   <script src="main.js"></script>
+  <script src="presenter-config.js"></script>
+  <script src="presenter.js"></script>
 
 </body>
 </html>
