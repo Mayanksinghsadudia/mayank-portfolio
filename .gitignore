@@ -4,3 +4,6 @@ deploy_clean_github.py
 scratch/
 __pycache__/
 .env
+*_backup.*
+assets/inspect_*.jpg
+
