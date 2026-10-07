@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Customer Management System workflow">
+    <rect width="960" height="540" fill="#171717"/>
+    <path d="M0 0H960V8H0" fill="#ff6b00"/>
+    <text x="56" y="74" font-family="Arial,sans-serif" font-size="18" fill="#ff9345" letter-spacing="3">MAYANK SINGH SADUDIA / PROJECT</text>
+    <text x="56" y="152" font-family="Arial,sans-serif" font-size="40" font-weight="700" fill="#faf7f3">Customer Management System</text>
+    <text x="56" y="200" font-family="Arial,sans-serif" font-size="22" fill="#a7a7a7">Python · Streamlit · SQLite</text>
+    <path d="M180 335H790" stroke="#ff6b00" stroke-width="3"/>
+    <rect x="56" y="276" width="266" height="116" rx="16" fill="#242424" stroke="#65412b"/><text x="80" y="322" font-family="Arial,sans-serif" font-size="16" fill="#ff9345">01</text><text x="80" y="362" font-family="Arial,sans-serif" font-size="21" fill="#faf7f3">Customer profiles</text><rect x="346" y="276" width="266" height="116" rx="16" fill="#242424" stroke="#65412b"/><text x="370" y="322" font-family="Arial,sans-serif" font-size="16" fill="#ff9345">02</text><text x="370" y="362" font-family="Arial,sans-serif" font-size="21" fill="#faf7f3">Orders in SQLite</text><rect x="636" y="276" width="266" height="116" rx="16" fill="#242424" stroke="#65412b"/><text x="660" y="322" font-family="Arial,sans-serif" font-size="16" fill="#ff9345">03</text><text x="660" y="362" font-family="Arial,sans-serif" font-size="21" fill="#faf7f3">Revenue reports</text><text x="56" y="476" font-family="Arial,sans-serif" font-size="16" fill="#a7a7a7">PROJECT WORKFLOW · SOURCE CODE ON GITHUB</text></svg>

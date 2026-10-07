@@ -35,51 +35,18 @@
 <body>
 <main>
   <a href="index.html#projects" class="nav-back">← Back to Portfolio</a>
-  <div class="eyebrow">MAYANK SINGH SADUDIA / NLP &amp; SENTIMENT ANALYSIS</div>
-  <h1>Amazon Product Review<br>Sentiment Analysis System</h1>
-  <p>A Natural Language Processing (NLP) web platform that analyzes customer sentiment from live Google Sheets and review databases into Positive, Negative, and Neutral polarity with demographic segmentation.</p>
-
-  <div class="tech-stack">
-    <span class="tech-pill active">Python</span>
-    <span class="tech-pill active">NLTK &amp; VADER</span>
-    <span class="tech-pill active">Streamlit</span>
-    <span class="tech-pill active">Google Sheets API</span>
-    <span class="tech-pill active">Plotly Express</span>
-    <span class="tech-pill active">Pandas</span>
-    <span class="tech-pill">OAuth 2.0</span>
-  </div>
-
-  <div class="metrics">
-    <div class="metric"><span>Feedback Analyzed</span><strong>25,000+</strong></div>
-    <div class="metric"><span>VADER Precision</span><strong>89.4%</strong></div>
-    <div class="metric"><span>Mean Polarity</span><strong>+0.42</strong></div>
-    <div class="metric"><span>Product Categories</span><strong>12</strong></div>
-  </div>
-
-  <div class="note">
-    <strong>Project Objective:</strong> Automate social media feedback monitoring, product rating analysis, and customer opinion polling. Seamlessly ingest reviews via Google Sheets API, score textual polarity with VADER, and visualize feedback distribution across age, gender, language, and city demographics.
-  </div>
-
-  <h2>NLP Polarity &amp; Category Breakdown</h2>
-  <img src="assets/user_projects/amazon_sentiment_preview.png" alt="Amazon Product Review Sentiment NLP Analysis" />
-
-  <h2>Technical Pipeline &amp; NLP Methodology</h2>
-  <ul>
-    <li><strong>Data Ingestion:</strong> Connects to Google Sheets via <code>google_auth_oauthlib</code> and <code>googleapiclient</code> using OAuth 2.0 client credentials, enabling real-time review syncing from survey forms.</li>
-    <li><strong>Lexicon &amp; Rule-Based NLP:</strong> Uses <code>vaderSentiment.vaderSentiment</code> (Valence Aware Dictionary and sEntiment Reasoner) tuned specifically for sentiments expressed in social reviews.</li>
-    <li><strong>Compound Score Categorization:</strong> Reviews with compound score &gt; 0.5 are classified as <strong>Positive</strong>, compound score &lt; -0.5 as <strong>Negative</strong>, and remaining as <strong>Neutral</strong>.</li>
-    <li><strong>Demographic Aggregation:</strong> Cross-references sentiment polarity against respondent demographics (age, gender, language, and city) to highlight geographic and demographic product reception.</li>
-    <li><strong>Export &amp; Reporting:</strong> Automatically exports enriched sentiment datasets to <code>results.csv</code> for downstream BI analysis.</li>
-  </ul>
-
-  <h2>Key Analytical Findings</h2>
-  <p>1. <strong>Overall Sentiment:</strong> 68.4% of total analyzed customer feedback was classified as positive, with 19.2% neutral inquiries and 12.4% negative reviews.</p>
-  <p>2. <strong>Category Performance:</strong> Home &amp; Kitchen products recorded the highest customer satisfaction score at 81% positive feedback, whereas Wearables saw higher negative ratios (16%) primarily citing battery life and app syncing.</p>
-
-  <footer>
-    <div>© Mayank Singh Sadudia · Data Analyst &amp; Graphic Designer</div>
-    <div><a href="index.html#contact">Get In Touch</a> · <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener">GitHub Profile</a></div>
-  </footer>
+  <div class="eyebrow">MAYANK SINGH SADUDIA / SENTIMENT ANALYSIS</div>
+  <h1>Amazon Review System</h1>
+  <p>Classifies review text from Google Sheets as positive, neutral or negative with VADER, then explores the results with interactive charts.</p>
+  <p><a href="https://github.com/Mayanksinghsadudia/amazon-review-system" target="_blank" rel="noopener noreferrer">View source code &amp; setup instructions on GitHub ↗</a></p>
+  <div class="tech-stack"><span class="tech-pill active">Python</span><span class="tech-pill active">Streamlit</span><span class="tech-pill active">VADER</span><span class="tech-pill active">Google Sheets API</span><span class="tech-pill active">Pandas</span><span class="tech-pill active">Plotly</span></div>
+  <img src="assets/user_projects/amazon-project.svg" alt="Amazon Review System workflow" />
+  <h2>Implemented features</h2>
+  <ul><li>Select a Google Sheet, range and review-text column.</li><li>Classify each review using the VADER compound score.</li><li>Save sentiment labels to CSV and explore a results table, pie chart, histogram or scatter plot.</li></ul>
+  <h2>How the project works</h2>
+  <p>The implemented thresholds are compound score &gt; 0.5 for Positive, &lt; -0.5 for Negative, and Neutral otherwise. Labels are automated estimates; no evaluated accuracy score or business improvement is claimed.</p>
+  <div class="note">Explore the repository for the original project source, dependencies and local setup. Private configuration and existing local databases are excluded from public files.</div>
+  <footer><div>© Mayank Singh Sadudia · Data Analyst &amp; Graphic Designer</div><div><a href="index.html#contact">Get In Touch</a> · <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer">GitHub Profile</a></div></footer>
 </main>
 </body>
 </html>

@@ -35,51 +35,18 @@
 <body>
 <main>
   <a href="index.html#projects" class="nav-back">← Back to Portfolio</a>
-  <div class="eyebrow">MAYANK SINGH SADUDIA / DATA ANALYSIS & CRM</div>
-  <h1>Customer Management &amp;<br>Revenue Distribution System</h1>
-  <p>A full-stack data analytics and customer relationship management application developed in Python (Streamlit) and SQLite.<br>Provides real-time CRUD customer operations, order auditing, and visual revenue attribution charts.</p>
-
-  <div class="tech-stack">
-    <span class="tech-pill active">Python</span>
-    <span class="tech-pill active">Streamlit</span>
-    <span class="tech-pill active">SQLite3</span>
-    <span class="tech-pill active">Pandas</span>
-    <span class="tech-pill active">Matplotlib</span>
-    <span class="tech-pill">CRUD Architecture</span>
-    <span class="tech-pill">Sales Analytics</span>
-  </div>
-
-  <div class="metrics">
-    <div class="metric"><span>Customer Records</span><strong>1,250+</strong></div>
-    <div class="metric"><span>Tracked Revenue</span><strong>₹12.5M</strong></div>
-    <div class="metric"><span>Avg. Order Value</span><strong>₹3,450</strong></div>
-    <div class="metric"><span>Fulfillment Rate</span><strong>96.8%</strong></div>
-  </div>
-
-  <div class="note">
-    <strong>Project Objective:</strong> Empower businesses to centralize customer database records, track sales revenue without bulky enterprise CRM costs, and generate actionable client contribution insights via embedded Matplotlib visualizations.
-  </div>
-
-  <h2>System Analytics &amp; Performance Dashboard</h2>
-  <img src="assets/user_projects/cms_preview.png" alt="Customer Management System and Revenue Distribution Dashboard" />
-
-  <h2>Technical Architecture &amp; Implementation Details</h2>
-  <p>The application is structured into a clean modular pipeline:</p>
-  <ul>
-    <li><strong>Relational SQLite Backend (<code>customers.db</code>):</strong> Utilizes indexed tables for <code>customers</code> (id, name, email, phone, address, joined_date) and <code>orders</code> (order_id, customer_id, product, amount, order_date) with foreign key relationships.</li>
-    <li><strong>Streamlit Reactive Interface:</strong> Interactive menu switching between Customer Registration, Order Tracking, Database Management, and Analytics Reports.</li>
-    <li><strong>Analytical Reporting:</strong> Automates SQL aggregations to calculate total lifetime value (LTV) per client, order volume trajectories, and tier distribution (Enterprise, Mid-Market, SMB, and Startups).</li>
-    <li><strong>Data Visualization Engine:</strong> Generates high-contrast horizontal revenue bar charts and monthly order trend curves for business stakeholders.</li>
-  </ul>
-
-  <h2>Key Business Insights</h2>
-  <p>1. <strong>Top Tier Concentration:</strong> The top 20% of enterprise clients contribute 62% of overall platform revenue, highlighting the importance of targeted account management.</p>
-  <p>2. <strong>Order Velocity:</strong> Monthly order volume exhibited sustained quarter-over-quarter growth, surging from 142 orders in January to 425 orders in October.</p>
-
-  <footer>
-    <div>© Mayank Singh Sadudia · Data Analyst &amp; Graphic Designer</div>
-    <div><a href="index.html#contact">Get In Touch</a> · <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener">GitHub Profile</a></div>
-  </footer>
+  <div class="eyebrow">MAYANK SINGH SADUDIA / BUSINESS REPORTING</div>
+  <h1>Customer Management System</h1>
+  <p>Stores customer profiles and orders in SQLite, with SQL summaries for total customers, orders and revenue, plus customer-level charts.</p>
+  <p><a href="https://github.com/Mayanksinghsadudia/customer-management-system" target="_blank" rel="noopener noreferrer">View source code &amp; setup instructions on GitHub ↗</a></p>
+  <div class="tech-stack"><span class="tech-pill active">Python</span><span class="tech-pill active">Streamlit</span><span class="tech-pill active">SQLite</span><span class="tech-pill active">Pandas</span><span class="tech-pill active">Matplotlib</span></div>
+  <img src="assets/user_projects/customer-project.svg" alt="Customer Management System workflow" />
+  <h2>Implemented features</h2>
+  <ul><li>Add, view and delete customer profiles.</li><li>Record orders and join them to customer records.</li><li>Display total customers, total orders and summed order amounts.</li><li>Visualize order distribution and revenue per customer.</li></ul>
+  <h2>How the project works</h2>
+  <p>Reports summarize records entered into the local app. Revenue is the sum of stored order amounts. The project does not implement customer tiers, fulfillment tracking or a measured growth study.</p>
+  <div class="note">Explore the repository for the original project source, dependencies and local setup. Private configuration and existing local databases are excluded from public files.</div>
+  <footer><div>© Mayank Singh Sadudia · Data Analyst &amp; Graphic Designer</div><div><a href="index.html#contact">Get In Touch</a> · <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer">GitHub Profile</a></div></footer>
 </main>
 </body>
 </html>
