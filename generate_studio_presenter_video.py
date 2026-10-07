@@ -44,10 +44,12 @@ def main():
     # 2. Load Studio Poses (720x960)
     W, H = 720, 960
     raw_r = cv2.imread('assets/studio_pose_rest.jpg')
+    raw_w = cv2.imread('assets/studio_pose_welcome.jpg')
     raw_t = cv2.imread('assets/studio_pose_talk.jpg')
     raw_p = cv2.imread('assets/studio_pose_pres.jpg')
 
     im_r = cv2.resize(raw_r, (W, H), interpolation=cv2.INTER_LANCZOS4)
+    im_w = cv2.resize(raw_w, (W, H), interpolation=cv2.INTER_LANCZOS4)
     im_t = cv2.resize(raw_t, (W, H), interpolation=cv2.INTER_LANCZOS4)
     im_p = cv2.resize(raw_p, (W, H), interpolation=cv2.INTER_LANCZOS4)
 
@@ -58,7 +60,8 @@ def main():
     mouth_mask = np.clip(1.0 - dist_mouth, 0.0, 1.0) ** 1.5
     mouth_mask_3c = mouth_mask[:, :, None].astype(np.float32)
 
-    # Pre-render closed-mouth versions for talk and pres poses
+    # Pre-render closed-mouth versions for welcome, talk and pres poses
+    closed_w = (im_w.astype(np.float32) * (1.0 - mouth_mask_3c) + im_r.astype(np.float32) * mouth_mask_3c).astype(np.uint8)
     closed_t = (im_t.astype(np.float32) * (1.0 - mouth_mask_3c) + im_r.astype(np.float32) * mouth_mask_3c).astype(np.uint8)
     closed_p = (im_p.astype(np.float32) * (1.0 - mouth_mask_3c) + im_r.astype(np.float32) * mouth_mask_3c).astype(np.uint8)
 
@@ -92,36 +95,41 @@ def main():
 
     # 5. Timeline Function
     def get_timeline_state(t):
-        if t < 0.8:
+        if t < 0.7:
             return ('rest', 'rest', 0.0)
-        elif t < 1.3:
-            alpha = (t - 0.8) / 0.5
-            return ('rest', 'talk', alpha)
-        elif t < 5.2:
+        elif t < 1.2:
+            alpha = (t - 0.7) / 0.5
+            return ('rest', 'welcome', alpha)
+        elif t < 4.2:
+            return ('welcome', 'welcome', 0.0)
+        elif t < 4.8:
+            alpha = (t - 4.2) / 0.6
+            return ('welcome', 'talk', alpha)
+        elif t < 5.5:
             return ('talk', 'talk', 0.0)
-        elif t < 5.7:
-            alpha = (t - 5.2) / 0.5
+        elif t < 6.0:
+            alpha = (t - 5.5) / 0.5
             return ('talk', 'pres', alpha)
         elif t < 10.2:
             return ('pres', 'pres', 0.0)
         elif t < 10.7:
             alpha = (t - 10.2) / 0.5
             return ('pres', 'talk', alpha)
-        elif t < 16.2:
+        elif t < 16.0:
             return ('talk', 'talk', 0.0)
-        elif t < 16.7:
-            alpha = (t - 16.2) / 0.5
+        elif t < 16.5:
+            alpha = (t - 16.0) / 0.5
             return ('talk', 'pres', alpha)
-        elif t < 21.0:
+        elif t < 20.8:
             return ('pres', 'pres', 0.0)
-        elif t < 21.5:
-            alpha = (t - 21.0) / 0.5
-            return ('pres', 'talk', alpha)
+        elif t < 21.3:
+            alpha = (t - 20.8) / 0.5
+            return ('pres', 'welcome', alpha)
         elif t < 25.5:
-            return ('talk', 'talk', 0.0)
+            return ('welcome', 'welcome', 0.0)
         elif t < 26.5:
             alpha = (t - 25.5) / 1.0
-            return ('talk', 'rest', alpha)
+            return ('welcome', 'rest', alpha)
         else:
             return ('rest', 'rest', 0.0)
 
@@ -141,8 +149,10 @@ def main():
         def render_pose(key):
             if key == 'rest':
                 return im_r
+            elif key == 'welcome':
+                o = float(openness)
+                return (closed_w.astype(np.float32) * (1.0 - o) + im_w.astype(np.float32) * o).astype(np.uint8)
             elif key == 'talk':
-                # Blend between closed_t and open im_t based on audio energy
                 o = float(openness)
                 return (closed_t.astype(np.float32) * (1.0 - o) + im_t.astype(np.float32) * o).astype(np.uint8)
             elif key == 'pres':
