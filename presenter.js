@@ -1,149 +1,142 @@
 (() => {
   "use strict";
   const config = window.MAYANK_PRESENTER;
-  if (!config || !config.videoSrc) return;
-  const frame = document.querySelector("#hero .avatar-frame");
-  if (!frame) return;
-  frame.classList.add("portfolio-presenter");
-
+  const frame = document.getElementById("home-presenter");
+  // Activate only after the actual character clip has been delivered.
+  if (!config?.videoSrc || !frame) return;
+  const controls = frame.querySelector(".presenter-controls");
+  const play = document.getElementById("presenter-play");
+  const sound = document.getElementById("presenter-sound");
   const video = document.createElement("video");
+  video.crossOrigin = "anonymous";
   video.src = config.videoSrc;
   video.preload = "metadata";
-  video.muted = Boolean(config.autoplay);
   video.playsInline = true;
-  video.setAttribute("playsinline", "");
-  video.setAttribute("aria-hidden", "true");
-  video.className = "presenter-video";
-  video.style.display = "none";
-
-  const controls = document.createElement("div");
-  controls.className = "presenter-controls";
-  controls.setAttribute("role", "group");
-  controls.setAttribute("aria-label", "Portfolio introduction controls");
-
-  const makeButton = (label, className) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.textContent = label;
-    if (className) button.className = className;
-    controls.append(button);
-    return button;
-  };
-
-  const playButton = makeButton("▶ Meet Mayank", "presenter-play");
-  const muteButton = makeButton(video.muted ? "Sound on" : "Mute sound");
-  const stopButton = makeButton("Stop");
-  const textButton = makeButton("Text");
-  textButton.setAttribute("aria-expanded", "false");
-
-  const transcript = document.createElement("div");
-  transcript.className = "presenter-transcript";
-  transcript.id = "presenter-transcript";
-  transcript.hidden = true;
-  const paragraph = document.createElement("p");
-  paragraph.textContent = config.intro;
-  transcript.append(paragraph);
-  textButton.setAttribute("aria-controls", transcript.id);
-
-  const status = document.createElement("div");
-  status.className = "presenter-status";
-  status.setAttribute("role", "status");
-  status.hidden = true;
-
-  frame.append(video, controls, transcript, status);
-
+  video.muted = true;
+  video.setAttribute("aria-label", "Mayank introducing his portfolio");
+  const canvas = document.createElement("canvas");
+  canvas.className = "presenter-canvas";
+  canvas.setAttribute("role", "img");
+  canvas.setAttribute("aria-label", "Mayank's animated 3D introduction");
+  frame.prepend(video, canvas);
+  let renderer = null;
+  let drawing = null;
+  let visible = false;
   let started = false;
-  const showStatus = text => {
-    status.textContent = text;
-    status.hidden = !text;
-  };
-
-  const restorePoster = () => {
-    video.style.display = "none";
-    frame.classList.remove("presenter-active");
-    playButton.textContent = started ? "↻ Replay intro" : "▶ Meet Mayank";
-  };
-
-  const startPlayback = async () => {
-    showStatus("");
-    video.style.display = "block";
-    frame.classList.add("presenter-active");
-    if (video.ended) video.currentTime = 0;
-    try {
-      await video.play();
-      started = true;
-      playButton.textContent = "Ⅱ Pause intro";
-    } catch (err) {
-      // If autoplay was blocked with sound, retry unmuted
-      if (!video.muted) {
-        video.muted = true;
-        muteButton.textContent = "Sound on";
-        await video.play();
-        started = true;
-        playButton.textContent = "Ⅱ Pause intro";
-      } else {
-        throw err;
+  let userPaused = false;
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+  function createRenderer() {
+    const gl = canvas.getContext("webgl", { alpha:true, premultipliedAlpha:false });
+    if (!gl) return null;
+    const compile = (type, source) => {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) throw new Error("Shader initialization failed");
+      return shader;
+    };
+    const program = gl.createProgram();
+    gl.attachShader(program, compile(gl.VERTEX_SHADER, "attribute vec2 pos; varying vec2 uv; void main(){uv=vec2((pos.x+1.0)*0.5,(1.0-pos.y)*0.5);gl_Position=vec4(pos,0.0,1.0);}"));
+    gl.attachShader(program, compile(gl.FRAGMENT_SHADER, "precision mediump float; varying vec2 uv; uniform sampler2D clip; void main(){vec3 c=texture2D(clip,uv).rgb;float excess=c.g-max(c.r,c.b);float a=1.0-smoothstep(0.08,0.28,excess);a*=smoothstep(0.15,0.42,length(c-vec3(0.0,1.0,0.0)));c.g=mix(min(c.g,max(c.r,c.b)+0.02),c.g,a);gl_FragColor=vec4(c,a);}"));
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error("Renderer initialization failed");
+    gl.useProgram(program);
+    const buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+    const position = gl.getAttribLocation(program, "pos");
+    gl.enableVertexAttribArray(position);
+    gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+    const texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.uniform1i(gl.getUniformLocation(program, "clip"), 0);
+    return { render(source) {
+      if (canvas.width !== source.videoWidth || canvas.height !== source.videoHeight) {
+        canvas.width = source.videoWidth;
+        canvas.height = source.videoHeight;
+        gl.viewport(0, 0, canvas.width, canvas.height);
       }
-    }
-  };
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    }};
+  }
 
-  playButton.addEventListener("click", async () => {
-    if (!video.paused && !video.ended) {
-      video.pause();
-      playButton.textContent = "▶ Resume intro";
-      return;
-    }
-    showStatus("");
-    try {
-      await startPlayback();
-    } catch {
-      restorePoster();
-      showStatus("The introduction could not play. You can read it with the Text button.");
-    }
-  });
-
-  video.addEventListener("playing", () => {
-    frame.classList.add("presenter-active");
-    video.style.display = "block";
-    playButton.textContent = "Ⅱ Pause intro";
-    showStatus("");
-  });
-
-  video.addEventListener("pause", () => {
-    playButton.textContent = "▶ Resume intro";
-  });
-
-  video.addEventListener("ended", restorePoster);
-  video.addEventListener("error", () => {
-    restorePoster();
-    showStatus("The introduction is temporarily unavailable. Use Text to read it.");
-  });
-
-  muteButton.addEventListener("click", async () => {
-    const enablingSound = video.muted;
-    video.muted = !enablingSound;
-    muteButton.textContent = video.muted ? "Sound on" : "Mute sound";
-    if (enablingSound && video.paused) {
-      try { await startPlayback(); }
-      catch { showStatus("Select Meet Mayank to play the introduction."); }
-    }
-  });
-
-  stopButton.addEventListener("click", () => {
+  function stopDrawing() {
+    if (drawing === null) return;
+    if (video.cancelVideoFrameCallback) video.cancelVideoFrameCallback(drawing);
+    else cancelAnimationFrame(drawing);
+    drawing = null;
+  }
+  function draw() {
+    if (video.paused || video.ended || !renderer) return;
+    try { renderer.render(video); }
+    catch { unavailable(); return; }
+    drawing = video.requestVideoFrameCallback ? video.requestVideoFrameCallback(draw) : requestAnimationFrame(draw);
+  }
+  function updatePlay() {
+    play.textContent = video.ended ? "Replay introduction" : video.paused ? (started ? "Resume introduction" : "Play introduction") : "Pause introduction";
+    play.setAttribute("aria-label", play.textContent);
+  }
+  function unavailable() {
     video.pause();
-    video.currentTime = 0;
-    restorePoster();
-  });
-
-  textButton.addEventListener("click", () => {
-    transcript.hidden = !transcript.hidden;
-    textButton.setAttribute("aria-expanded", String(!transcript.hidden));
-  });
-
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden && !video.paused) {
-      video.pause();
-      playButton.textContent = "▶ Resume intro";
+    stopDrawing();
+    frame.classList.remove("presenter-active");
+    controls.hidden = true;
+  }
+  async function start() {
+    if (video.ended) video.currentTime = 0;
+    try { await video.play(); }
+    catch { updatePlay(); }
+  }
+  if (config.chromaKey) {
+    video.hidden = true;
+    try { renderer = createRenderer(); }
+    catch {
+      if (!config.alphaVideoSrc || !video.canPlayType('video/webm; codecs="vp9"')) return;
+      video.hidden = false;
+      video.src = config.alphaVideoSrc;
+      video.className = "presenter-video";
+      canvas.remove();
     }
+  } else {
+    canvas.remove();
+    video.className = "presenter-video";
+  }
+  video.addEventListener("loadeddata", () => { controls.hidden = false; });
+  video.addEventListener("playing", () => {
+    started = true;
+    frame.classList.add("presenter-active");
+    updatePlay();
+    stopDrawing();
+    if (renderer) draw();
   });
+  video.addEventListener("pause", () => { stopDrawing(); updatePlay(); });
+  video.addEventListener("ended", () => { stopDrawing(); updatePlay(); });
+  video.addEventListener("error", unavailable);
+  play.addEventListener("click", () => {
+    if (!video.paused && !video.ended) { userPaused = true; video.pause(); }
+    else { userPaused = false; start(); }
+  });
+  sound.addEventListener("click", () => {
+    video.muted = !video.muted;
+    sound.textContent = video.muted ? "Sound on" : "Mute sound";
+    sound.setAttribute("aria-label", sound.textContent);
+    if (!video.muted) { video.currentTime = 0; userPaused = false; start(); }
+  });
+  const observer = new IntersectionObserver(entries => {
+    visible = entries.some(entry => entry.isIntersecting);
+    if (!visible) video.pause();
+    else if (config.autoplay && !reduceMotion.matches && !userPaused && !video.ended && !document.hidden) start();
+  }, {threshold: .35});
+  observer.observe(frame);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) video.pause();
+    else if (visible && config.autoplay && !reduceMotion.matches && !userPaused && !video.ended) start();
+  });
+  reduceMotion.addEventListener("change", event => { if (event.matches) video.pause(); });
 })();

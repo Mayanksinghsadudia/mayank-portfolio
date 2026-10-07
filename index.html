@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mayank Singh Sadudia | Visual Narrative & Graphic Design Portfolio</title>
+  <title>Mayank Singh Sadudia | Data Analyst &amp; Graphic Designer</title>
   <meta name="description" content="Portfolio of Mayank Singh Sadudia - Graphic Designer, Data Analyst, and Generative AI Creator based in Indore, India." />
   
   <!-- Google Fonts & Material Symbols -->
@@ -13,8 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
   <!-- Custom Design System Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="presenter.css" />
+  <link rel="stylesheet" href="styles.css?v=home-20261008b" />
+  <link rel="stylesheet" href="presenter.css?v=home-20261008b" />
 </head>
 <body>
 
@@ -45,16 +45,17 @@
   <main>
     <!-- HERO SECTION -->
     <section class="hero-section" id="hero">
+      <img src="assets/workstation_home_background.jpg" alt="" aria-hidden="true" class="hero-workstation-background" />
       <div class="container">
         <div class="hero-grid">
           
           <div class="hero-content">
             <h1 class="text-hero font-headline">
-              GRAPHIC DESIGN <span class="text-accent">PORTFOLIO</span>
+              DATA ANALYST &amp; <span class="text-accent">GRAPHIC DESIGN</span>
             </h1>
 
             <p style="color: var(--color-text-muted); font-size: 1.15rem; margin-top: 20px; max-width: 540px;">
-              Crafting high-contrast brand identities, 3D packaging mockups, low-poly illustrations, and AI-driven creative visual narratives.
+              Turning data into clear insights with Python, SQL, Excel and Power BI, and creating brand identities, packaging and engaging visuals.
             </p>
 
             <div style="display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap;">
@@ -74,11 +75,14 @@
 
           </div>
 
-          <!-- Hero 3D Avatar Display (Clean Background & No Text Badge) -->
-          <div class="hero-avatar-container">
-            <img src="assets/user_brush_stroke_theme.png?v=4" class="brush-stroke-bg-img" alt="Paint Brush Stroke Background" />
-            <div class="avatar-frame">
-              <img src="assets/studio_pose_rest.jpg" alt="Mayank Singh Sadudia 3D Studio Presenter" class="avatar-img" />
+          <!-- The avatar video sits in front of a separate desk background. -->
+          <div class="hero-stage-container">
+            <div class="hero-character" id="home-presenter" aria-label="Mayank's introduction">
+              <img src="assets/aligned_avatar_v6.png" alt="Mayank's 3D avatar" class="presenter-poster" />
+              <div class="presenter-controls" hidden>
+                <button type="button" id="presenter-play" aria-label="Play introduction">Play introduction</button>
+                <button type="button" id="presenter-sound" aria-label="Turn introduction sound on">Sound on</button>
+              </div>
             </div>
           </div>
 
@@ -1168,9 +1172,9 @@
   <div class="toast-msg" id="toast-msg">Notification Message</div>
 
   <!-- Main JavaScript File -->
-  <script src="main.js"></script>
-  <script src="presenter-config.js"></script>
-  <script src="presenter.js"></script>
+  <script src="main.js?v=home-20261008b"></script>
+  <script src="presenter-config.js?v=home-20261008b"></script>
+  <script src="presenter.js?v=home-20261008b"></script>
 
 </body>
 </html>
