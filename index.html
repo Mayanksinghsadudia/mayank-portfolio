@@ -70,6 +70,10 @@
                 <span class="material-symbols-outlined">code</span>
                 GitHub
               </a>
+              <button type="button" class="btn-secondary" id="open-reel-modal-btn" style="cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span class="material-symbols-outlined" style="color: var(--color-primary); font-size: 20px;">play_circle</span>
+                Watch 3D Reel
+              </button>
             </div>
 
           </div>
@@ -322,7 +326,7 @@
 
         <!-- Category Filters -->
         <div class="filter-bar">
-          <button class="filter-btn active" data-filter="all">ALL PROJECTS (32)</button>
+          <button class="filter-btn active" data-filter="all">ALL PROJECTS (35)</button>
           <button class="filter-btn" data-filter="analytics">DATA ANALYSIS</button>
           <button class="filter-btn" data-filter="branding">BRANDING & LOGOS</button>
           <button class="filter-btn" data-filter="packaging">PACKAGING</button>
@@ -350,6 +354,66 @@
                 <a href="retail-analysis.html" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">View Analysis</a>
                 <a href="https://github.com/Mayanksinghsadudia/retail-sales-analysis" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">GitHub Source ↗</a>
                 <span style="font-size: 11px;">Python &amp; SQL &amp; Pandas</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: Customer Management System (CMS) -->
+          <div class="project-card" data-category="analytics" data-id="customer-management-system">
+            <div class="project-img-wrapper">
+              <img src="assets/user_projects/cms_preview.png" alt="Customer Management System and Revenue Distribution" class="project-img" style="object-fit: cover; background: #121212;" />
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-card-content">
+              <span class="text-label-caps text-accent">DATA ANALYSIS · PYTHON &amp; STREAMLIT</span>
+              <h3 class="font-headline text-headline-md" style="margin-top: 4px;">Customer Management System (CMS)</h3>
+              <p style="color: var(--color-text-muted); font-size: 13px; margin-top: 6px;">
+                Full-stack CRM &amp; sales analytics application managing customer records, order lifecycle, revenue attribution per client tier, and automated transaction auditing.
+              </p>
+              <div class="project-meta" style="flex-wrap: wrap; gap: 12px;">
+                <a href="cms-analysis.html" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">View Analysis</a>
+                <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">GitHub Source ↗</a>
+                <span style="font-size: 11px;">Streamlit &amp; SQLite &amp; Matplotlib</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: Amazon Review Sentiment Analysis System -->
+          <div class="project-card" data-category="analytics" data-id="amazon-sentiment-analysis">
+            <div class="project-img-wrapper">
+              <img src="assets/user_projects/amazon_sentiment_preview.png" alt="Amazon Product Review Sentiment NLP Analysis" class="project-img" style="object-fit: cover; background: #121212;" />
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-card-content">
+              <span class="text-label-caps text-accent">NLP &amp; SENTIMENT ANALYSIS · PYTHON</span>
+              <h3 class="font-headline text-headline-md" style="margin-top: 4px;">Amazon Review Sentiment Analysis</h3>
+              <p style="color: var(--color-text-muted); font-size: 13px; margin-top: 6px;">
+                Natural Language Processing platform classifying customer review polarities (Positive, Neutral, Negative) via VADER and Google Sheets API across user demographics.
+              </p>
+              <div class="project-meta" style="flex-wrap: wrap; gap: 12px;">
+                <a href="amazon-sentiment-analysis.html" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">View Analysis</a>
+                <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">GitHub Source ↗</a>
+                <span style="font-size: 11px;">NLTK &amp; VADER &amp; Plotly</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: LifeCare Health System & Clinical Analytics -->
+          <div class="project-card" data-category="analytics" data-id="lifecare-health-system">
+            <div class="project-img-wrapper">
+              <img src="assets/user_projects/lifecare_preview.png" alt="LifeCare Hospital Operations and Clinical Analytics" class="project-img" style="object-fit: cover; background: #121212;" />
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-card-content">
+              <span class="text-label-caps text-accent">HEALTH INFORMATICS · FLASK &amp; SQLITE</span>
+              <h3 class="font-headline text-headline-md" style="margin-top: 4px;">LifeCare Health Management System</h3>
+              <p style="color: var(--color-text-muted); font-size: 13px; margin-top: 6px;">
+                Comprehensive healthcare operations and clinical analytics platform for doctor-patient registrations, appointment scheduling, and department capacity planning (MCA Dissertation).
+              </p>
+              <div class="project-meta" style="flex-wrap: wrap; gap: 12px;">
+                <a href="lifecare-health-system.html" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">View Analysis</a>
+                <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">GitHub Source ↗</a>
+                <span style="font-size: 11px;">Flask &amp; SQLite &amp; Healthcare BI</span>
               </div>
             </div>
           </div>
@@ -1100,6 +1164,40 @@
           <span class="text-label-caps" style="color: var(--color-text-muted); display: block; margin-bottom: 8px;">SOFTWARE & TOOLS USED</span>
           <div class="tool-tags" id="modal-tools"></div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3D Reel Video Showcase Modal -->
+  <div class="modal-backdrop" id="reel-modal" style="display: none; align-items: center; justify-content: center; z-index: 9999;">
+    <div class="modal-content" style="max-width: 820px; width: 92%; background: #121212; border: 1px solid rgba(255,107,0,0.5); border-radius: 16px; overflow: hidden; padding: 0; box-shadow: 0 16px 48px rgba(0,0,0,0.85); flex-direction: column;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid #282828; width: 100%;">
+        <div>
+          <span class="text-label-caps text-accent">FEATURED 3D REEL SHOWCASE</span>
+          <h3 class="font-headline" style="color: #fff; margin: 4px 0 0; font-size: 1.25rem;">3D Character Portfolio Video</h3>
+        </div>
+        <button class="modal-close-btn" id="reel-modal-close" style="position: static; background: transparent; border: 0; color: #aaa; cursor: pointer; display: flex; align-items: center;">
+          <span class="material-symbols-outlined" style="font-size: 28px;">close</span>
+        </button>
+      </div>
+
+      <div style="background: #000; position: relative; display: flex; justify-content: center; align-items: center; min-height: 420px; width: 100%;">
+        <video id="reel-modal-video" controls playsinline style="max-height: 65vh; max-width: 100%; object-fit: contain;">
+          <source src="assets/reel_presenter_en.mp4" type="video/mp4" id="reel-video-source" />
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+
+      <div style="padding: 16px 24px; background: #181818; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; width: 100%; border-top: 1px solid #282828;">
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <button type="button" class="btn-primary" id="reel-switch-en-btn" style="padding: 8px 16px; font-size: 13px; cursor: pointer;">
+            🎙️ 30s English Intro
+          </button>
+          <button type="button" class="btn-secondary" id="reel-switch-orig-btn" style="padding: 8px 16px; font-size: 13px; cursor: pointer;">
+            🎵 Original Reel Audio
+          </button>
+        </div>
+        <p style="margin: 0; color: #888; font-size: 13px;">3D Visual Narrative Reel Showcase</p>
       </div>
     </div>
   </div>

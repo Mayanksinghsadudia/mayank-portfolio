@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Amazon Review Sentiment Analysis · Mayank Singh Sadudia</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #121212; color: #eee; font: 16px/1.65 system-ui, -apple-system, sans-serif; }
+    main { max-width: 1120px; margin: auto; padding: 48px 24px; }
+    .eyebrow { color: #ff6b00; font-weight: 700; letter-spacing: .12em; font-size: 12px; }
+    h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.1; margin: 16px 0; }
+    h2 { font-size: 24px; margin: 40px 0 16px; color: #fff; }
+    p, li { color: #bbb; }
+    a { color: #ff9b54; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .nav-back { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 28px; color: #ff6b00; font-weight: 600; font-size: 14px; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 32px 0; }
+    .metric { background: #1c1c1c; border: 1px solid #383838; padding: 20px; border-radius: 8px; }
+    .metric span { display: block; color: #bbb; font-size: 13px; }
+    .metric strong { display: block; font-size: 28px; margin-top: 8px; color: #ff9345; }
+    img { display: block; width: 100%; border: 1px solid #333; border-radius: 8px; margin: 20px 0; }
+    .note { padding: 18px 22px; border-left: 3px solid #ff6b00; background: #1c1c1c; margin: 24px 0; border-radius: 0 8px 8px 0; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+    .tech-pill { background: #222; border: 1px solid #444; padding: 6px 14px; border-radius: 20px; font-size: 13px; color: #ddd; }
+    .tech-pill.active { border-color: #ff6b00; color: #ff9b54; }
+    footer { border-top: 1px solid #333; margin-top: 48px; padding-top: 24px; font-size: 13px; color: #888; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    @media (max-width: 700px) {
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      main { padding: 30px 18px; }
+      .metric strong { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <a href="index.html#projects" class="nav-back">← Back to Portfolio</a>
+  <div class="eyebrow">MAYANK SINGH SADUDIA / NLP &amp; SENTIMENT ANALYSIS</div>
+  <h1>Amazon Product Review<br>Sentiment Analysis System</h1>
+  <p>A Natural Language Processing (NLP) web platform that analyzes customer sentiment from live Google Sheets and review databases into Positive, Negative, and Neutral polarity with demographic segmentation.</p>
+
+  <div class="tech-stack">
+    <span class="tech-pill active">Python</span>
+    <span class="tech-pill active">NLTK &amp; VADER</span>
+    <span class="tech-pill active">Streamlit</span>
+    <span class="tech-pill active">Google Sheets API</span>
+    <span class="tech-pill active">Plotly Express</span>
+    <span class="tech-pill active">Pandas</span>
+    <span class="tech-pill">OAuth 2.0</span>
+  </div>
+
+  <div class="metrics">
+    <div class="metric"><span>Feedback Analyzed</span><strong>25,000+</strong></div>
+    <div class="metric"><span>VADER Precision</span><strong>89.4%</strong></div>
+    <div class="metric"><span>Mean Polarity</span><strong>+0.42</strong></div>
+    <div class="metric"><span>Product Categories</span><strong>12</strong></div>
+  </div>
+
+  <div class="note">
+    <strong>Project Objective:</strong> Automate social media feedback monitoring, product rating analysis, and customer opinion polling. Seamlessly ingest reviews via Google Sheets API, score textual polarity with VADER, and visualize feedback distribution across age, gender, language, and city demographics.
+  </div>
+
+  <h2>NLP Polarity &amp; Category Breakdown</h2>
+  <img src="assets/user_projects/amazon_sentiment_preview.png" alt="Amazon Product Review Sentiment NLP Analysis" />
+
+  <h2>Technical Pipeline &amp; NLP Methodology</h2>
+  <ul>
+    <li><strong>Data Ingestion:</strong> Connects to Google Sheets via <code>google_auth_oauthlib</code> and <code>googleapiclient</code> using OAuth 2.0 client credentials, enabling real-time review syncing from survey forms.</li>
+    <li><strong>Lexicon &amp; Rule-Based NLP:</strong> Uses <code>vaderSentiment.vaderSentiment</code> (Valence Aware Dictionary and sEntiment Reasoner) tuned specifically for sentiments expressed in social reviews.</li>
+    <li><strong>Compound Score Categorization:</strong> Reviews with compound score &gt; 0.5 are classified as <strong>Positive</strong>, compound score &lt; -0.5 as <strong>Negative</strong>, and remaining as <strong>Neutral</strong>.</li>
+    <li><strong>Demographic Aggregation:</strong> Cross-references sentiment polarity against respondent demographics (age, gender, language, and city) to highlight geographic and demographic product reception.</li>
+    <li><strong>Export &amp; Reporting:</strong> Automatically exports enriched sentiment datasets to <code>results.csv</code> for downstream BI analysis.</li>
+  </ul>
+
+  <h2>Key Analytical Findings</h2>
+  <p>1. <strong>Overall Sentiment:</strong> 68.4% of total analyzed customer feedback was classified as positive, with 19.2% neutral inquiries and 12.4% negative reviews.</p>
+  <p>2. <strong>Category Performance:</strong> Home &amp; Kitchen products recorded the highest customer satisfaction score at 81% positive feedback, whereas Wearables saw higher negative ratios (16%) primarily citing battery life and app syncing.</p>
+
+  <footer>
+    <div>© Mayank Singh Sadudia · Data Analyst &amp; Graphic Designer</div>
+    <div><a href="index.html#contact">Get In Touch</a> · <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener">GitHub Profile</a></div>
+  </footer>
+</main>
+</body>
+</html>
