@@ -293,51 +293,5 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-
-  // 3D Portfolio Reel Video Modal Logic
-  const reelModal = document.getElementById('reel-modal');
-  const openReelBtn = document.getElementById('open-reel-modal-btn');
-  const closeReelBtn = document.getElementById('reel-modal-close');
-  const reelVideo = document.getElementById('reel-modal-video');
-  const switchEnBtn = document.getElementById('reel-switch-en-btn');
-  const switchOrigBtn = document.getElementById('reel-switch-orig-btn');
-
-  if (openReelBtn && reelModal && reelVideo) {
-    openReelBtn.addEventListener('click', () => {
-      reelModal.style.display = 'flex';
-      reelVideo.currentTime = 0;
-      reelVideo.play().catch(() => {});
-    });
-
-    const closeReel = () => {
-      reelModal.style.display = 'none';
-      reelVideo.pause();
-    };
-
-    if (closeReelBtn) closeReelBtn.addEventListener('click', closeReel);
-    reelModal.addEventListener('click', (e) => {
-      if (e.target === reelModal) closeReel();
-    });
-
-    if (switchEnBtn && switchOrigBtn) {
-      switchEnBtn.addEventListener('click', () => {
-        const time = reelVideo.currentTime;
-        reelVideo.src = 'assets/reel_presenter_en.mp4';
-        reelVideo.currentTime = time % 27;
-        reelVideo.play().catch(() => {});
-        switchEnBtn.className = 'btn-primary';
-        switchOrigBtn.className = 'btn-secondary';
-      });
-
-      switchOrigBtn.addEventListener('click', () => {
-        const time = reelVideo.currentTime;
-        reelVideo.src = 'assets/reel_complete.mp4';
-        reelVideo.currentTime = time % 16;
-        reelVideo.play().catch(() => {});
-        switchOrigBtn.className = 'btn-primary';
-        switchEnBtn.className = 'btn-secondary';
-      });
-    }
-  }
 });
 
