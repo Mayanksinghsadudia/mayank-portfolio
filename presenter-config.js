@@ -1,5 +1,5 @@
 window.MAYANK_PRESENTER = {
-  "videoSrc": "assets/reel_presenter_en.mp4",
+  "videoSrc": "assets/mayank_presenter_video.mp4",
   "audioSrc": "assets/mayank_intro_30s.mp3",
   "reelVideoSrc": "assets/reel_complete.mp4",
   "autoplay": false,

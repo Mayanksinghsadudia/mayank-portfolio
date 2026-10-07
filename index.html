@@ -3,139 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mayank Singh Sadudia | Data Analyst &amp; Visual Narrative Designer</title>
-  <meta name="description" content="Editorial &amp; 3D Portfolio of Mayank Singh Sadudia - Data Analyst, Python &amp; SQL Developer, and Visual Designer based in Indore, India." />
+  <title>Mayank Singh Sadudia | Visual Narrative & Graphic Design Portfolio</title>
+  <meta name="description" content="Portfolio of Mayank Singh Sadudia - Graphic Designer, Data Analyst, and Generative AI Creator based in Indore, India." />
   
   <!-- Google Fonts & Material Symbols -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
-  <!-- Custom Design System Stylesheets -->
+  <!-- Custom Design System Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="presenter.css" />
 </head>
 <body>
 
-  <!-- Top Fixed Editorial Navigation Bar -->
-  <header class="app-header" id="app-header">
-    <div class="container header-inner">
-      <a href="#hero" class="brand-logo">
-        <span class="brand-square"></span>
-        <span>MAYANK SINGH SADUDIA</span>
+  <!-- Top Fixed Navigation Bar -->
+  <header class="app-header">
+    <a href="#hero" class="brand-logo">
+      <span>MAYANK SINGH SADUDIA</span>
+    </a>
+
+    <nav class="desktop-nav" id="desktop-nav">
+      <a href="#about" class="active">About Me</a>
+      <a href="#education-skills">Education & Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <a href="assets/Mayank_Singh_Sadudia_Resume.pdf" download class="btn-primary" id="download-cv-btn">
+        <span class="material-symbols-outlined" style="font-size: 18px;">download</span>
+        Resume CV
       </a>
-
-      <nav class="desktop-nav" id="desktop-nav">
-        <a href="#hero" class="nav-link active">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </nav>
-
-      <div class="nav-actions">
-        <button class="audio-nav-toggle" id="nav-audio-btn" type="button" title="Play 30s English Intro Audio">
-          <span class="material-symbols-outlined" id="nav-audio-icon">volume_up</span>
-          <span>Audio Intro</span>
-        </button>
-        <a href="assets/Mayank_Singh_Sadudia_Resume.pdf" download class="btn-resume" id="download-cv-btn">
-          <span class="material-symbols-outlined">download</span>
-          Resume
-        </a>
-        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation">
-          <span class="material-symbols-outlined">menu</span>
-        </button>
-      </div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
     </div>
   </header>
 
   <main>
-    <!-- HERO SECTION (Warm Terracotta Editorial Theme from Reel) -->
+    <!-- HERO SECTION -->
     <section class="hero-section" id="hero">
       <div class="container">
         <div class="hero-grid">
           
           <div class="hero-content">
-            <div class="hero-eyebrow">■ PORTFOLIO &amp; DATA SYSTEMS · 2026</div>
-            <h1 class="hero-name">Mayank</h1>
-            <h2 class="hero-tagline">
-              Building reliable <em>data systems</em> &amp; compelling visual narratives.
-            </h2>
-            <p class="hero-desc">
-              Data Analyst &amp; MCA Post-Graduate specializing in Python, SQL, business analytics pipelines, and interactive digital design. Based in Indore, India.
+            <h1 class="text-hero font-headline">
+              GRAPHIC DESIGN <span class="text-accent">PORTFOLIO</span>
+            </h1>
+
+            <p style="color: var(--color-text-muted); font-size: 1.15rem; margin-top: 20px; max-width: 540px;">
+              Crafting high-contrast brand identities, 3D packaging mockups, low-poly illustrations, and AI-driven creative visual narratives.
             </p>
 
-            <!-- 30-Second English Audio Floating Player Card -->
-            <div class="hero-audio-card" id="hero-audio-player">
-              <button class="audio-card-play-btn" id="hero-audio-btn" type="button" aria-label="Play English Voice Intro">
-                <span class="material-symbols-outlined" id="hero-audio-icon">play_arrow</span>
-              </button>
-              <div class="audio-card-content">
-                <div class="audio-card-header">
-                  <span class="audio-card-title">English Voice Intro</span>
-                  <span class="audio-card-time" id="audio-time-display">0:00 / 0:27</span>
-                </div>
-                <div class="audio-wave-anim" id="hero-audio-waves">
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                  <div class="bar"></div>
-                </div>
-              </div>
-              <audio id="mayank-intro-audio" preload="metadata" src="assets/mayank_intro_30s.mp3"></audio>
-            </div>
-
-            <!-- Hero CTA Group -->
-            <div class="hero-cta-group">
-              <a href="#projects" class="hero-btn-primary">
-                <span>View Projects</span>
-                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+            <div style="display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap;">
+              <a href="#projects" class="btn-primary">
+                <span class="material-symbols-outlined">grid_view</span>
+                Explore Projects
               </a>
-              <a href="#contact" class="hero-btn-secondary">
-                <span>Contact Me</span>
+              <a href="#contact" class="btn-secondary">
+                <span class="material-symbols-outlined">mail</span>
+                Get In Touch
               </a>
-              <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer" class="hero-btn-ghost">
-                <span class="material-symbols-outlined" style="font-size: 18px;">code</span>
-                <span>GitHub</span>
+              <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer" class="btn-secondary" aria-label="Visit Mayank's GitHub profile">
+                <span class="material-symbols-outlined">code</span>
+                GitHub
               </a>
-              <button type="button" class="hero-btn-ghost" id="open-reel-modal-btn" style="cursor: pointer; background: transparent; border: 0;">
-                <span class="material-symbols-outlined" style="font-size: 18px; color: var(--color-coral);">play_circle</span>
-                <span>Watch 3D Reel</span>
+              <button type="button" class="btn-secondary" id="open-reel-modal-btn" style="cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span class="material-symbols-outlined" style="color: var(--color-primary); font-size: 20px;">play_circle</span>
+                Watch 3D Reel
               </button>
             </div>
 
-            <!-- Status Row (Reel exact format) -->
-            <div class="hero-status-row">
-              <span class="status-item">INDORE, INDIA</span>
-              <span class="status-divider">•</span>
-              <span class="status-item available">
-                <span class="pulse-dot"></span>
-                AVAILABLE FOR WORK
-              </span>
-              <span class="status-divider">•</span>
-              <span class="status-item">MCA GRADUATE</span>
-              <span class="status-divider">•</span>
-              <a href="#about" class="scroll-link">SCROLL ↓</a>
-            </div>
           </div>
 
-          <!-- Right Stage Display: 3D Workstation Desk Setup with Mayank -->
-          <div class="hero-stage-container">
-            <div class="hero-stage-wrapper">
-              <img src="assets/mayank_reel_hero_composite.jpg" alt="Mayank Singh Sadudia at 3D Workstation Desk" class="hero-stage-img" id="hero-composite-img" />
+          <!-- Hero 3D Avatar Display (Clean Background & No Text Badge) -->
+          <div class="hero-avatar-container">
+            <img src="assets/user_brush_stroke_theme.png?v=4" class="brush-stroke-bg-img" alt="Paint Brush Stroke Background" />
+            <div class="avatar-frame">
+              <img src="assets/mayank_avatar_hd_v6.png?v=6" alt="Mayank Singh Sadudia 3D Avatar" class="avatar-img" />
             </div>
           </div>
 
@@ -143,157 +90,250 @@
       </div>
     </section>
 
-    <!-- 01 ABOUT SECTION (Warm Cream / Editorial Theme from Reel) -->
-    <section class="section-cream" id="about">
-      <div class="container">
-        <span class="section-tag-editorial">(01) — ABOUT</span>
-        <h2 class="editorial-headline">
-          I care about the details — from clean <em>SQL pipelines</em> to the last pixel of design.
-        </h2>
-
-        <div class="about-editorial-grid">
-          
-          <!-- Left Portrait Card -->
-          <div class="about-portrait-wrapper">
-            <img src="assets/mayank_avatar_hd_v6.png?v=6" alt="Mayank Singh Sadudia Portrait" class="about-portrait-img" style="background: #e8e0d5;" />
-            <div class="portrait-badge">
-              <span class="badge-title">Mayank Singh Sadudia</span>
-              <span class="badge-sub">Data Analyst &amp; Visual Designer · Indore, India</span>
-            </div>
-          </div>
-
-          <!-- Right Narrative & Skills Matrix -->
-          <div class="about-narrative">
-            <p class="narrative-lead">
-              I am an enthusiastic Data Analyst, Python developer, and visual designer based in Indore, India. I hold a Master of Computer Applications (MCA) and a Bachelor of Commerce (B.Com) in Computer Applications.
-            </p>
-            <p>
-              My work bridges technical data infrastructure and high-contrast creative design. Whether engineering data cleaning pipelines with Python &amp; Pandas, analyzing relational databases with SQL, building interactive dashboards, or crafting brand identities and 3D visual narratives, I prioritize precision, architectural structure, and clarity.
-            </p>
-
-            <!-- Skills Editorial Table (from Reel Screen 2) -->
-            <div class="skills-editorial-table">
-              <div class="skill-group">
-                <span class="skill-group-label">DATA &amp; CODE</span>
-                <div class="skill-pills">
-                  <span>Python</span>
-                  <span>SQL</span>
-                  <span>Pandas</span>
-                  <span>NumPy</span>
-                  <span>Matplotlib</span>
-                  <span>Power BI</span>
-                  <span>Excel BI</span>
-                  <span>Git &amp; GitHub</span>
-                </div>
-              </div>
-              <div class="skill-group">
-                <span class="skill-group-label">DESIGN &amp; 3D</span>
-                <div class="skill-pills">
-                  <span>Adobe Photoshop</span>
-                  <span>Adobe Illustrator</span>
-                  <span>CorelDraw</span>
-                  <span>SketchUp</span>
-                  <span>Canva</span>
-                  <span>Brand Identity</span>
-                  <span>Stationery Suites</span>
-                </div>
-              </div>
-              <div class="skill-group">
-                <span class="skill-group-label">AI &amp; WORKFLOW</span>
-                <div class="skill-pills">
-                  <span>Midjourney AI</span>
-                  <span>Adobe Firefly AI</span>
-                  <span>Claude AI</span>
-                  <span>Antigravity</span>
-                  <span>ChatGPT</span>
-                  <span>Prompt Engineering</span>
-                </div>
-              </div>
-              <div class="skill-group">
-                <span class="skill-group-label">LANGUAGES</span>
-                <div class="skill-pills">
-                  <span>English (Fluent)</span>
-                  <span>Hindi (Native)</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 02 EXPERIENCE & EDUCATION SECTION (Reel Screen 3: "Where I've worked") -->
-    <section class="section-cream-alt" id="experience">
-      <div class="container">
-        <span class="section-tag-editorial">(02) — EXPERIENCE &amp; EDUCATION</span>
-        <h2 class="editorial-headline-simple">Where I've worked &amp; studied</h2>
-
-        <div class="timeline-list">
-          <div class="timeline-item">
-            <div class="timeline-period">2024 — PRESENT</div>
-            <div>
-              <h3 class="timeline-role">Data Analyst &amp; Independent Creative</h3>
-              <span class="timeline-company">Independent Practice · Indore, India</span>
-              <p class="timeline-desc">
-                Architecting end-to-end data analytics solutions including Customer Management Systems (Streamlit &amp; SQLite), Amazon customer sentiment classification engines (NLTK VADER), and interactive 3D web applications.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-period">2023 — 2024</div>
-            <div>
-              <h3 class="timeline-role">Data Analyst &amp; Software Intern</h3>
-              <span class="timeline-company">Onlei Technologies · Indore, India</span>
-              <p class="timeline-desc">
-                Analyzed business datasets using SQL, Python (Pandas), and Matplotlib. Cleaned data anomalies to improve reporting accuracy by 20%, authored visual analytical summaries, and supported operational decision-making.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-period">2022 — 2024</div>
-            <div>
-              <h3 class="timeline-role">Master of Computer Applications (MCA)</h3>
-              <span class="timeline-company">IPS Academy · Indore, India</span>
-              <p class="timeline-desc">
-                Specialized in Database Management Systems, Advanced Python, Software Architecture, and Health Informatics. Authored comprehensive LifeCare clinical operations &amp; hospital analytics platform dissertation.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-period">2019 — 2022</div>
-            <div>
-              <h3 class="timeline-role">Bachelor of Commerce (B.Com) — Computer Applications</h3>
-              <span class="timeline-company">MRSC · Indore, India</span>
-              <p class="timeline-desc">
-                Core foundation in quantitative business analysis, financial accounting, relational database concepts, and computerized management information systems.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 SELECTED PROJECTS SECTION (Reel Screen 4: "Things I've built") -->
-    <section class="section-obsidian" id="projects">
+    <!-- 01 ABOUT ME SECTION -->
+    <section class="page-section" id="about">
       <div class="container">
         
-        <span class="section-tag-editorial accent-glow">(03) — SELECTED PROJECTS</span>
-        <h2 class="editorial-headline-white">Things I've built</h2>
+        <div class="section-header">
+          <div>
+            <span class="text-label-caps text-accent">01 // PROFILE & BACKGROUND</span>
+            <h2 class="text-headline-lg font-headline" style="margin-top: 4px;">About Me</h2>
+          </div>
+          <span class="section-num text-outlined">01</span>
+        </div>
+
+        <div class="about-grid" style="grid-template-columns: 0.8fr 1.2fr; align-items: center;">
+          
+          <!-- About Avatar Showcase -->
+          <div class="hero-avatar-container" style="transform: scale(1.0);">
+            <img src="assets/user_brush_stroke_theme.png?v=4" class="brush-stroke-bg-img" alt="Paint Brush Stroke Background" />
+            <div class="avatar-frame" style="height: 720px; width: 580px;">
+              <img src="assets/mayank_avatar_hd_v6.png?v=6" alt="Mayank Singh Sadudia Visual Designer" class="avatar-img" />
+            </div>
+          </div>
+
+          <!-- Profile & Summary Details -->
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <div class="about-card">
+              <h3 class="font-headline text-headline-md" style="margin-bottom: 16px; color: var(--color-primary);">
+                Who I Am
+              </h3>
+              <p style="color: var(--color-on-surface); line-height: 1.8; margin-bottom: 20px;">
+                I am <strong>Mayank Singh Sadudia</strong>, an enthusiastic graphic designer, software developer, and data analyst based in Indore, India. I hold a Master of Computer Applications (MCA) and a Bachelor of Commerce (B.Com) in Computer Applications.
+              </p>
+              <p style="color: var(--color-text-muted); line-height: 1.8;">
+                My creative philosophy sits at the intersection of technical precision and striking artistic visual storytelling. Whether creating low-poly geometric artwork, designing full corporate stationery suites, or generating high-impact packaging mockups with AI assistance, I prioritize bold contrast, grid symmetry, and memorable visual experiences.
+              </p>
+
+              <div class="stats-grid">
+                <div class="stat-box">
+                  <div class="stat-number">15+</div>
+                  <div class="text-label-caps" style="font-size: 10px; margin-top: 4px;">Brand Projects</div>
+                </div>
+                <div class="stat-box">
+                  <div class="stat-number">6+</div>
+                  <div class="text-label-caps" style="font-size: 10px; margin-top: 4px;">Design Tools</div>
+                </div>
+                <div class="stat-box">
+                  <div class="stat-number">100%</div>
+                  <div class="text-label-caps" style="font-size: 10px; margin-top: 4px;">Dedication</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+          <div class="about-card">
+            <h3 class="font-headline text-headline-md" style="margin-bottom: 24px; color: var(--color-primary);">
+              Work Experience
+            </h3>
+
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-date">INTERNSHIP // INDORE, INDIA</div>
+                <h4 class="font-headline" style="font-size: 1.1rem; margin-top: 4px;">Data Analyst & Software Intern</h4>
+                <div style="color: var(--color-primary-light); font-weight: 600; font-size: 14px;">Onlei Technologies</div>
+                <ul style="color: var(--color-text-muted); font-size: 14px; margin-top: 10px; padding-left: 18px; line-height: 1.7;">
+                  <li>Produced clean visual graphics and structured data visualizations for organizational reports.</li>
+                  <li>Analyzed datasets using SQL, Python (Pandas), and Matplotlib to present insights for decision-making.</li>
+                  <li>Improved data accuracy by checking and fixing dataset anomalies, reducing operational error rates by 20%.</li>
+                </ul>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-date">FREELANCE & PERSONAL PROJECTS</div>
+                <h4 class="font-headline" style="font-size: 1.1rem; margin-top: 4px;">Graphic Designer & AI Visual Creator</h4>
+                <div style="color: var(--color-primary-light); font-weight: 600; font-size: 14px;">Independent Creative Practice</div>
+                <p style="color: var(--color-text-muted); font-size: 14px; margin-top: 8px;">
+                  Created vector logos (Swastik Gifts), 3D packaging renders (Dragon Energy Cans), corporate identity kits (Jhon Walker Branding), and low-poly digital art (HP7 Dobby).
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 02 EDUCATION & SKILLS SECTION -->
+    <section class="page-section" id="education-skills">
+      <div class="container">
+        
+        <div class="section-header">
+          <div>
+            <span class="text-label-caps text-accent">02 // ACADEMICS & TECHNICAL CAPABILITIES</span>
+            <h2 class="text-headline-lg font-headline" style="margin-top: 4px;">Education & Skills</h2>
+          </div>
+          <span class="section-num text-outlined">02</span>
+        </div>
+
+        <!-- Academic Background Grid -->
+        <h3 class="font-headline text-headline-md" style="margin-bottom: 24px;">Academic Qualifications</h3>
+        <div class="skills-grid" style="margin-bottom: 60px;">
+          
+          <div class="skill-card">
+            <span class="text-label-caps text-accent">GRADUATION (07/2024)</span>
+            <h4 class="font-headline" style="font-size: 1.2rem; margin-top: 6px;">MCA: Computer Application</h4>
+            <p style="color: var(--color-text-muted); font-size: 14px; margin-top: 4px;">IPS Academy — Indore, India</p>
+          </div>
+
+          <div class="skill-card">
+            <span class="text-label-caps text-accent">UNDERGRADUATE (05/2022)</span>
+            <h4 class="font-headline" style="font-size: 1.2rem; margin-top: 6px;">B.Com: Computer Application</h4>
+            <p style="color: var(--color-text-muted); font-size: 14px; margin-top: 4px;">MRSC — Indore, India</p>
+          </div>
+
+          <div class="skill-card">
+            <span class="text-label-caps text-accent">HIGHER SECONDARY (05/2019)</span>
+            <h4 class="font-headline" style="font-size: 1.2rem; margin-top: 6px;">12th Commerce with IP</h4>
+            <p style="color: var(--color-text-muted); font-size: 14px; margin-top: 4px;">CSPS — Indore, India</p>
+          </div>
+
+          <div class="skill-card">
+            <span class="text-label-caps text-accent">SECONDARY (04/2017)</span>
+            <h4 class="font-headline" style="font-size: 1.2rem; margin-top: 6px;">10th SSC</h4>
+            <p style="color: var(--color-text-muted); font-size: 14px; margin-top: 4px;">KVS No 2 — Mumbai, India</p>
+          </div>
+
+        </div>
+
+        <!-- Technical Tools & Expertise -->
+        <h3 class="font-headline text-headline-md" style="margin-bottom: 24px;">Tools & Technical Expertise</h3>
+        <div class="skills-grid">
+          
+          <div class="skill-card">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="material-symbols-outlined text-accent" style="font-size: 32px;">brush</span>
+              <div>
+                <h4 class="font-headline" style="font-size: 1.1rem;">Graphic Design & 3D Suite</h4>
+                <p style="color: var(--color-text-muted); font-size: 12px;">Visual Layout, 3D & Vector Art</p>
+              </div>
+            </div>
+            <div class="tool-tags">
+              <span class="tool-tag highlight">Photoshop</span>
+              <span class="tool-tag highlight">Illustrator</span>
+              <span class="tool-tag highlight">CorelDraw</span>
+              <span class="tool-tag highlight">SketchUp</span>
+              <span class="tool-tag highlight">Canva</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="material-symbols-outlined text-accent" style="font-size: 32px;">auto_awesome</span>
+              <div>
+                <h4 class="font-headline" style="font-size: 1.1rem;">AI Design & Generative Tools</h4>
+                <p style="color: var(--color-text-muted); font-size: 12px;">AI Imagery & Content Generation</p>
+              </div>
+            </div>
+            <div class="tool-tags">
+              <span class="tool-tag highlight">AI Design</span>
+              <span class="tool-tag highlight">Midjourney AI</span>
+              <span class="tool-tag highlight">Adobe Firefly AI</span>
+              <span class="tool-tag highlight">Claude AI</span>
+              <span class="tool-tag highlight">Stitch AI</span>
+              <span class="tool-tag highlight">Antigravity</span>
+              <span class="tool-tag highlight">ChatGPT</span>
+              <span class="tool-tag highlight">Gemini AI</span>
+              <span class="tool-tag highlight">Gamma AI</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="material-symbols-outlined text-accent" style="font-size: 32px;">bar_chart</span>
+              <div>
+                <h4 class="font-headline" style="font-size: 1.1rem;">Data & Analytics</h4>
+                <p style="color: var(--color-text-muted); font-size: 12px;">Data Processing & Charts</p>
+              </div>
+            </div>
+            <div class="tool-tags">
+              <span class="tool-tag highlight">Git & GitHub</span>
+              <span class="tool-tag">Python (Pandas)</span>
+              <span class="tool-tag">Matplotlib</span>
+              <span class="tool-tag">SQL</span>
+              <span class="tool-tag">Power BI</span>
+              <span class="tool-tag">MS Excel</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Certifications & Extras -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 48px;">
+          <div class="about-card">
+            <h4 class="font-headline text-headline-md" style="margin-bottom: 16px; color: var(--color-primary);">Certifications</h4>
+            <ul style="color: var(--color-on-surface); line-height: 1.8; list-style-type: square; padding-left: 20px;">
+              <li>Graphic Design Specialist</li>
+              <li>Certified Data Analysis</li>
+              <li>Certified Python Programmer</li>
+              <li>Python for Data Analyst</li>
+            </ul>
+          </div>
+
+          <div class="about-card">
+            <h4 class="font-headline text-headline-md" style="margin-bottom: 16px; color: var(--color-primary);">Languages & Hobbies</h4>
+            <div style="margin-bottom: 16px;">
+              <span class="text-label-caps" style="color: var(--color-text-muted); display: block; margin-bottom: 6px;">Languages</span>
+              <span class="tool-tag highlight">English</span>
+              <span class="tool-tag highlight">Hindi</span>
+            </div>
+            <div>
+              <span class="text-label-caps" style="color: var(--color-text-muted); display: block; margin-bottom: 6px;">Interests & Hobbies</span>
+              <span class="tool-tag">Playing Football</span>
+              <span class="tool-tag">Gaming</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+            <!-- 03 PROJECTS GALLERY SECTION -->
+    <section class="page-section" id="projects">
+      <div class="container">
+        
+        <div class="section-header">
+          <div>
+            <span class="text-label-caps text-accent">03 // FEATURED CREATIVE WORKS</span>
+            <h2 class="text-headline-lg font-headline" style="margin-top: 4px;">Projects Gallery</h2>
+          </div>
+          <span class="section-num text-outlined">03</span>
+        </div>
 
         <!-- Category Filters -->
         <div class="filter-bar">
-          <button class="filter-btn active" data-filter="all">ALL (35)</button>
-          <button class="filter-btn" data-filter="analytics">DATA ANALYSIS (4)</button>
-          <button class="filter-btn" data-filter="uiux">UI/UX &amp; 3D WEB</button>
-          <button class="filter-btn" data-filter="branding">BRANDING &amp; LOGOS</button>
+          <button class="filter-btn active" data-filter="all">ALL PROJECTS (35)</button>
+          <button class="filter-btn" data-filter="analytics">DATA ANALYSIS</button>
+          <button class="filter-btn" data-filter="branding">BRANDING & LOGOS</button>
           <button class="filter-btn" data-filter="packaging">PACKAGING</button>
-          <button class="filter-btn" data-filter="digital-art">DIGITAL ART</button>
-          <button class="filter-btn" data-filter="posters">POSTERS &amp; MEDIA</button>
-          <button class="filter-btn" data-filter="motion">MOTION &amp; VIDEO</button>
+          <button class="filter-btn" data-filter="digital-art">DIGITAL ART & MATTE</button>
+          <button class="filter-btn" data-filter="uiux">UI/UX & WEB</button>
+          <button class="filter-btn" data-filter="posters">POSTERS & MEDIA</button>
+          <button class="filter-btn" data-filter="motion">MOTION & VIDEO</button>
         </div>
 
         <!-- Projects Grid -->
@@ -941,129 +981,147 @@
             </div>
           </div>
                 <!-- View All Projects Button -->
-        <div style="text-align: center; margin-top: 48px;" id="view-all-container">
-          <button id="view-all-projects-btn" class="btn-primary" style="padding: 14px 32px; font-size: 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;">
+        <div style="text-align: center; margin-top: 40px;" id="view-all-container">
+          <button id="view-all-projects-btn" class="btn-primary" style="padding: 14px 32px; font-size: 14px; letter-spacing: 1px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;">
             <span class="material-symbols-outlined">grid_view</span>
-            View All Projects (35)
+            View All Projects (32)
           </button>
         </div>
+
+</div>
 
       </div>
     </section>
 
-    <!-- 04 CONTACT SECTION (Reel Editorial Obsidian Theme) -->
-    <section class="section-contact" id="contact">
+    <!-- 04 CONTACT SECTION -->
+    <section class="page-section" id="contact" style="border-bottom: none;">
       <div class="container">
         
-        <span class="section-tag-editorial accent-glow">(04) — GET IN TOUCH</span>
-        <h2 class="editorial-headline-white">Let's build something remarkable together.</h2>
+        <div class="section-header">
+          <div>
+            <span class="text-label-caps text-accent">04 // INITIATE COLLABORATION</span>
+            <h2 class="text-headline-lg font-headline" style="margin-top: 4px;">Contact Me</h2>
+          </div>
+          <span class="section-num text-outlined">04</span>
+        </div>
 
         <div class="contact-grid">
           
-          <!-- Contact Details Cards -->
-          <div class="contact-info">
-            <div class="contact-card-item">
-              <div class="contact-icon">
-                <span class="material-symbols-outlined">mail</span>
-              </div>
-              <div class="contact-details">
-                <h4>DIRECT EMAIL</h4>
-                <a href="mailto:mayanksadudia@gmail.com">mayanksadudia@gmail.com</a>
-              </div>
-            </div>
+          <!-- Contact Form (Netlify Forms Native Integration) -->
+          <form id="contact-form" class="about-card" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            <p style="display:none"><label>Spam protection: <input name="bot-field" /></label></p>
 
-            <div class="contact-card-item">
-              <div class="contact-icon">
-                <span class="material-symbols-outlined">call</span>
-              </div>
-              <div class="contact-details">
-                <h4>PHONE &amp; WHATSAPP</h4>
-                <a href="tel:+917977519636">+91 7977519636</a>
-              </div>
-            </div>
-
-            <div class="contact-card-item">
-              <div class="contact-icon">
-                <span class="material-symbols-outlined">location_on</span>
-              </div>
-              <div class="contact-details">
-                <h4>LOCATION</h4>
-                <p>Indore, Madhya Pradesh, India</p>
-              </div>
-            </div>
-
-            <div class="contact-card-item">
-              <div class="contact-icon">
-                <span class="material-symbols-outlined">code</span>
-              </div>
-              <div class="contact-details">
-                <h4>GITHUB PROFILE</h4>
-                <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer">github.com/Mayanksinghsadudia ↗</a>
-              </div>
-            </div>
-
-            <div class="contact-card-item">
-              <div class="contact-icon">
-                <span class="material-symbols-outlined">link</span>
-              </div>
-              <div class="contact-details">
-                <h4>LINKEDIN</h4>
-                <a href="https://linkedin.com/in/mayank-singh-sadudia-45637627b" target="_blank" rel="noopener noreferrer">Mayank Singh Sadudia ↗</a>
-              </div>
-            </div>
-
-            <!-- Resume Download Box -->
-            <div class="contact-card-item" style="border-color: var(--color-orange-glow); background: rgba(255, 107, 0, 0.05); flex-direction: column; gap: 8px;">
-              <h4 style="color: var(--color-orange-glow); font-size: 13px;">NEED COMPLETE RESUME?</h4>
-              <p style="font-size: 13px; color: #aaa;">Download Mayank's verified CV PDF detailing all data systems &amp; design tools.</p>
-              <a href="assets/Mayank_Singh_Sadudia_Resume.pdf" download class="btn-primary" style="margin-top: 8px; align-self: flex-start;">
-                <span class="material-symbols-outlined" style="font-size: 18px;">download</span>
-                Download Official Resume
-              </a>
-            </div>
-          </div>
-
-          <!-- Contact Form with FormSubmit Direct Delivery -->
-          <form id="contact-form" class="contact-form" name="contact" method="POST">
-            <h3 class="font-headline" style="color: #fff; font-size: 1.25rem;">Send a Message</h3>
+            <h3 class="font-headline text-headline-md" style="margin-bottom: 24px; color: var(--color-primary);">
+              Send a Message
+            </h3>
 
             <div class="form-group">
-              <label for="name">YOUR FULL NAME</label>
-              <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Alex Johnson" required />
+              <label for="name">Your Full Name</label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="e.g. John Smith" required />
             </div>
 
             <div class="form-group">
-              <label for="email">YOUR EMAIL ADDRESS</label>
-              <input type="email" id="email" name="email" class="form-input" placeholder="e.g. alex@example.com" required />
+              <label for="email">Your Email Address</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="e.g. john@example.com" required />
             </div>
 
             <div class="form-group">
-              <label for="phone">YOUR PHONE / WHATSAPP (OPTIONAL)</label>
-              <input type="tel" id="phone" name="phone" class="form-input" placeholder="e.g. +91 9876543210" />
+              <label for="phone">Your Phone / WhatsApp Number</label>
+              <input type="tel" id="phone" name="phone" class="form-control" placeholder="e.g. +91 9876543210" />
             </div>
 
             <div class="form-group">
-              <label for="project-type">PROJECT TYPE</label>
-              <select id="project-type" name="project-type" class="form-select">
-                <option value="analytics">Data Analysis &amp; Python Pipelines</option>
-                <option value="branding">Brand Identity &amp; Logo Design</option>
-                <option value="packaging">Package Design &amp; 3D Render</option>
-                <option value="uiux">Interactive UI/UX &amp; 3D Web</option>
-                <option value="ai">AI Creative Design &amp; Visuals</option>
-                <option value="other">Full-Time / Freelance Collaboration</option>
+              <label for="project-type">Project Type</label>
+              <select id="project-type" name="project-type" class="form-control">
+                <option value="branding">Brand Identity & Logo Design</option>
+                <option value="packaging">Package Design & 3D Render</option>
+                <option value="poster">Poster & Event Banner</option>
+                <option value="ai">AI Creative Design & Visuals</option>
+                <option value="other">Other Collaboration</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label for="message">MESSAGE DETAILS</label>
-              <textarea id="message" name="message" rows="5" class="form-textarea" placeholder="Describe your data or design requirements..." required></textarea>
+              <label for="message">Message Details</label>
+              <textarea id="message" name="message" class="form-control" placeholder="Describe your design project requirements..." required></textarea>
             </div>
 
-            <button type="submit" class="form-submit-btn">
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
               <span class="material-symbols-outlined">send</span>
-              <span>Send Message</span>
+              Submit Inquiry
             </button>
           </form>
+
+          <!-- Direct Info Boxes -->
+          <div>
+            <div class="info-box">
+              <div>
+                <span class="text-label-caps text-accent">EMAIL ADDRESS</span>
+                <h4 class="font-headline" style="font-size: 1.1rem; margin-top: 2px;">
+                  <a href="mailto:mayanksadudia@gmail.com" style="color: inherit; text-decoration: none;">mayanksadudia@gmail.com</a>
+                </h4>
+              </div>
+              <button class="btn-secondary" onclick="copyText('mayanksadudia@gmail.com', 'Email')">
+                <span class="material-symbols-outlined">content_copy</span>
+              </button>
+            </div>
+
+            <div class="info-box">
+              <div>
+                <span class="text-label-caps text-accent">PHONE NUMBER</span>
+                <h4 class="font-headline" style="font-size: 1.1rem; margin-top: 2px;">
+                  <a href="tel:+917977519636" style="color: inherit; text-decoration: none;">+91 7977519636</a>
+                </h4>
+              </div>
+              <button class="btn-secondary" onclick="copyText('+91 7977519636', 'Phone')">
+                <span class="material-symbols-outlined">content_copy</span>
+              </button>
+            </div>
+
+            <div class="info-box">
+              <div>
+                <span class="text-label-caps text-accent">LOCATION</span>
+                <h4 class="font-headline" style="font-size: 1.1rem; margin-top: 2px;">Indore, MP - 452009, India</h4>
+              </div>
+              <span class="material-symbols-outlined text-accent" style="font-size: 28px;">location_on</span>
+            </div>
+
+            <div class="info-box">
+              <div>
+                <span class="text-label-caps text-accent">LINKEDIN PROFILE</span>
+                <h4 class="font-headline" style="font-size: 1rem; margin-top: 2px;">linkedin.com/in/mayank-singh-sadudia</h4>
+              </div>
+              <a href="https://linkedin.com/in/mayank-singh-sadudia-45637627b" target="_blank" rel="noopener" class="btn-secondary">
+                <span class="material-symbols-outlined">open_in_new</span>
+              </a>
+            </div>
+
+            <div class="info-box">
+              <div>
+                <span class="text-label-caps text-accent">GITHUB PROFILE</span>
+                <h4 class="font-headline" style="font-size: 1rem; margin-top: 2px;">
+                  <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Mayanksinghsadudia</a>
+                </h4>
+              </div>
+              <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer" class="btn-secondary" aria-label="Open GitHub profile">
+                <span class="material-symbols-outlined">open_in_new</span>
+              </a>
+            </div>
+
+            <!-- Resume Download Highlight Box -->
+            <div class="about-card" style="margin-top: 24px; border-color: var(--color-primary); background-color: rgba(255, 107, 0, 0.05);">
+              <h4 class="font-headline text-headline-md" style="color: var(--color-primary);">Looking for complete CV?</h4>
+              <p style="color: var(--color-text-muted); font-size: 14px; margin-top: 6px;">
+                Download Mayank Singh Sadudia's full professional resume PDF with complete technical breakdown.
+              </p>
+              <a href="assets/Mayank_Singh_Sadudia_Resume.pdf" download class="btn-primary" style="margin-top: 16px;">
+                <span class="material-symbols-outlined">download</span>
+                Download Official Resume
+              </a>
+            </div>
+
+          </div>
 
         </div>
 
@@ -1072,11 +1130,13 @@
 
   </main>
 
-  <!-- Editorial Footer -->
+  <!-- Footer -->
   <footer>
-    <div class="container footer-inner">
-      <div class="footer-brand">MAYANK SINGH SADUDIA</div>
-      <p>&copy; 2026 Mayank Singh Sadudia. Built with Editorial Narrative &amp; 3D Design System.</p>
+    <div class="container">
+      <p style="font-family: var(--font-headline); font-weight: 800; font-size: 1.1rem; color: var(--color-on-surface); margin-bottom: 8px;">
+        MAYANK SINGH SADUDIA
+      </p>
+      <p>Designed with Visual Narrative System • &copy; 2026 All Rights Reserved.</p>
     </div>
   </footer>
 

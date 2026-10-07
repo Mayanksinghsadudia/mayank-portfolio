@@ -1,16 +1,11 @@
-// ===================================================================
-// MAYANK SINGH SADUDIA · PORTFOLIO JAVASCRIPT ENGINE
-// Interactive Audio, Filter Gallery, Modals & Communication
-// ===================================================================
+// Portfolio Interactive JavaScript Engine
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  // 1. Mobile Navigation Toggle
+  // Mobile Navigation Toggle
   const mobileBtn = document.getElementById('mobile-menu-btn');
   const desktopNav = document.getElementById('desktop-nav');
-  const appHeader = document.getElementById('app-header');
-
-  if (mobileBtn && desktopNav) {
+  
+  if (mobileBtn) {
     mobileBtn.addEventListener('click', () => {
       desktopNav.classList.toggle('active');
       if (desktopNav.style.display === 'flex') {
@@ -22,40 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
         desktopNav.style.top = '72px';
         desktopNav.style.left = '0';
         desktopNav.style.width = '100%';
-        desktopNav.style.backgroundColor = '#111111';
-        desktopNav.style.padding = '24px';
-        desktopNav.style.borderBottom = '1px solid #242424';
-        desktopNav.style.gap = '18px';
+        desktopNav.style.backgroundColor = '#131313';
+        desktopNav.style.padding = '20px';
+        desktopNav.style.borderBottom = '1px solid #262626';
       }
-    });
-
-    // Close mobile nav on link click
-    desktopNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          desktopNav.style.display = 'none';
-        }
-      });
     });
   }
 
-  // 2. Header Scrolled Glass Effect & Active Section Tracker
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('.desktop-nav .nav-link');
+  // Active Section Scroll Tracker
+  const sections = document.querySelectorAll('section.page-section, section.hero-section');
+  const navLinks = document.querySelectorAll('nav.desktop-nav a');
 
   window.addEventListener('scroll', () => {
-    // Header glass transition
-    if (appHeader) {
-      if (window.scrollY > 40) {
-        appHeader.classList.add('scrolled');
-      } else {
-        appHeader.classList.remove('scrolled');
-      }
-    }
-
-    // Nav active link tracker
     let current = '';
-    const scrollPosition = window.scrollY + 180;
+    const scrollPosition = window.scrollY + 200;
 
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
@@ -73,76 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 3. 30-Second English Audio Player Engine
-  const introAudio = document.getElementById('mayank-intro-audio');
-  const heroAudioCard = document.getElementById('hero-audio-player');
-  const heroAudioBtn = document.getElementById('hero-audio-btn');
-  const heroAudioIcon = document.getElementById('hero-audio-icon');
-  const navAudioBtn = document.getElementById('nav-audio-btn');
-  const navAudioIcon = document.getElementById('nav-audio-icon');
-  const audioTimeDisplay = document.getElementById('audio-time-display');
-
-  function formatTime(sec) {
-    if (isNaN(sec) || sec < 0) return '0:00';
-    const m = Math.floor(sec / 60);
-    const s = Math.floor(sec % 60);
-    return `${m}:${s < 10 ? '0' : ''}${s}`;
-  }
-
-  function setAudioPlayingUI(isPlaying) {
-    if (heroAudioCard) {
-      heroAudioCard.classList.toggle('playing', isPlaying);
-    }
-    if (heroAudioIcon) {
-      heroAudioIcon.textContent = isPlaying ? 'pause' : 'play_arrow';
-    }
-    if (navAudioBtn) {
-      navAudioBtn.classList.toggle('playing', isPlaying);
-    }
-    if (navAudioIcon) {
-      navAudioIcon.textContent = isPlaying ? 'pause' : 'volume_up';
-    }
-  }
-
-  function toggleAudio() {
-    if (!introAudio) return;
-    if (introAudio.paused) {
-      introAudio.play().then(() => {
-        setAudioPlayingUI(true);
-      }).catch(err => {
-        console.warn('Audio play request blocked:', err);
-      });
-    } else {
-      introAudio.pause();
-      setAudioPlayingUI(false);
-    }
-  }
-
-  if (heroAudioBtn) heroAudioBtn.addEventListener('click', toggleAudio);
-  if (navAudioBtn) navAudioBtn.addEventListener('click', toggleAudio);
-
-  if (introAudio) {
-    introAudio.addEventListener('timeupdate', () => {
-      if (audioTimeDisplay) {
-        const cur = formatTime(introAudio.currentTime);
-        const duration = introAudio.duration ? formatTime(introAudio.duration) : '0:27';
-        audioTimeDisplay.textContent = `${cur} / ${duration}`;
-      }
-    });
-
-    introAudio.addEventListener('ended', () => {
-      setAudioPlayingUI(false);
-      if (audioTimeDisplay) audioTimeDisplay.textContent = '0:00 / 0:27';
-    });
-
-    introAudio.addEventListener('loadedmetadata', () => {
-      if (audioTimeDisplay && introAudio.duration) {
-        audioTimeDisplay.textContent = `0:00 / ${formatTime(introAudio.duration)}`;
-      }
-    });
-  }
-
-  // 4. Project Gallery Filter & View All Toggle
+  // Project Gallery Filter & View All Toggle Logic
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
   const viewAllBtn = document.getElementById('view-all-projects-btn');
@@ -150,37 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let isExpanded = false;
 
-  // Initial display setup: if not expanded, show first 8 items in 'all' mode
-  function applyProjectVisibility(activeFilter) {
-    projectCards.forEach((card, index) => {
-      const category = card.getAttribute('data-category');
-      const isMatch = (activeFilter === 'all' || category === activeFilter);
-
-      if (activeFilter === 'all' && !isExpanded && index >= 8) {
-        card.style.display = 'none';
-        card.style.opacity = '0';
-      } else if (isMatch) {
-        card.style.display = 'flex';
-        setTimeout(() => {
-          card.style.opacity = '1';
-          card.style.transform = 'scale(1)';
-        }, 10);
-      } else {
-        card.style.opacity = '0';
-        card.style.transform = 'scale(0.96)';
-        setTimeout(() => {
-          if (card.style.opacity === '0') card.style.display = 'none';
-        }, 150);
-      }
-    });
-  }
-
-  // View All Projects button click
+  // View All Projects Button Click
   if (viewAllBtn) {
     viewAllBtn.addEventListener('click', () => {
       isExpanded = true;
       projectCards.forEach(card => {
-        card.style.display = 'flex';
+        card.classList.add('show-extra');
+        card.style.display = 'block';
         card.style.opacity = '1';
         card.style.transform = 'scale(1)';
       });
@@ -188,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Category filter tabs click
+  // Category Filter Buttons Click
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
@@ -197,19 +79,34 @@ document.addEventListener('DOMContentLoaded', () => {
       const filter = btn.getAttribute('data-filter');
 
       if (filter !== 'all') {
+        // Automatically show all matching projects when a specific category filter is clicked
         if (viewAllContainer) viewAllContainer.style.display = 'none';
       } else if (!isExpanded) {
         if (viewAllContainer) viewAllContainer.style.display = 'block';
       }
 
-      applyProjectVisibility(filter);
+      projectCards.forEach((card, index) => {
+        const category = card.getAttribute('data-category');
+        const isMatch = (filter === 'all' || category === filter);
+
+        if (filter === 'all' && !isExpanded && index >= 6) {
+          card.style.display = 'none';
+        } else if (isMatch) {
+          card.style.display = 'block';
+          card.style.opacity = '1';
+          card.style.transform = 'scale(1)';
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            if (card.style.opacity === '0') card.style.display = 'none';
+          }, 200);
+        }
+      });
     });
   });
 
-  // Initial call
-  applyProjectVisibility('all');
-
-  // 5. Project Lightbox Modal
+  // Lightbox Modal System
   const modalBackdrop = document.getElementById('project-modal');
   const modalImg = document.getElementById('modal-img');
   const modalTitle = document.getElementById('modal-title');
@@ -218,21 +115,59 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalTools = document.getElementById('modal-tools');
   const modalClose = document.getElementById('modal-close');
 
+  const projectData = {
+    'dobby': {
+      title: 'HP7 Dobby Geometric Polygon Art',
+      category: 'Illustration & Art Study',
+      image: 'assets/dobby_lowpoly.jpg',
+      desc: 'High-contrast low-poly geometric artwork depicting Dobby from Harry Potter (HP7). Built with meticulous polygon mesh placement, dramatic shadows, and high-chroma eye focal points.',
+      tools: ['Photoshop', 'Illustrator', 'CorelDraw', 'Polygon Mesh']
+    },
+    'swastik': {
+      title: 'Swastik Gifts Visual Identity',
+      category: 'Branding & Logo Design',
+      image: 'assets/swastik_gifts.jpg',
+      desc: 'Minimalist brand identity for Swastik Gifts. Includes monochrome, inverted dark mode, and vibrant purple/orange butterfly gift box concept marks.',
+      tools: ['Illustrator', 'Canva', 'Brand Guidelines']
+    },
+    'dragon': {
+      title: 'Dragon Energy Beverage Packaging',
+      category: 'Package Design & 3D Render',
+      image: 'assets/dragon_energy.jpg',
+      desc: 'High-impact packaging design for 500 ML Ultra Can & 250 ML Ultra Can. Rendered on realistic rustic wooden texture backdrop with frozen ice accents.',
+      tools: ['Photoshop', '3D Mockup', 'CorelDraw', 'Illustrator']
+    },
+    'corporate': {
+      title: 'Jhon Walker Corporate Identity Suite',
+      category: 'Corporate Branding & Stationery',
+      image: 'assets/corporate_identity.jpg',
+      desc: 'Complete high-end corporate identity package featuring geometric M logo motif across leather notebook, letterhead, business cards, binder clips, and writing instruments on maroon paper texture.',
+      tools: ['Illustrator', 'Photoshop', 'InDesign', 'Stationery Suite']
+    },
+    'samridhi': {
+      title: 'Samridhi Haute Couture Poster',
+      category: 'Posters & Event Banner',
+      image: 'assets/samridhi_couture.jpg',
+      desc: 'Sophisticated event banner and promotional poster for Samridhi Haute Couture Exhibition. Combines luxury typography with high-fashion model imagery.',
+      tools: ['Photoshop', 'Canva', 'Typography Art']
+    }
+  };
+
   projectCards.forEach(card => {
     card.addEventListener('click', (e) => {
-      // Don't trigger modal if user clicks directly on links, buttons or video elements
-      if (e.target.closest('a, button, video, input, textarea, select')) return;
+      // Don't trigger modal if user clicks directly on video controls or PDF download links
+      if (e.target.closest('a, button, video')) return;
 
       const media = card.querySelector('.project-img, video');
       const title = card.querySelector('h3');
       const category = card.querySelector('.text-accent');
       const desc = card.querySelector('p');
-      const metaSpan = card.querySelector('.project-meta span');
+      const toolsText = card.querySelector('.project-meta span');
 
       if (media && title) {
         const modalMediaWrapper = modalImg.parentElement;
         
-        // Remove existing video if present
+        // Remove any previous modal video
         const existingVideo = modalMediaWrapper.querySelector('video');
         if (existingVideo) existingVideo.remove();
 
@@ -243,10 +178,12 @@ document.addEventListener('DOMContentLoaded', () => {
           videoElem.controls = true;
           videoElem.autoplay = true;
           videoElem.loop = true;
+          videoElem.muted = true;
           videoElem.playsInline = true;
           videoElem.style.width = '100%';
           videoElem.style.maxHeight = '70vh';
           videoElem.style.objectFit = 'contain';
+          videoElem.style.borderRadius = '8px';
           modalMediaWrapper.appendChild(videoElem);
         } else {
           modalImg.style.display = 'block';
@@ -254,14 +191,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         modalTitle.textContent = title.textContent;
-        modalCategory.textContent = category ? category.textContent : 'SELECTED PROJECT';
+        modalCategory.textContent = category ? category.textContent : 'GRAPHIC DESIGN PROJECT';
         modalDesc.textContent = desc ? desc.textContent : '';
 
         modalTools.innerHTML = '';
-        if (metaSpan) {
-          const tools = metaSpan.textContent.split('&').map(t => t.trim());
+        if (toolsText) {
+          const tools = toolsText.textContent.split('&').map(t => t.trim());
           tools.forEach(tool => {
-            if (!tool) return;
             const span = document.createElement('span');
             span.className = 'tool-tag highlight';
             span.textContent = tool;
@@ -275,8 +211,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  if (modalClose) {
+    modalClose.addEventListener('click', closeModal);
+  }
+
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
+  }
+
   function closeModal() {
-    if (!modalBackdrop) return;
     const modalVideo = modalBackdrop.querySelector('video');
     if (modalVideo) {
       modalVideo.pause();
@@ -286,48 +231,37 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'auto';
   }
 
-  if (modalClose) modalClose.addEventListener('click', closeModal);
-  if (modalBackdrop) {
-    modalBackdrop.addEventListener('click', (e) => {
-      if (e.target === modalBackdrop) closeModal();
+  // Copy to Clipboard Utility
+  window.copyText = function(text, label) {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast(`${label} copied to clipboard!`);
     });
-  }
+  };
 
-  // 6. Toast Notification Utility
-  window.showToast = function(message) {
+  // Toast Notification System
+  function showToast(message) {
     const toast = document.getElementById('toast-msg');
     if (toast) {
       toast.textContent = message;
-      toast.style.display = 'block';
+      toast.classList.add('show');
       setTimeout(() => {
-        toast.style.display = 'none';
-      }, 4000);
+        toast.classList.remove('show');
+      }, 3500);
     }
-  };
+  }
 
-  // Copy text helper
-  window.copyText = function(text, label) {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(text).then(() => {
-        window.showToast(`${label} copied to clipboard!`);
-      });
-    } else {
-      window.showToast(`${label}: ${text}`);
-    }
-  };
-
-  // 7. Contact Form Handler (Direct Delivery via FormSubmit)
+  // Contact Form Submission Handler with Direct FormSubmit Gmail Delivery
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('name')?.value || 'Guest';
-      const email = document.getElementById('email')?.value || '';
-      const phone = document.getElementById('phone')?.value || 'Not provided';
-      const projectType = document.getElementById('project-type')?.value || 'General Inquiry';
-      const message = document.getElementById('message')?.value || '';
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value || 'Not provided';
+      const projectType = document.getElementById('project-type').value;
+      const message = document.getElementById('message').value;
 
-      window.showToast('Sending message directly to Mayank...');
+      showToast('Sending your inquiry directly to Mayank...');
 
       fetch('https://formsubmit.co/ajax/mayanksadudia@gmail.com', {
         method: 'POST',
@@ -341,26 +275,26 @@ document.addEventListener('DOMContentLoaded', () => {
           phone: phone,
           project_type: projectType,
           message: message,
-          _subject: `Portfolio Message from ${name} [${projectType.toUpperCase()}]`
+          _subject: `New Portfolio Design Inquiry from ${name} [${projectType.toUpperCase()}]`
         })
       })
       .then(response => response.json())
-      .then(() => {
-        window.showToast('Thank you! Your message was delivered directly to Mayank’s Gmail.');
+      .then(data => {
+        showToast('Thank you! Your message has been delivered directly to Mayank’s Gmail.');
         contactForm.reset();
       })
       .catch(() => {
-        // Fallback to mailto
-        const subject = `Portfolio Inquiry from ${name} [${projectType.toUpperCase()}]`;
-        const body = `Hi Mayank,\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nProject: ${projectType}\n\nMessage:\n${message}`;
+        // Fallback to mailto trigger
+        const subject = `Design Inquiry from ${name} [${projectType.toUpperCase()}]`;
+        const body = `Hi Mayank,\n\nName: ${name}\nEmail: ${email}\nPhone/WhatsApp: ${phone}\nProject Type: ${projectType}\n\nMessage:\n${message}\n\nSent from Portfolio Website`;
         window.location.href = `mailto:mayanksadudia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.showToast('Opening your email client to send message to Mayank.');
+        showToast('Opening your email client to send message to Mayank.');
         contactForm.reset();
       });
     });
   }
 
-  // 8. 3D Reel Video Modal Logic
+  // 3D Portfolio Reel Video Modal Logic
   const reelModal = document.getElementById('reel-modal');
   const openReelBtn = document.getElementById('open-reel-modal-btn');
   const closeReelBtn = document.getElementById('reel-modal-close');
@@ -405,5 +339,5 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
-
 });
+
