@@ -4,6 +4,8 @@
   const frame = document.getElementById("home-presenter");
   // Activate only after the actual character clip has been delivered.
   if (!config?.videoSrc || !frame) return;
+  const hero = frame.closest("#hero");
+  const sceneVideo = Boolean(config.sceneVideo && hero);
   const controls = frame.querySelector(".presenter-controls");
   const play = document.getElementById("presenter-play");
   const sound = document.getElementById("presenter-sound");
@@ -18,7 +20,9 @@
   canvas.className = "presenter-canvas";
   canvas.setAttribute("role", "img");
   canvas.setAttribute("aria-label", "Mayank's animated 3D introduction");
-  frame.prepend(video, canvas);
+  frame.prepend(canvas);
+  if (sceneVideo) hero.prepend(video);
+  else frame.prepend(video);
   let renderer = null;
   let drawing = null;
   let visible = false;
@@ -86,6 +90,7 @@
     video.pause();
     stopDrawing();
     frame.classList.remove("presenter-active");
+    hero?.classList.remove("scene-video-active");
     controls.hidden = true;
   }
   async function start() {
@@ -105,12 +110,13 @@
     }
   } else {
     canvas.remove();
-    video.className = "presenter-video";
+    video.className = sceneVideo ? "presenter-scene-video" : "presenter-video";
   }
   video.addEventListener("loadeddata", () => { controls.hidden = false; });
   video.addEventListener("playing", () => {
     started = true;
     frame.classList.add("presenter-active");
+    if (sceneVideo) hero.classList.add("scene-video-active");
     updatePlay();
     stopDrawing();
     if (renderer) draw();
