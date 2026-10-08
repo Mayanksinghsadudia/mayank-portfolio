@@ -36,6 +36,7 @@ class RangeHTTPRequestHandler(SimpleHTTPRequestHandler):
         fs = os.fstat(f.fileno())
         file_size = fs[6]
         
+        self.range_length = None
         range_header = self.headers.get('Range')
         if range_header:
             match = re.search(r'bytes=(\d+)-(\d*)', range_header)
@@ -45,10 +46,12 @@ class RangeHTTPRequestHandler(SimpleHTTPRequestHandler):
                 if last_byte >= file_size:
                     last_byte = file_size - 1
                 length = last_byte - first_byte + 1
+                self.range_length = length
                 
                 self.send_response(206)
                 self.send_header('Content-Type', ctype)
                 self.send_header('Accept-Ranges', 'bytes')
+                self.send_header('Access-Control-Allow-Origin', '*')
                 self.send_header('Content-Range', f'bytes {first_byte}-{last_byte}/{file_size}')
                 self.send_header('Content-Length', str(length))
                 self.send_header('Last-Modified', self.date_time_string(fs.st_mtime))
@@ -60,10 +63,25 @@ class RangeHTTPRequestHandler(SimpleHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-Type', ctype)
         self.send_header('Accept-Ranges', 'bytes')
+        self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Content-Length', str(file_size))
         self.send_header('Last-Modified', self.date_time_string(fs.st_mtime))
         self.end_headers()
         return f
+
+    def copyfile(self, source, outputfile):
+        if getattr(self, 'range_length', None) is not None:
+            bytes_to_send = self.range_length
+            buf_size = 64 * 1024
+            while bytes_to_send > 0:
+                chunk = source.read(min(buf_size, bytes_to_send))
+                if not chunk:
+                    break
+                outputfile.write(chunk)
+                bytes_to_send -= len(chunk)
+        else:
+            import shutil
+            shutil.copyfileobj(source, outputfile)
 
 def run(port=8085):
     server_address = ('', port)
