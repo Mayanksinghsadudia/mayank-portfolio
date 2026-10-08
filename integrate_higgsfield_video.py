@@ -16,19 +16,31 @@ def main():
     
     input_source = sys.argv[1] if len(sys.argv) > 1 else None
     
-    # Default candidate search paths if no argument passed
+    # Candidate search paths (supports Roor.ai, Seedance 2.5, and Higgsfield)
     candidate_paths = [
         r"C:\Users\hp\Documents\Codex\2026-10-07\https-www-instagram-com-p-deixis4avpj\outputs\higgsfield_video.mp4",
-        r"C:\Users\hp\Downloads\higgsfield_video.mp4",
+        r"C:\Users\hp\Downloads\roor_seedance.mp4",
+        r"C:\Users\hp\Downloads\seedance_video.mp4",
         r"C:\Users\hp\Downloads\hf_mult_motion_control.mp4",
         r"assets\mayank_higgsfield_intro.mp4"
     ]
+    
+    # Auto-detect newest MP4 in Downloads if from Roor.ai or Seedance
+    downloads_dir = r"C:\Users\hp\Downloads"
+    if os.path.exists(downloads_dir):
+        recent_mp4s = [
+            os.path.join(downloads_dir, f) for f in os.listdir(downloads_dir)
+            if f.lower().endswith(".mp4") and ("roor" in f.lower() or "seedance" in f.lower() or "byteplus" in f.lower() or "higgs" in f.lower())
+        ]
+        if recent_mp4s:
+            recent_mp4s.sort(key=os.path.getmtime, reverse=True)
+            candidate_paths.insert(0, recent_mp4s[0])
     
     target_input = None
     if input_source:
         if input_source.startswith("http://") or input_source.startswith("https://"):
             print(f"Downloading video from URL: {input_source}")
-            target_input = "assets/downloaded_higgsfield.mp4"
+            target_input = "assets/downloaded_presenter.mp4"
             urllib.request.urlretrieve(input_source, target_input)
             print("Download completed.")
         elif os.path.exists(input_source):
@@ -40,9 +52,9 @@ def main():
                 break
                 
     if not target_input:
-        print("Status: Waiting for Higgsfield output file or URL.")
+        print("Status: Waiting for Roor.ai / Seedance 2.5 or Higgsfield video file/URL.")
         print("Usage: python integrate_higgsfield_video.py <video_file_or_url>")
-        print("Higgsfield Job ID: 49f0d151-00da-4c51-b1f1-e65032b27aeb")
+        print("Tip: You can also simply download the generated video from Roor.ai to your Downloads folder and run this script.")
         return False
 
     ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
