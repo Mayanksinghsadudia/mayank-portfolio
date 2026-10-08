@@ -1,78 +1,412 @@
-.hero-character {
+/* ==========================================================================
+   MAYANK SINGH SADUDIA - REEL AESTHETIC PRESENTER & HERO THEME
+   Warm Terracotta Studio, 3D Interactive Presenter Video & Editorial Typography
+   ========================================================================== */
+
+/* Terracotta Studio Hero Container */
+.hero-section.hero-reel-theme {
   position: relative;
-  width: min(100%, 440px);
-  aspect-ratio: 3 / 4;
-  margin-right: -20px;
-  isolation: isolate;
+  background-color: #98482a;
+  background: radial-gradient(circle at 72% 45%, #b15c3a 0%, #9e4b2c 45%, #883d23 100%);
+  overflow: hidden;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  padding: 40px 0;
+  border-bottom: 2px solid #262626;
 }
-.presenter-poster, .presenter-canvas, .presenter-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+
+/* Header blur styling over terracotta background */
+.app-header.reel-header {
+  background: rgba(14, 12, 11, 0.78) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
-.presenter-poster { filter: drop-shadow(12px 16px 12px rgba(50,20,12,.25)); }
-.presenter-canvas, .presenter-video { display: none; }
-.presenter-active .presenter-poster { visibility: hidden; }
-.presenter-active .presenter-canvas, .presenter-active .presenter-video { display: block; }
-.presenter-controls {
+
+.brand-square {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #ff6b00;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Hero Content Typography (Reel Inspired) */
+.hero-role-tag {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ffbe9f;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.hero-name-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(3.8rem, 7.5vw, 6.4rem);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 18px;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.hero-statement-headline {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: clamp(1.35rem, 2.5vw, 2.05rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: #ffffff;
+  margin-bottom: 20px;
+  max-width: 560px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.25);
+}
+
+.hero-serif-accent {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  color: #ffd8ba;
+  text-shadow: 0 0 16px rgba(255, 180, 130, 0.45);
+}
+
+.hero-bio-paragraph {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #f2e7e1;
+  opacity: 0.94;
+  margin-bottom: 28px;
+  max-width: 530px;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 32px;
+  z-index: 15;
+  position: relative;
+}
+
+.hero-status-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffd2bc;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  max-width: 530px;
+}
+
+.hero-status-meta .status-available {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.status-pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50% !important;
+  background-color: #22c55e;
+  box-shadow: 0 0 10px #22c55e, 0 0 18px rgba(34, 197, 94, 0.7);
+  animation: statusPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3);
+  }
+}
+
+.meta-sep {
+  opacity: 0.45;
+  color: #ffffff;
+}
+
+/* Scroll indicator */
+.reel-scroll-indicator {
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  align-items: center;
   gap: 6px;
-  padding: 5px;
-  border: 1px solid rgba(255,255,255,.3);
-  border-radius: 100px;
-  background: rgba(14,14,14,.94);
-  white-space: nowrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.65);
+  z-index: 15;
+  pointer-events: none;
 }
-.presenter-controls[hidden] { display: none; }
+
+.reel-scroll-indicator .scroll-arrow {
+  display: inline-block;
+  animation: scrollBounce 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+/* --------------------------------------------------------------------------
+   Desktop Layout (> 992px)
+   The 3D scene fills the hero section. Left 45% is open terracotta wall for text,
+   Right 55% showcases Mayank at his standing desk with glowing dual monitors.
+   -------------------------------------------------------------------------- */
+@media (min-width: 993px) {
+  .hero-section.hero-reel-theme .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+    min-height: calc(100vh - var(--header-height) - 80px);
+    width: 100%;
+  }
+
+  .hero-section.hero-reel-theme .hero-content {
+    position: relative;
+    z-index: 12;
+    max-width: 580px;
+    pointer-events: auto;
+  }
+
+  .hero-section.hero-reel-theme .hero-stage-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-character {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    isolation: isolate;
+  }
+
+  .presenter-poster,
+  .presenter-scene-video,
+  .presenter-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .presenter-poster {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .presenter-scene-video,
+  .presenter-video {
+    opacity: 0;
+    z-index: 2;
+  }
+
+  .presenter-active .presenter-scene-video,
+  .presenter-active .presenter-video {
+    opacity: 1;
+  }
+
+  .presenter-active .presenter-poster {
+    opacity: 0;
+  }
+
+  .presenter-controls {
+    position: absolute;
+    bottom: 32px;
+    right: 44px;
+    z-index: 30;
+    pointer-events: auto;
+    display: flex;
+    gap: 10px;
+    padding: 7px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 100px !important;
+    background: rgba(18, 14, 12, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    white-space: nowrap;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile & Tablet Layout (<= 992px)
+   Responsive stacked layout: Text on top, full 16:9 widescreen video stage below.
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .hero-section.hero-reel-theme {
+    min-height: auto;
+    padding: 32px 0 54px;
+  }
+
+  .hero-section.hero-reel-theme .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-height: auto;
+    width: 100%;
+  }
+
+  .hero-section.hero-reel-theme .hero-content {
+    max-width: 100%;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-section.hero-reel-theme .hero-stage-container {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-width: 620px;
+    margin: 16px auto 0;
+    pointer-events: auto;
+    z-index: 10;
+  }
+
+  .hero-character {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px !important;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: #181210;
+  }
+
+  .presenter-poster,
+  .presenter-scene-video,
+  .presenter-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    transition: opacity 0.4s ease;
+  }
+
+  .presenter-poster {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .presenter-scene-video,
+  .presenter-video {
+    opacity: 0;
+    z-index: 2;
+  }
+
+  .presenter-active .presenter-scene-video,
+  .presenter-active .presenter-video {
+    opacity: 1;
+  }
+
+  .presenter-active .presenter-poster {
+    opacity: 0;
+  }
+
+  .presenter-controls {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 30;
+    pointer-events: auto;
+    display: flex;
+    gap: 8px;
+    padding: 5px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 100px !important;
+    background: rgba(18, 14, 12, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    white-space: nowrap;
+  }
+
+  .reel-scroll-indicator {
+    display: none;
+  }
+}
+
+/* Control Buttons */
+.presenter-controls[hidden] {
+  display: none !important;
+}
+
 .presenter-controls button {
   border: 0;
-  border-radius: 100px;
-  padding: 10px 14px;
-  background: transparent;
-  color: #fff;
-  font: 600 12px/1.2 var(--font-body);
+  border-radius: 100px !important;
+  padding: 9px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font: 600 13px/1.2 var(--font-body);
   cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
-.presenter-controls button:first-child { background: var(--color-primary); color: #101010; }
-.presenter-controls button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-@media(max-width:992px) { .hero-character { width: min(100%,440px); margin-right: 0; } }
-@media(prefers-reduced-motion:reduce) { .pulse-dot { animation: none; } }
 
-/* A generated scene already includes the workstation behind the avatar. */
-.presenter-scene-video {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: -6%;
-  width: 80%;
-  height: 100%;
-  object-fit: contain;
-  object-position: right center;
-  pointer-events: none;
-  filter: brightness(.92);
-  mask-image: linear-gradient(90deg, transparent, #000 30%);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 30%);
+.presenter-controls button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
 }
-.scene-video-active .presenter-scene-video { display: block; }
-.scene-video-active .hero-workstation-background { visibility: hidden; }
-@media(max-width:992px) {
-  .presenter-scene-video {
-    top: auto;
-    bottom: 0;
-    right: 0;
-    height: 58%;
-    width: 100%;
-    object-fit: contain;
-    object-position: right bottom;
-    mask-image: linear-gradient(180deg, transparent, #000 25%);
-    -webkit-mask-image: linear-gradient(180deg, transparent, #000 25%);
+
+.presenter-controls button#presenter-play {
+  background: var(--color-primary);
+  color: #111111;
+  font-weight: 700;
+}
+
+.presenter-controls button#presenter-play:hover {
+  background: #ff8533;
+}
+
+.presenter-controls button#presenter-sound {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.presenter-controls button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-pulse-dot,
+  .reel-scroll-indicator .scroll-arrow {
+    animation: none;
   }
-  .scene-video-active .hero-character { aspect-ratio: 16 / 9; margin-bottom: 36px; }
-  .scene-video-active .presenter-controls { bottom: -36px; }
 }

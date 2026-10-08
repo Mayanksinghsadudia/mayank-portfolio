@@ -23,18 +23,19 @@
   <!-- Google Fonts & Material Symbols -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
   <!-- Custom Design System Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=clean-3d-20261008" />
-  <link rel="stylesheet" href="presenter.css?v=clean-3d-20261008" />
+  <link rel="stylesheet" href="styles.css?v=reel-3d-20261008" />
+  <link rel="stylesheet" href="presenter.css?v=reel-3d-20261008" />
 </head>
 <body>
 
   <!-- Top Fixed Navigation Bar -->
-  <header class="app-header">
+  <header class="app-header reel-header">
     <a href="#hero" class="brand-logo">
+      <span class="brand-square" aria-hidden="true"></span>
       <span>MAYANK SINGH SADUDIA</span>
     </a>
 
@@ -57,22 +58,28 @@
   </header>
 
   <main>
-    <!-- HERO SECTION -->
-    <section class="hero-section" id="hero">
-      <img src="assets/workstation_home_background.jpg" alt="" aria-hidden="true" class="hero-workstation-background" />
-      <div class="container">
+    <!-- HERO SECTION (Reel Aesthetic: Warm Terracotta Studio & 3D Interactive Presenter) -->
+    <section class="hero-section hero-reel-theme" id="hero">
+      <div class="container hero-container">
         <div class="hero-grid">
           
           <div class="hero-content">
-            <h1 class="text-hero font-headline">
-              DATA ANALYST &amp; <span class="text-accent">GRAPHIC DESIGN</span>
+            <div class="hero-role-tag">// DATA ANALYST &amp; GRAPHIC DESIGNER</div>
+            
+            <h1 class="hero-name-headline">
+              Mayank
             </h1>
 
-            <p style="color: var(--color-text-muted); font-size: 1.15rem; margin-top: 20px; max-width: 540px;">
-              Turning data into clear insights with Python, SQL, Excel and Power BI, and creating brand identities, packaging and engaging visuals.
+            <h2 class="hero-statement-headline">
+              Turning data into <span class="hero-serif-accent">clear insights</span><br />
+              and visuals that empower them.
+            </h2>
+
+            <p class="hero-bio-paragraph">
+              Data Analyst and Graphic Designer based in Indore, India (MCA &amp; B.Com). Turning complex datasets into actionable dashboards with Python, SQL, Excel, and Power BI — paired with high-impact brand identities and packaging visuals.
             </p>
 
-            <div style="display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap;">
+            <div class="hero-cta-group">
               <a href="#projects" class="btn-primary">
                 <span class="material-symbols-outlined">grid_view</span>
                 Explore Projects
@@ -87,12 +94,23 @@
               </a>
             </div>
 
+            <div class="hero-status-meta">
+              <span class="meta-tag">INDORE, INDIA</span>
+              <span class="meta-sep">•</span>
+              <span class="meta-tag status-available">
+                <span class="status-pulse-dot"></span>
+                AVAILABLE FOR WORK
+              </span>
+              <span class="meta-sep">•</span>
+              <span class="meta-tag">DATA ANALYST &amp; DESIGN</span>
+            </div>
+
           </div>
 
-          <!-- The speaking scene includes the avatar and workstation background. -->
+          <!-- Hero Stage / Presenter Frame & Controls -->
           <div class="hero-stage-container">
-            <div class="hero-character" id="home-presenter" aria-label="Mayank's introduction">
-              <img src="assets/aligned_avatar_v6.png" alt="Mayank's 3D avatar" class="presenter-poster" />
+            <div class="hero-character" id="home-presenter" aria-label="Mayank's 3D studio introduction">
+              <img src="assets/reel_pose_rest.jpg" alt="Mayank Singh Sadudia in his 3D workstation studio" class="presenter-poster" />
               <div class="presenter-controls" hidden>
                 <button type="button" id="presenter-play" aria-label="Play introduction">Play introduction</button>
                 <button type="button" id="presenter-sound" aria-label="Turn introduction sound on">Sound on</button>
@@ -101,6 +119,11 @@
           </div>
 
         </div>
+      </div>
+
+      <div class="reel-scroll-indicator" aria-hidden="true">
+        <span>SCROLL</span>
+        <span class="scroll-arrow">↓</span>
       </div>
     </section>
 
@@ -154,11 +177,8 @@
                 </div>
               </div>
             </div>
-          </div>
 
-        </div>
-
-          <div class="about-card">
+            <div class="about-card">
             <h3 class="font-headline text-headline-md" style="margin-bottom: 24px; color: var(--color-primary);">
               Work Experience
             </h3>
@@ -186,11 +206,10 @@
             </div>
 
           </div>
-
         </div>
-
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- 02 EDUCATION & SKILLS SECTION -->
     <section class="page-section" id="education-skills">

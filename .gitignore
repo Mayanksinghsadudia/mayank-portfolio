@@ -6,4 +6,7 @@ __pycache__/
 .env
 *_backup.*
 assets/inspect_*.jpg
-
+assets/reel_analysis/
+assets/head_crop_*.jpg
+assets/new_video_sample_frame.jpg
+assets/speech_audio_30s.wav

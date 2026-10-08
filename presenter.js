@@ -12,6 +12,7 @@
   const video = document.createElement("video");
   video.crossOrigin = "anonymous";
   video.src = config.videoSrc;
+  if (config.posterSrc) video.poster = config.posterSrc;
   video.preload = "metadata";
   video.playsInline = true;
   video.muted = true;
@@ -21,8 +22,7 @@
   canvas.setAttribute("role", "img");
   canvas.setAttribute("aria-label", "Mayank's animated 3D introduction");
   frame.prepend(canvas);
-  if (sceneVideo) hero.prepend(video);
-  else frame.prepend(video);
+  frame.prepend(video);
   let renderer = null;
   let drawing = null;
   let visible = false;
