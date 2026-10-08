@@ -1,6 +1,6 @@
 window.MAYANK_PRESENTER = {
-  "videoSrc": "assets/mayank_reel_presenter.mp4",
-  "posterSrc": "assets/reel_pose_rest.jpg",
+  "videoSrc": "assets/mayank_reel_presenter.mp4?v=fluid-continuous-20261008",
+  "posterSrc": "assets/reel_pose_rest.jpg?v=fluid-continuous-20261008",
   "alphaVideoSrc": "",
   "sceneVideo": true,
   "autoplay": true,
