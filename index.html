@@ -23,7 +23,7 @@
   <!-- Google Fonts & Material Symbols -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
   <!-- Custom Design System Stylesheet -->
@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="presenter.css?v=portfolio-clean-20261009" />
   <link rel="stylesheet" href="home-intro.css?v=portfolio-clean-20261009" />
   <link rel="stylesheet" href="neon-studio.css?v=ember-20261009" />
+  <link rel="stylesheet" href="portfolio-theme.css?v=smooth-20261009" />
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"></div>
@@ -38,20 +39,19 @@
   <!-- Top Fixed Navigation Bar -->
   <header class="app-header reel-header">
     <a href="#hero" class="brand-logo" aria-label="Mayank Singh Sadudia home">
-      <span class="brand-square" aria-hidden="true"></span>
-      <span>mayank<span class="brand-dot">.</span>studio</span>
+      <span class="reeves-monogram">MS<span>.</span></span>
     </a>
 
-    <nav class="desktop-nav" id="desktop-nav">
+    <nav class="desktop-nav" id="desktop-nav" aria-label="Portfolio sections">
       <a href="#hero" class="active">Home</a>
       <a href="#about">About Me</a>
       <a href="#experience">Experience</a>
       <a href="#education-skills">Education & Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a href="#projects">Portfolio</a>
+      <a href="#contact">Get in Touch</a>
     </nav>
 
-    <div style="display: flex; align-items: center; gap: 16px;">
+    <div class="reeves-header-actions" style="display: flex; align-items: center; gap: 16px;">
       <a href="assets/Mayank_Singh_Sadudia_Resume.pdf" download class="btn-primary" id="download-cv-btn">
         <span class="material-symbols-outlined" style="font-size: 18px;">download</span>
         Resume CV
@@ -69,15 +69,15 @@
         <div class="hero-grid">
           
           <div class="hero-content">
-            <div class="hero-role-tag">MAYANK SINGH SADUDIA / INDORE, INDIA</div>
+            <div class="hero-role-tag">DATA ANALYST &amp; GRAPHIC DESIGNER</div>
             
             <h1 class="hero-name-headline">
-              Data.<br /><span class="neon-word">Design.</span><br /><span class="outline-word">Create.</span>
+              <span class="reeves-name">MAYANK<br />SINGH SADUDIA</span>
             </h1>
 
-            <h2 class="hero-statement-headline">Data Analyst &amp; Graphic Designer Portfolio</h2>
+            <h2 class="hero-statement-headline">Analytical mind. <span>Creative eye.</span></h2>
             <p class="hero-bio-paragraph">
-              Welcome to my portfolio. I turn complex data into clear dashboards and ideas into memorable brands.
+              A data analyst and graphic designer in Indore, turning complex data into clear insights and ideas into memorable visuals.
             </p>
 
             <div class="hero-cta-group">
@@ -113,12 +113,7 @@
             <div class="hero-scene-label" aria-hidden="true"><span>●</span> MEET MAYANK / 30 SEC</div>
             <div class="hero-character" id="home-presenter" aria-label="Mayank's 3D studio introduction">
               <img src="assets/mayank_home_intro_poster.jpg" width="1280" height="720" alt="Mayank Singh Sadudia in his 3D workstation studio" class="presenter-poster" />
-              <div class="presenter-subtitles" id="presenter-subtitles" style="display: none;"></div>
-              <div class="presenter-controls" hidden>
-                <button type="button" id="presenter-play" aria-label="Play introduction">Play introduction</button>
-                <button type="button" id="presenter-sound" aria-label="Turn introduction sound on">Sound on</button>
-                <button type="button" id="presenter-cc" aria-label="Toggle subtitles" aria-pressed="false">CC</button>
-              </div>
+
             </div>
           </div>
 
@@ -145,7 +140,7 @@
         <div class="section-header">
           <div>
             <span class="text-label-caps text-accent">01 // PROFILE & BACKGROUND</span>
-            <h2 class="text-headline-lg font-headline" style="margin-top: 4px;">Behind the work.</h2>
+            <h2 class="text-headline-lg font-headline" style="margin-top: 4px;">Creative mind.<br /><span class="reeves-gradient">Clear insights.</span></h2>
           </div>
           <span class="section-num text-outlined">01</span>
         </div>
@@ -1053,7 +1048,7 @@
         <div class="section-header">
           <div>
             <span class="text-label-caps text-accent">05 // INITIATE COLLABORATION</span>
-            <h2 class="text-headline-lg font-headline" style="margin-top: 4px;">Let’s make something good.</h2>
+            <h2 class="text-headline-lg font-headline" style="margin-top: 4px;">Start a <span class="reeves-gradient">project.</span></h2>
           </div>
           <span class="section-num text-outlined">05</span>
         </div>
@@ -1238,8 +1233,8 @@
 
   <!-- Main JavaScript File -->
   <script src="main.js?v=midnight-20261009"></script>
-  <script src="presenter-config.js?v=portfolio-clean-20261009"></script>
-  <script src="presenter.js?v=portfolio-clean-20261009"></script>
+  <script src="presenter-config.js?v=smooth-autoplay-20261009"></script>
+  <script src="presenter.js?v=smooth-autoplay-20261009"></script>
 
   <script src="neon-studio.js?v=midnight-20261009"></script>
 </body>
