@@ -28,9 +28,8 @@
 
   <!-- Custom Design System Stylesheet -->
   <link rel="stylesheet" href="styles.css?v=reel-3d-20261008" />
-  <link rel="stylesheet" href="presenter.css?v=approved-intro-20261009" />
-  <link rel="stylesheet" href="instagram-theme.css?v=20261009" />
-  <link rel="stylesheet" href="home-intro.css?v=approved-intro-20261009" />
+  <link rel="stylesheet" href="presenter.css?v=portfolio-clean-20261009" />
+  <link rel="stylesheet" href="home-intro.css?v=portfolio-clean-20261009" />
 </head>
 <body>
 
@@ -43,7 +42,6 @@
 
     <nav class="desktop-nav" id="desktop-nav">
       <a href="#hero" class="active">Home</a>
-      <a href="#instagram-hub">Instagram Feed</a>
       <a href="#about">About Me</a>
       <a href="#education-skills">Education & Skills</a>
       <a href="#projects">Projects</a>
@@ -130,191 +128,6 @@
       <div class="reel-scroll-indicator" aria-hidden="true">
         <span>SCROLL</span>
         <span class="scroll-arrow">↓</span>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         INSTAGRAM CREATOR HUB & PORTFOLIO SUITE
-         Authentic Instagram Profile, Story Highlights, Grid Feed & 3D Reels
-         ===================================================================== -->
-    <section class="instagram-portfolio-hub" id="instagram-hub">
-      <div class="ig-container">
-        
-        <!-- Instagram Profile Card -->
-        <div class="ig-profile-card">
-          <div class="ig-profile-header-grid">
-            
-            <!-- Avatar with Instagram Story Rainbow Gradient Ring -->
-            <div class="ig-avatar-wrapper" id="ig-avatar-story-trigger" title="Click to view 3D Intro Story Reel">
-              <div class="ig-story-ring"></div>
-              <div class="ig-avatar-inner">
-                <img src="assets/mayank_avatar_hd_v6.png?v=6" alt="Mayank Singh Sadudia Profile" class="ig-avatar-img" />
-              </div>
-              <span class="ig-story-badge">STORY REEL</span>
-            </div>
-
-            <!-- Profile Info & Metrics -->
-            <div class="ig-profile-info">
-              <div class="ig-top-row">
-                <h2 class="ig-username">
-                  mayanksinghsadudia
-                  <span class="ig-verified-badge" title="Verified Creator">✓</span>
-                </h2>
-                
-                <div class="ig-action-buttons">
-                  <button class="ig-btn ig-btn-primary" id="ig-follow-btn">Follow</button>
-                  <a href="#contact" class="ig-btn ig-btn-secondary">Message</a>
-                  <a href="assets/Mayank_Singh_Sadudia_Resume.pdf" download class="ig-btn ig-btn-secondary">Resume CV</a>
-                  <button class="ig-btn ig-btn-icon" id="ig-share-btn" title="Share profile link">
-                    <span class="material-symbols-outlined" style="font-size: 18px;">share</span>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Instagram Counter Stats -->
-              <div class="ig-stats-row">
-                <div class="ig-stat-item"><strong>35</strong> posts</div>
-                <div class="ig-stat-item"><strong id="ig-followers-count">1.4k</strong> followers</div>
-                <div class="ig-stat-item"><strong>100%</strong> job success</div>
-                <div class="ig-stat-item"><strong>Indore, IN</strong> location</div>
-              </div>
-
-              <!-- Bio & Credentials -->
-              <div class="ig-bio-block">
-                <div class="ig-fullname">Mayank Singh Sadudia</div>
-                <span class="ig-category-tag">Data Analyst &amp; Graphic Designer</span>
-                <ul class="ig-bio-list">
-                  <li><span>📊</span> <span>Turning complex datasets into clear, actionable dashboards</span></li>
-                  <li><span>🐍</span> <span>Python (Pandas, NLP), SQL, Power BI, Excel &amp; SQLite</span></li>
-                  <li><span>🎨</span> <span>3D Packaging Mockups, Brand Identity &amp; High-Impact Visuals</span></li>
-                  <li><span>🎓</span> <span>MCA &amp; B.Com (Computer Application) • IPS Academy</span></li>
-                </ul>
-                <a href="https://github.com/Mayanksinghsadudia" target="_blank" rel="noopener noreferrer" class="ig-bio-link">
-                  <span class="material-symbols-outlined" style="font-size: 16px;">link</span>
-                  github.com/Mayanksinghsadudia
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Instagram Story Highlights Tray -->
-        <div class="ig-highlights-tray" aria-label="Portfolio Highlights">
-          <button type="button" class="ig-highlight-item" onclick="window.switchIgTab('reels')">
-            <div class="ig-highlight-circle">
-              <span class="material-symbols-outlined ig-highlight-icon">smart_display</span>
-            </div>
-            <span class="ig-highlight-label">3D Reel</span>
-          </button>
-
-          <button type="button" class="ig-highlight-item" onclick="window.filterIgCategory('analytics')">
-            <div class="ig-highlight-circle">
-              <span class="material-symbols-outlined ig-highlight-icon">analytics</span>
-            </div>
-            <span class="ig-highlight-label">Analytics</span>
-          </button>
-
-          <button type="button" class="ig-highlight-item" onclick="window.filterIgCategory('branding')">
-            <div class="ig-highlight-circle">
-              <span class="material-symbols-outlined ig-highlight-icon">draw</span>
-            </div>
-            <span class="ig-highlight-label">Branding</span>
-          </button>
-
-          <button type="button" class="ig-highlight-item" onclick="window.filterIgCategory('packaging')">
-            <div class="ig-highlight-circle">
-              <span class="material-symbols-outlined ig-highlight-icon">deployed_code</span>
-            </div>
-            <span class="ig-highlight-label">Packaging</span>
-          </button>
-
-          <button type="button" class="ig-highlight-item" onclick="document.getElementById('education-skills').scrollIntoView({behavior: 'smooth'})">
-            <div class="ig-highlight-circle">
-              <span class="material-symbols-outlined ig-highlight-icon">school</span>
-            </div>
-            <span class="ig-highlight-label">Degrees</span>
-          </button>
-
-          <button type="button" class="ig-highlight-item" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
-            <div class="ig-highlight-circle">
-              <span class="material-symbols-outlined ig-highlight-icon">mark_email_unread</span>
-            </div>
-            <span class="ig-highlight-label">Contact</span>
-          </button>
-        </div>
-
-        <!-- Instagram Feed Navigation Tabs -->
-        <div class="ig-tabs-bar">
-          <button class="ig-tab active" data-tab="posts" onclick="window.switchIgTab('posts')">
-            <span class="material-symbols-outlined">grid_on</span>
-            POSTS (35)
-          </button>
-          <button class="ig-tab" data-tab="reels" onclick="window.switchIgTab('reels')">
-            <span class="material-symbols-outlined">movie</span>
-            3D REELS
-          </button>
-          <button class="ig-tab" data-tab="insights" onclick="window.switchIgTab('insights')">
-            <span class="material-symbols-outlined">insights</span>
-            ANALYTICS
-          </button>
-          <button class="ig-tab" data-tab="about" onclick="window.switchIgTab('about')">
-            <span class="material-symbols-outlined">account_box</span>
-            BIO &amp; RESUME
-          </button>
-        </div>
-
-        <!-- 3D Reel Simulator Panel (Shown when REELS tab active) -->
-        <div class="ig-reels-panel" id="ig-reels-panel">
-          <div class="ig-reel-card">
-            <div class="ig-reel-player-stage">
-              <video id="ig-reel-video" class="ig-reel-video" src="assets/mayank_home_intro_30s.mp4" playsinline muted controls preload="none" poster="assets/mayank_home_intro_poster.jpg"></video>
-              <div class="ig-reel-overlay-badge">
-                <span class="status-pulse-dot"></span>
-                <span>3D PRESENTER REEL</span>
-              </div>
-              <div class="ig-reel-audio-pill">
-                <span class="material-symbols-outlined ig-disc-spin" style="font-size: 16px;">album</span>
-                <span>Mayank Singh Sadudia • Original Portfolio Audio</span>
-              </div>
-            </div>
-
-            <div class="ig-reel-sidebar">
-              <div>
-                <div class="ig-reel-author">
-                  <img src="assets/mayank_avatar_hd_v6.png?v=6" alt="Mayank" />
-                  <div>
-                    <strong style="color: #fff; font-size: 14px;">mayanksinghsadudia</strong>
-                    <div style="color: #ffb693; font-size: 12px;">3D Presenter Introduction</div>
-                  </div>
-                </div>
-
-                <p style="color: #cbd5e1; font-size: 13px; line-height: 1.5; margin-bottom: 12px;">
-                  Meet Mayank in a 30-second introduction to his data analytics and graphic design portfolio.
-                </p>
-
-              </div>
-
-              <div>
-                <div class="ig-reel-actions">
-                  <button class="ig-reel-action-btn" id="ig-reel-like-btn">
-                    <span class="material-symbols-outlined">favorite</span>
-                    <span id="ig-reel-like-count">582</span>
-                  </button>
-                  <button class="ig-reel-action-btn" id="ig-reel-sound-btn">
-                    <span class="material-symbols-outlined" id="ig-reel-sound-icon">volume_off</span>
-                    <span>Sound</span>
-                  </button>
-                  <button class="ig-reel-action-btn" id="ig-reel-share-btn">
-                    <span class="material-symbols-outlined">share</span>
-                    <span>Share</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -1376,112 +1189,41 @@
     </div>
   </footer>
 
-  <!-- Instagram-Style Project Lightbox Modal -->
-  <div class="ig-modal-backdrop" id="ig-project-modal">
-    <div class="ig-modal-dialog">
-      <button class="ig-modal-close-btn" id="ig-modal-close" aria-label="Close modal">
-        <span class="material-symbols-outlined" style="font-size: 20px;">close</span>
+  <!-- Project Lightbox Modal -->
+  <div class="modal-backdrop" id="project-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="modal-close">
+        <span class="material-symbols-outlined">close</span>
       </button>
 
-      <!-- Media Column (Left) -->
-      <div class="ig-modal-media-col" id="ig-modal-media-container">
-        <img id="ig-modal-img" src="" alt="Project Preview" class="ig-modal-media-img" />
+      <div class="modal-img-container">
+        <img id="modal-img" src="" alt="Project Preview" class="modal-img" />
       </div>
 
-      <!-- Info & Comments Column (Right) -->
-      <div class="ig-modal-info-col">
-        <!-- Header -->
-        <div class="ig-modal-header">
-          <div class="ig-modal-header-user">
-            <img src="assets/mayank_avatar_hd_v6.png?v=6" alt="Mayank" class="ig-modal-avatar" />
-            <div>
-              <div style="display: flex; align-items: center; gap: 4px;">
-                <strong style="color: #fff; font-size: 13.5px;">mayanksinghsadudia</strong>
-                <span class="ig-verified-badge" style="width: 14px; height: 14px; font-size: 9px;">✓</span>
-                <span style="color: #64748b; font-size: 12px;">• Following</span>
-              </div>
-              <div style="color: #ffb693; font-size: 11px; font-weight: 500;" id="ig-modal-category">CATEGORY</div>
-            </div>
-          </div>
-          <span class="material-symbols-outlined" style="color: #94a3b8; font-size: 20px; cursor: pointer;">more_horiz</span>
-        </div>
-
-        <!-- Scrollable Caption & Comments -->
-        <div class="ig-modal-body-scroll">
-          <h2 class="ig-modal-title" id="ig-modal-title">Project Title</h2>
-          <p class="ig-modal-caption" id="ig-modal-desc">
+      <div class="modal-details">
+        <div>
+          <span class="text-label-caps text-accent" id="modal-category">CATEGORY</span>
+          <h2 class="text-headline-lg font-headline" id="modal-title" style="margin-top: 6px; font-size: 1.8rem;">Project Title</h2>
+          <p style="color: var(--color-text-muted); line-height: 1.8; margin-top: 16px;" id="modal-desc">
             Detailed project information...
           </p>
-
-          <div class="ig-modal-tags" id="ig-modal-tags">
-            <!-- Hashtags inserted dynamically -->
-          </div>
-
-          <!-- Dynamic Comments Stream -->
-          <div class="ig-comments-stream" id="ig-comments-stream">
-            <div class="ig-comment-item">
-              <div class="ig-comment-avatar">AD</div>
-              <div class="ig-comment-content">
-                <span class="ig-comment-user">alex_analytics</span>
-                <span class="ig-comment-text">The data storytelling and ETL pipeline here are top tier! 🔥</span>
-                <div class="ig-comment-meta">2h ago • 14 likes • Reply</div>
-              </div>
-            </div>
-
-            <div class="ig-comment-item">
-              <div class="ig-comment-avatar">SD</div>
-              <div class="ig-comment-content">
-                <span class="ig-comment-user">studio_design</span>
-                <span class="ig-comment-text">Impeccable typography, grid symmetry and presentation quality.</span>
-                <div class="ig-comment-meta">5h ago • 9 likes • Reply</div>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <!-- Footer Actions & Comment Bar -->
-        <div class="ig-modal-footer">
-          <div class="ig-modal-actions-row">
-            <div class="ig-modal-icons-left">
-              <button class="ig-icon-action" id="ig-modal-like-btn" title="Like">
-                <span class="material-symbols-outlined" style="font-size: 24px;">favorite</span>
-              </button>
-              <button class="ig-icon-action" id="ig-modal-comment-focus-btn" title="Comment">
-                <span class="material-symbols-outlined" style="font-size: 24px;">chat_bubble</span>
-              </button>
-              <button class="ig-icon-action" id="ig-modal-share-btn" title="Share">
-                <span class="material-symbols-outlined" style="font-size: 24px;">send</span>
-              </button>
-            </div>
-            <button class="ig-icon-action" id="ig-modal-bookmark-btn" title="Save">
-              <span class="material-symbols-outlined" style="font-size: 24px;">bookmark</span>
-            </button>
-          </div>
-
-          <div class="ig-likes-count" id="ig-modal-likes-count">Liked by 418 creators and recruiters</div>
-
-          <div id="ig-modal-project-links" style="margin-bottom: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
-            <!-- Live demo / GitHub link button -->
-          </div>
-
-          <!-- Add a Comment Bar -->
-          <div class="ig-add-comment-row">
-            <span class="material-symbols-outlined" style="color: #94a3b8; font-size: 20px;">sentiment_satisfied</span>
-            <input type="text" class="ig-comment-input" id="ig-comment-input" placeholder="Add a comment..." />
-            <button class="ig-comment-post-btn" id="ig-comment-post-btn">Post</button>
-          </div>
+        <div style="margin-top: 32px;">
+          <span class="text-label-caps" style="color: var(--color-text-muted); display: block; margin-bottom: 8px;">SOFTWARE & TOOLS USED</span>
+          <div class="tool-tags" id="modal-tools"></div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Toast Notification element -->
-  <div class="ig-toast" id="ig-toast">Notification Message</div>
+  <div class="toast-msg" id="toast-msg">Notification Message</div>
 
   <!-- Main JavaScript File -->
-  <script src="main.js?v=clean-3d-20261008"></script>
-  <script src="presenter-config.js?v=approved-intro-20261009"></script>
-  <script src="presenter.js?v=approved-intro-20261009"></script>
+  <script src="main.js?v=portfolio-clean-20261009"></script>
+  <script src="presenter-config.js?v=portfolio-clean-20261009"></script>
+  <script src="presenter.js?v=portfolio-clean-20261009"></script>
 
 </body>
 </html>

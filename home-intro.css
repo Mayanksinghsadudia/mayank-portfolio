@@ -5,8 +5,13 @@
 #hero .presenter-controls { gap: 6px; max-width: calc(100% - 24px); }
 #hero .presenter-controls button { font-size: 12px; padding: 9px 12px; }
 #hero .presenter-subtitles { border-radius: 12px !important; width: min(88%, 640px); max-width: 88%; font-size: 13px; line-height: 1.5; }
-.ig-reel-player-stage { min-height: 0; }
-.ig-reel-video { object-fit: contain; aspect-ratio: 16 / 9; }
+#hero .presenter-subtitles {
+  position: absolute; bottom: 85px; left: 50%; transform: translateX(-50%);
+  padding: 8px 22px; color: #fff; text-align: center;
+  background: rgba(14, 11, 10, .88); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, .2); z-index: 25; pointer-events: none;
+}
+#presenter-cc[aria-pressed="true"] { background: rgba(255, 255, 255, .25); }
 @media (min-width: 993px) {
   #hero.hero-reel-theme { min-height: max(620px, calc(100svh - var(--header-height))); padding: 48px 0 72px; }
   #hero .hero-grid { min-height: 500px; grid-template-columns: 1fr; }

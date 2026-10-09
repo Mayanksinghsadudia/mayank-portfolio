@@ -130,7 +130,6 @@
       video.muted = !video.muted;
       updateSound();
       if (!video.muted) {
-        document.getElementById("ig-reel-video")?.pause();
         if (!heardIntroduction) {
           video.currentTime = 0;
           heardIntroduction = true;
@@ -152,35 +151,6 @@
       else updateSubtitles();
     });
   }
-
-  // Switch video edition seamlessly
-  function switchEdition(editionKey, btnElement) {
-    if (!config.editions || !config.editions[editionKey]) return;
-    const edition = config.editions[editionKey];
-    const wasPlaying = !video.paused && !video.ended;
-    const currentTime = video.currentTime;
-
-    video.src = edition.videoSrc;
-    video.load();
-
-    video.addEventListener("loadedmetadata", function onMeta() {
-      video.removeEventListener("loadedmetadata", onMeta);
-      if (currentTime < video.duration) {
-        video.currentTime = currentTime;
-      }
-      if (wasPlaying || !userPaused) {
-        start();
-      }
-    });
-
-    document.querySelectorAll(".presenter-edition-pill").forEach(p => p.classList.remove("active"));
-    if (btnElement) btnElement.classList.add("active");
-
-    const descElem = document.getElementById("presenter-edition-desc");
-    if (descElem) descElem.textContent = edition.desc;
-  }
-
-  window.switchPresenterEdition = switchEdition;
 
   window.togglePresenterSound = () => {
     if (sound) sound.click();
