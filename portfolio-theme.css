@@ -93,3 +93,83 @@ footer { background: #0e0b09; }
 @media (max-width: 992px) { .app-header.reel-header { flex-wrap: wrap; height: 112px; align-content: center; gap: 10px; } :root { --header-height: 112px; } .app-header.reel-header nav.desktop-nav { display: flex; position: static; transform: none; order: 3; width: 100%; justify-content: flex-start; overflow-x: auto; gap: 18px; padding-bottom: 3px; } nav.desktop-nav a { flex-shrink: 0; font-size: 13px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: .06em !important; white-space: nowrap; padding: 5px 0; } .mobile-menu-btn { display: none; } }
 @media (max-width: 600px) { .app-header.reel-header nav.desktop-nav { gap: 16px; } nav.desktop-nav a { font-size: 12px !important; } }
 
+/* Reel-Style Scroll Indicator & Badge */
+.reel-scroll-indicator, .reel-video-scroll-badge {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  background: rgba(20, 14, 10, 0.88) !important;
+  border: 1px solid rgba(255, 157, 77, 0.35) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 157, 77, 0.15) !important;
+  border-radius: 30px !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  z-index: 15;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: auto !important;
+}
+
+.reel-scroll-indicator {
+  position: absolute;
+  bottom: 24px;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  padding: 9px 20px;
+}
+
+.reel-scroll-indicator:hover, .reel-video-scroll-badge:hover {
+  background: rgba(36, 22, 14, 0.96) !important;
+  border-color: var(--neon-amber) !important;
+  box-shadow: 0 0 24px rgba(255, 157, 77, 0.4) !important;
+  transform: translateX(-50%) translateY(-2px) !important;
+}
+
+.reel-scroll-indicator .scroll-label,
+.reel-video-scroll-badge span {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--neon-peach, #ffc18b) !important;
+}
+
+.reel-scroll-indicator .scroll-arrow,
+.reel-video-scroll-badge .scroll-arrow {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--neon-amber, #ff9d4d);
+  animation: reelScrollBounce 1.6s ease-in-out infinite;
+}
+
+@keyframes reelScrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+/* Overlaid badge right on the reel video stage */
+.hero-stage-container { position: relative; }
+.reel-video-scroll-badge {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  padding: 8px 16px;
+}
+
+.reel-video-scroll-badge:hover {
+  transform: translateY(-2px) !important;
+}
+
+@media (max-width: 992px) {
+  .reel-scroll-indicator {
+    display: inline-flex !important;
+    bottom: 16px;
+    padding: 7px 16px;
+  }
+  .reel-scroll-indicator .scroll-label { font-size: 10px !important; }
+  .reel-video-scroll-badge { display: none !important; }
+}
+
