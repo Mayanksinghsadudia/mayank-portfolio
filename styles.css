@@ -248,6 +248,7 @@ nav.desktop-nav a.active::after {
 
 section.page-section {
   padding: var(--section-gap) 0;
+  scroll-margin-top: var(--header-height);
   border-bottom: 1px solid var(--color-border);
   position: relative;
 }
@@ -442,6 +443,10 @@ section.page-section {
 }
 
 /* Timeline Components */
+.experience-card .timeline {
+  margin-top: 0;
+}
+
 .timeline {
   border-left: 2px solid var(--color-border);
   padding-left: 24px;
