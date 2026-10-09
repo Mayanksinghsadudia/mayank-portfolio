@@ -6,22 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const desktopNav = document.getElementById('desktop-nav');
   
   if (mobileBtn && desktopNav) {
+    const closeMenu = () => {
+      desktopNav.classList.remove('active');
+      mobileBtn.setAttribute('aria-expanded', 'false');
+      mobileBtn.setAttribute('aria-label', 'Open navigation');
+    };
     mobileBtn.addEventListener('click', () => {
-      desktopNav.classList.toggle('active');
-      if (desktopNav.style.display === 'flex') {
-        desktopNav.style.display = 'none';
-      } else {
-        desktopNav.style.display = 'flex';
-        desktopNav.style.flexDirection = 'column';
-        desktopNav.style.position = 'absolute';
-        desktopNav.style.top = '72px';
-        desktopNav.style.left = '0';
-        desktopNav.style.width = '100%';
-        desktopNav.style.backgroundColor = '#131313';
-        desktopNav.style.padding = '20px';
-        desktopNav.style.borderBottom = '1px solid #262626';
-      }
+      const open = desktopNav.classList.toggle('active');
+      mobileBtn.setAttribute('aria-expanded', String(open));
+      mobileBtn.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
     });
+    desktopNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
   }
 
   // Active Section Scroll Tracker
