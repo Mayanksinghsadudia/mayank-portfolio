@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mayank Singh Sadudia — Video Continuity Review Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    :root {
+      --bg-dark: #0e0a07;
+      --bg-card: rgba(22, 15, 11, 0.92);
+      --bg-card-hover: rgba(35, 22, 15, 0.96);
+      --amber: #ff9d4d;
+      --amber-glow: rgba(255, 157, 77, 0.35);
+      --peach: #ffc18b;
+      --text-dim: #9e8f85;
+      --border-dark: rgba(255, 157, 77, 0.22);
+      --border-active: #ff9d4d;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-dark);
+      background-image: radial-gradient(circle at 50% -10%, rgba(255, 120, 40, 0.16) 0%, transparent 60%),
+                        radial-gradient(circle at 10% 40%, rgba(255, 90, 0, 0.08) 0%, transparent 50%);
+      color: #fff;
+      font-family: var(--font-body);
+      min-height: 100vh;
+      padding: 24px 20px 80px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Studio Header */
+    header.studio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      margin-bottom: 28px;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--amber);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--amber);
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .brand-text h1 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .brand-text p {
+      font-size: 11px;
+      color: var(--peach);
+      font-family: var(--font-mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 157, 77, 0.12);
+      border: 1px solid var(--border-dark);
+      padding: 10px 18px;
+      border-radius: 30px;
+      color: var(--peach);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      transition: all 0.25s ease;
+    }
+    .back-btn:hover {
+      background: var(--amber);
+      color: #0e0a07;
+      box-shadow: 0 0 20px var(--amber-glow);
+    }
+
+    /* Main Video Stage */
+    .video-viewport-wrapper {
+      position: relative;
+      background: #000;
+      border-radius: 20px;
+      border: 1px solid var(--border-dark);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 157, 77, 0.1);
+      margin-bottom: 24px;
+    }
+
+    .video-viewport {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #050403;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    video#player {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-hud-overlay {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .hud-badge {
+      background: rgba(14, 10, 7, 0.85);
+      border: 1px solid var(--border-dark);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--peach);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hud-badge .live-dot {
+      width: 7px;
+      height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22c55e;
+    }
+
+    /* Player Controls Bar */
+    .player-controls-bar {
+      background: rgba(18, 12, 9, 0.95);
+      border-top: 1px solid var(--border-dark);
+      padding: 14px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      justify-content: space-between;
+    }
+
+    .playback-main-btns {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ctrl-btn {
+      background: rgba(255, 157, 77, 0.12);
+      border: 1px solid var(--border-dark);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .ctrl-btn:hover {
+      background: rgba(255, 157, 77, 0.28);
+      border-color: var(--amber);
+      color: var(--peach);
+    }
+    .ctrl-btn.active {
+      background: var(--amber);
+      color: #0e0a07;
+      font-weight: 800;
+      box-shadow: 0 0 16px var(--amber-glow);
+    }
+
+    .time-display {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--peach);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    /* Quick Jump To Seams */
+    .jump-seams-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .jump-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-right: 4px;
+    }
+    .jump-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #ddd;
+      padding: 5px 12px;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .jump-pill:hover {
+      background: var(--amber);
+      color: #0e0a07;
+      border-color: var(--amber);
+      transform: translateY(-1px);
+    }
+
+    /* Candidate Cards Grid */
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin: 32px 0 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+    .section-title span.badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(255, 157, 77, 0.15);
+      color: var(--amber);
+      padding: 4px 10px;
+      border-radius: 12px;
+      border: 1px solid var(--border-dark);
+    }
+
+    .candidate-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .cand-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 16px;
+      padding: 20px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .cand-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 157, 77, 0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 157, 77, 0.15);
+    }
+    .cand-card.selected {
+      border-color: var(--amber);
+      background: rgba(36, 22, 14, 0.98);
+      box-shadow: 0 0 0 2px var(--amber), 0 12px 36px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 157, 77, 0.25);
+    }
+
+    .cand-badge {
+      align-self: flex-start;
+      padding: 4px 10px;
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .cand-badge.rec {
+      background: rgba(255, 157, 77, 0.2);
+      color: var(--amber);
+      border: 1px solid var(--amber);
+    }
+    .cand-badge.flow {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+    .cand-badge.direct {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.4);
+    }
+    .cand-badge.base {
+      background: rgba(156, 163, 175, 0.15);
+      color: #9ca3af;
+      border: 1px solid rgba(156, 163, 175, 0.3);
+    }
+
+    .cand-header h3 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .cand-dur {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--peach);
+      margin-bottom: 10px;
+    }
+    .cand-desc {
+      font-size: 12px;
+      color: #bbb;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .cand-specs {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 12px;
+    }
+    .cand-specs li {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cand-specs li .icon {
+      color: var(--amber);
+      font-size: 13px;
+    }
+
+    .select-btn {
+      width: 100%;
+      background: rgba(255, 157, 77, 0.1);
+      border: 1px solid var(--border-dark);
+      color: #fff;
+      padding: 10px;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cand-card.selected .select-btn {
+      background: var(--amber);
+      color: #0e0a07;
+      border-color: var(--amber);
+      font-weight: 800;
+    }
+
+    /* Seams Inspection Section */
+    .seams-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+    .seam-item {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .seam-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .seam-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .seam-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--peach);
+    }
+    .seam-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    .seam-strip-img {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: block;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+    }
+
+    /* Action bar */
+    .approve-banner {
+      background: linear-gradient(135deg, rgba(35, 20, 13, 0.95), rgba(20, 13, 9, 0.95));
+      border: 1px solid var(--amber);
+      border-radius: 18px;
+      padding: 24px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 157, 77, 0.2);
+    }
+    .approve-text h2 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .approve-text p {
+      font-size: 13px;
+      color: var(--peach);
+    }
+    .approve-btn {
+      background: var(--amber);
+      color: #0e0a07;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 20px rgba(255, 157, 77, 0.4);
+      transition: all 0.25s;
+    }
+    .approve-btn:hover {
+      background: #ffb06e;
+      transform: scale(1.03);
+      box-shadow: 0 6px 30px rgba(255, 157, 77, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="studio-header">
+      <div class="brand-title">
+        <div class="brand-dot"></div>
+        <div class="brand-text">
+          <h1>Video Continuity Review Studio</h1>
+          <p>Mayank Singh Sadudia • Portfolio Presenter</p>
+        </div>
+      </div>
+      <a href="index.html" class="back-btn">
+        <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+        Back to Portfolio
+      </a>
+    </header>
+
+    <!-- Video Stage -->
+    <div class="video-viewport-wrapper">
+      <div class="video-viewport">
+        <div class="video-hud-overlay">
+          <div class="hud-badge">
+            <span class="live-dot"></span>
+            <span id="hud-name">Candidate 1: 32s Cinematic Take</span>
+          </div>
+          <div class="hud-badge" id="hud-time">00:00.00 / 00:31.25</div>
+        </div>
+        <video id="player" playsinline loop autoplay controls>
+          <source id="video-src" src="assets/mayank_candidate_1_cinematic_32s.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+
+      <!-- Controls & Seam Jumps -->
+      <div class="player-controls-bar">
+        <div class="playback-main-btns">
+          <button class="ctrl-btn" id="btn-toggle-sound" onclick="toggleMute()">
+            <span class="material-symbols-outlined" style="font-size:16px;" id="icon-sound">volume_up</span>
+            <span id="label-sound">Sound On</span>
+          </button>
+          <button class="ctrl-btn" id="btn-speed" onclick="toggleSpeed()">
+            <span class="material-symbols-outlined" style="font-size:16px;">speed</span>
+            <span id="label-speed">1.0x Speed</span>
+          </button>
+        </div>
+
+        <!-- Quick Seam Jumps -->
+        <div class="jump-seams-group">
+          <span class="jump-title">Jump to Cut:</span>
+          <button class="jump-pill" onclick="seekTo(0)">0.0s Intro</button>
+          <button class="jump-pill" onclick="seekTo(7.8)">8.0s Cut 1</button>
+          <button class="jump-pill" onclick="seekTo(11.8)">12.0s Cut 2</button>
+          <button class="jump-pill" onclick="seekTo(19.8)">20.0s Cut 3</button>
+          <button class="jump-pill" onclick="seekTo(23.8)">24.0s Cut 4</button>
+          <button class="jump-pill" onclick="seekToEnd()">Loop Seam</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Candidate Selection Grid -->
+    <h2 class="section-title">
+      Choose a Continuity Candidate
+      <span class="badge">Select to Play</span>
+    </h2>
+
+    <div class="candidate-grid">
+
+      <!-- Candidate 1 -->
+      <div class="cand-card selected" id="card-cand1" onclick="switchCandidate('cand1')">
+        <div>
+          <span class="cand-badge rec">★ Recommended Master</span>
+          <div class="cand-header">
+            <h3>Candidate 1: Cinematic Studio Take</h3>
+            <div class="cand-dur">Duration: 31.25s • 24 FPS • Full 5 Takes</div>
+          </div>
+          <p class="cand-desc">
+            All 3 of your original speaking clips + both walking bridge takes at <strong>100% natural 1.0x native speed</strong> (no fast-forward). Watermark removed from floor, studio room tone continuous across cuts, seamless cosine loop.
+          </p>
+          <ul class="cand-specs">
+            <li><span class="icon">✓</span> Zero Flowframes / optical flow warping</li>
+            <li><span class="icon">✓</span> Natural 1.0x motion speed throughout</li>
+            <li><span class="icon">✓</span> Continuous speech + ambient audio bed</li>
+            <li><span class="icon">✓</span> AI floor sparkle cleanly inpainted</li>
+            <li><span class="icon">✓</span> Seamless cosine loop back to 0.0s</li>
+          </ul>
+        </div>
+        <button class="select-btn">Currently Playing</button>
+      </div>
+
+      <!-- Candidate 2 -->
+      <div class="cand-card" id="card-cand2" onclick="switchCandidate('cand2')">
+        <div>
+          <span class="cand-badge flow">0 Scene Cuts</span>
+          <div class="cand-header">
+            <h3>Candidate 2: Flow Continuation V2</h3>
+            <div class="cand-dur">Duration: 30.00s • 30 FPS • Single Sequence</div>
+          </div>
+          <p class="cand-desc">
+            Created by sequentially generating from the exact last frames. The avatar remains standing in the room talking without any camera angle cut across the entire 30 seconds.
+          </p>
+          <ul class="cand-specs">
+            <li><span class="icon">✓</span> Max pixel difference across 30s is only 3.06</li>
+            <li><span class="icon">✓</span> No spatial camera angle jumps</li>
+            <li><span class="icon">✓</span> Complete speech script delivered</li>
+            <li><span class="icon">✓</span> AI floor sparkle cleanly inpainted</li>
+            <li><span class="icon">✓</span> Seamless loop transition</li>
+          </ul>
+        </div>
+        <button class="select-btn">Play This Candidate</button>
+      </div>
+
+      <!-- Candidate 3 -->
+      <div class="cand-card" id="card-cand3" onclick="switchCandidate('cand3')">
+        <div>
+          <span class="cand-badge direct">Direct 3 Takes</span>
+          <div class="cand-header">
+            <h3>Candidate 3: Direct Smooth Match-Cut</h3>
+            <div class="cand-dur">Duration: 23.33s • 24 FPS • 3 Original Clips</div>
+          </div>
+          <p class="cand-desc">
+            Directly blends your 3 original takes together using smooth dissolves, skipping the silent bridge pauses completely for an energetic, concise introduction.
+          </p>
+          <ul class="cand-specs">
+            <li><span class="icon">✓</span> Fast-paced (no silent bridge pauses)</li>
+            <li><span class="icon">✓</span> Smooth 8-frame cosine crossfades</li>
+            <li><span class="icon">✓</span> Cleaned floor watermark</li>
+            <li><span class="icon">✓</span> Normalized loudnorm audio</li>
+          </ul>
+        </div>
+        <button class="select-btn">Play This Candidate</button>
+      </div>
+
+      <!-- Baseline Old -->
+      <div class="cand-card" id="card-baseline" onclick="switchCandidate('baseline')">
+        <div>
+          <span class="cand-badge base">Baseline (Previous)</span>
+          <div class="cand-header">
+            <h3>Baseline: Clean 30s Jump Version</h3>
+            <div class="cand-dur">Duration: 30.00s • 24 FPS • For Comparison</div>
+          </div>
+          <p class="cand-desc">
+            The previous version with hard cuts, 1.33x bridge speedups, and silent bridge gaps. Play this to see the before-and-after difference.
+          </p>
+          <ul class="cand-specs">
+            <li><span class="icon">•</span> Hard cuts at 8s, 11s, 19s, 22s</li>
+            <li><span class="icon">•</span> Bridge clips running at 133% speed</li>
+            <li><span class="icon">•</span> Digital silence during walking gaps</li>
+          </ul>
+        </div>
+        <button class="select-btn">Play Previous Version</button>
+      </div>
+
+    </div>
+
+    <!-- Visual Seam Frame Inspector -->
+    <h2 class="section-title">
+      Visual Seam Frame Breakdown
+      <span class="badge">Candidate 1 Seam Continuity</span>
+    </h2>
+
+    <div class="seams-panel">
+      <div class="seam-item">
+        <div class="seam-header">
+          <div class="seam-title">Seam 1 (8.0s): Center Speech → Walking in Room</div>
+          <div class="seam-meta">5 Consecutive Seam Frames (F189 to F195) • Cosine Micro-Dissolve</div>
+        </div>
+        <img src="assets/review/seam_8s_strip.jpg" alt="Seam 1 Frames" class="seam-strip-img">
+      </div>
+
+      <div class="seam-item">
+        <div class="seam-header">
+          <div class="seam-title">Seam 2 (12.0s): Walking in Room → Explaining Projects & GitHub</div>
+          <div class="seam-meta">5 Consecutive Seam Frames (F285 to F291) • Cosine Micro-Dissolve</div>
+        </div>
+        <img src="assets/review/seam_12s_strip.jpg" alt="Seam 2 Frames" class="seam-strip-img">
+      </div>
+
+      <div class="seam-item">
+        <div class="seam-header">
+          <div class="seam-title">Seam 3 (20.0s): Explaining Projects → Walking to Desk</div>
+          <div class="seam-meta">5 Consecutive Seam Frames (F477 to F483) • Cosine Micro-Dissolve</div>
+        </div>
+        <img src="assets/review/seam_20s_strip.jpg" alt="Seam 3 Frames" class="seam-strip-img">
+      </div>
+
+      <div class="seam-item">
+        <div class="seam-header">
+          <div class="seam-title">Seam 4 (24.0s): Walking to Desk → Workstation Conclusion</div>
+          <div class="seam-meta">5 Consecutive Seam Frames (F573 to F579) • Cosine Micro-Dissolve</div>
+        </div>
+        <img src="assets/review/seam_24s_strip.jpg" alt="Seam 4 Frames" class="seam-strip-img">
+      </div>
+
+      <div class="seam-item">
+        <div class="seam-header">
+          <div class="seam-title">Loop Seam (31.25s → 0.0s): End to Start Seamless Loop</div>
+          <div class="seam-meta">Soft Cosine Dissolve • Zero Black Dip / Blink</div>
+        </div>
+        <img src="assets/review/seam_loop_strip.jpg" alt="Loop Seam Frames" class="seam-strip-img">
+      </div>
+    </div>
+
+    <!-- Approval Banner -->
+    <div class="approve-banner">
+      <div class="approve-text">
+        <h2 id="approve-title">Candidate 1 is currently active for review</h2>
+        <p id="approve-sub">Review the playback above. When satisfied, tell me in the chat or click below to update the portfolio.</p>
+      </div>
+      <button class="approve-btn" onclick="confirmApproval()">
+        <span class="material-symbols-outlined">check_circle</span>
+        <span id="btn-approve-label">Approve Candidate 1</span>
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    const candidates = {
+      cand1: {
+        name: "Candidate 1: 32s Cinematic Studio Take",
+        src: "assets/mayank_candidate_1_cinematic_32s.mp4",
+        dur: "00:31.25"
+      },
+      cand2: {
+        name: "Candidate 2: Flow Continuation V2 (30s)",
+        src: "assets/mayank_candidate_2_continuation_v2_30s.mp4",
+        dur: "00:30.00"
+      },
+      cand3: {
+        name: "Candidate 3: Direct Match-Cut (24s)",
+        src: "assets/mayank_candidate_3_direct_24s.mp4",
+        dur: "00:23.33"
+      },
+      baseline: {
+        name: "Baseline: Previous Clean 30s (Hard Cuts)",
+        src: "assets/mayank_home_intro_clean_30s.mp4",
+        dur: "00:30.00"
+      }
+    };
+
+    let currentCand = 'cand1';
+    const player = document.getElementById('player');
+    const hudName = document.getElementById('hud-name');
+    const hudTime = document.getElementById('hud-time');
+    const btnApproveLabel = document.getElementById('btn-approve-label');
+    const approveTitle = document.getElementById('approve-title');
+
+    function switchCandidate(key) {
+      if (!candidates[key]) return;
+      currentCand = key;
+      const data = candidates[key];
+
+      // Update active card styles
+      document.querySelectorAll('.cand-card').forEach(c => {
+        c.classList.remove('selected');
+        c.querySelector('.select-btn').textContent = 'Play This Candidate';
+      });
+      const activeCard = document.getElementById('card-' + key);
+      if (activeCard) {
+        activeCard.classList.add('selected');
+        activeCard.querySelector('.select-btn').textContent = 'Currently Playing';
+      }
+
+      // Update player
+      const wasPaused = player.paused;
+      player.src = data.src;
+      player.load();
+      if (!wasPaused) player.play();
+
+      hudName.textContent = data.name;
+      btnApproveLabel.textContent = `Approve ${data.name.split(':')[0]}`;
+      approveTitle.textContent = `${data.name} is currently selected`;
+    }
+
+    // Time HUD update
+    player.addEventListener('timeupdate', () => {
+      const cur = formatTime(player.currentTime);
+      const dur = formatTime(player.duration || 0);
+      hudTime.textContent = `${cur} / ${dur}`;
+    });
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      const ms = Math.floor((sec % 1) * 100);
+      return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${String(ms).padStart(2,'0')}`;
+    }
+
+    function toggleMute() {
+      player.muted = !player.muted;
+      const icon = document.getElementById('icon-sound');
+      const label = document.getElementById('label-sound');
+      if (player.muted) {
+        icon.textContent = 'volume_off';
+        label.textContent = 'Sound Muted';
+      } else {
+        icon.textContent = 'volume_up';
+        label.textContent = 'Sound On';
+      }
+    }
+
+    function toggleSpeed() {
+      const label = document.getElementById('label-speed');
+      if (player.playbackRate === 1.0) {
+        player.playbackRate = 0.5;
+        label.textContent = '0.5x Slow-Mo';
+      } else {
+        player.playbackRate = 1.0;
+        label.textContent = '1.0x Speed';
+      }
+    }
+
+    function seekTo(sec) {
+      player.currentTime = sec;
+      player.play();
+    }
+
+    function seekToEnd() {
+      if (player.duration) {
+        player.currentTime = Math.max(0, player.duration - 2.0);
+        player.play();
+      }
+    }
+
+    function confirmApproval() {
+      const cand = candidates[currentCand];
+      alert(`Selected: ${cand.name}!\n\nJust tell me in the chat "Update with ${cand.name.split(':')[0]}" and I will immediately deploy it to your live portfolio!`);
+    }
+  </script>
+</body>
+</html>
