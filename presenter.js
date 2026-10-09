@@ -2,13 +2,16 @@
   "use strict";
   const config = window.MAYANK_PRESENTER;
   const frame = document.getElementById("home-presenter");
-  // Activate only after the actual character clip has been delivered.
   if (!config?.videoSrc || !frame) return;
+
   const hero = frame.closest("#hero");
   const sceneVideo = Boolean(config.sceneVideo && hero);
   const controls = frame.querySelector(".presenter-controls");
   const play = document.getElementById("presenter-play");
   const sound = document.getElementById("presenter-sound");
+  const subtitleBox = document.getElementById("presenter-subtitles");
+  const ccBtn = document.getElementById("presenter-cc");
+
   const video = document.createElement("video");
   video.crossOrigin = "anonymous";
   video.src = config.videoSrc;
@@ -17,132 +20,181 @@
   video.playsInline = true;
   video.muted = true;
   video.setAttribute("aria-label", "Mayank introducing his portfolio");
-  const canvas = document.createElement("canvas");
-  canvas.className = "presenter-canvas";
-  canvas.setAttribute("role", "img");
-  canvas.setAttribute("aria-label", "Mayank's animated 3D introduction");
-  frame.prepend(canvas);
+  video.className = sceneVideo ? "presenter-scene-video" : "presenter-video";
   frame.prepend(video);
-  let renderer = null;
-  let drawing = null;
-  let visible = false;
+
   let started = false;
   let userPaused = false;
+  let ccEnabled = true;
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
-  function createRenderer() {
-    const gl = canvas.getContext("webgl", { alpha:true, premultipliedAlpha:false });
-    if (!gl) return null;
-    const compile = (type, source) => {
-      const shader = gl.createShader(type);
-      gl.shaderSource(shader, source);
-      gl.compileShader(shader);
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) throw new Error("Shader initialization failed");
-      return shader;
-    };
-    const program = gl.createProgram();
-    gl.attachShader(program, compile(gl.VERTEX_SHADER, "attribute vec2 pos; varying vec2 uv; void main(){uv=vec2((pos.x+1.0)*0.5,(1.0-pos.y)*0.5);gl_Position=vec4(pos,0.0,1.0);}"));
-    gl.attachShader(program, compile(gl.FRAGMENT_SHADER, "precision mediump float; varying vec2 uv; uniform sampler2D clip; void main(){vec3 c=texture2D(clip,uv).rgb;float excess=c.g-max(c.r,c.b);float a=1.0-smoothstep(0.08,0.28,excess);a*=smoothstep(0.15,0.42,length(c-vec3(0.0,1.0,0.0)));c.g=mix(min(c.g,max(c.r,c.b)+0.02),c.g,a);gl_FragColor=vec4(c,a);}"));
-    gl.linkProgram(program);
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error("Renderer initialization failed");
-    gl.useProgram(program);
-    const buffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
-    const position = gl.getAttribLocation(program, "pos");
-    gl.enableVertexAttribArray(position);
-    gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
-    const texture = gl.createTexture();
-    gl.bindTexture(gl.TEXTURE_2D, texture);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-    gl.uniform1i(gl.getUniformLocation(program, "clip"), 0);
-    return { render(source) {
-      if (canvas.width !== source.videoWidth || canvas.height !== source.videoHeight) {
-        canvas.width = source.videoWidth;
-        canvas.height = source.videoHeight;
-        gl.viewport(0, 0, canvas.width, canvas.height);
-      }
-      gl.bindTexture(gl.TEXTURE_2D, texture);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    }};
+
+  // Timed Speech Segments for live closed captions
+  const speechSegments = [
+    { start: 0.0, end: 1.2, text: "👋 [Mayank walks in]" },
+    { start: 1.2, end: 6.0, text: "Hi, I'm Mayank Singh Sadudia, a data analyst and graphic designer based in Indore." },
+    { start: 6.0, end: 7.6, text: "I use Python, SQL, Excel, and Power BI to turn data into clear insights." },
+    { start: 7.6, end: 14.5, text: "I also create brand identities, packaging, and engaging visuals. My portfolio brings analytical thinking and creative design together." },
+    { start: 14.5, end: 21.0, text: "Explore my projects, visit my GitHub, and get in touch. I'd love to collaborate." },
+    { start: 21.0, end: 25.0, text: "✨ [Looking forward to collaborating with you!]" }
+  ];
+
+  function updateSubtitles() {
+    if (!subtitleBox) return;
+    if (!ccEnabled || video.paused || video.ended) {
+      if (!ccEnabled) subtitleBox.style.display = "none";
+      return;
+    }
+    const t = video.currentTime;
+    const match = speechSegments.find(s => t >= s.start && t < s.end);
+    if (match) {
+      subtitleBox.textContent = match.text;
+      subtitleBox.style.display = "block";
+    } else {
+      subtitleBox.style.display = "none";
+    }
   }
 
-  function stopDrawing() {
-    if (drawing === null) return;
-    if (video.cancelVideoFrameCallback) video.cancelVideoFrameCallback(drawing);
-    else cancelAnimationFrame(drawing);
-    drawing = null;
-  }
-  function draw() {
-    if (video.paused || video.ended || !renderer) return;
-    try { renderer.render(video); }
-    catch { unavailable(); return; }
-    drawing = video.requestVideoFrameCallback ? video.requestVideoFrameCallback(draw) : requestAnimationFrame(draw);
-  }
   function updatePlay() {
-    play.textContent = video.ended ? "Replay introduction" : video.paused ? (started ? "Resume introduction" : "Play introduction") : "Pause introduction";
-    play.setAttribute("aria-label", play.textContent);
+    if (!play) return;
+    const text = video.ended ? "Replay introduction" : video.paused ? (started ? "Resume introduction" : "Play introduction") : "Pause introduction";
+    play.textContent = text;
+    play.setAttribute("aria-label", text);
+    play.classList.toggle("is-playing", !video.paused && !video.ended);
   }
+
+  function updateSound() {
+    if (!sound) return;
+    sound.textContent = video.muted ? "Sound on" : "Mute sound";
+    sound.setAttribute("aria-label", sound.textContent);
+    sound.classList.toggle("sound-active", !video.muted);
+  }
+
   function unavailable() {
     video.pause();
-    stopDrawing();
     frame.classList.remove("presenter-active");
     hero?.classList.remove("scene-video-active");
-    controls.hidden = true;
+    if (controls) controls.hidden = true;
   }
+
   async function start() {
     if (video.ended) video.currentTime = 0;
-    try { await video.play(); }
-    catch { updatePlay(); }
-  }
-  if (config.chromaKey) {
-    video.hidden = true;
-    try { renderer = createRenderer(); }
-    catch {
-      if (!config.alphaVideoSrc || !video.canPlayType('video/webm; codecs="vp9"')) return;
-      video.hidden = false;
-      video.src = config.alphaVideoSrc;
-      video.className = "presenter-video";
-      canvas.remove();
+    try {
+      await video.play();
+    } catch {
+      updatePlay();
     }
-  } else {
-    canvas.remove();
-    video.className = sceneVideo ? "presenter-scene-video" : "presenter-video";
   }
-  video.addEventListener("loadeddata", () => { controls.hidden = false; });
+
+  video.addEventListener("loadeddata", () => {
+    if (controls) controls.hidden = false;
+  });
+
   video.addEventListener("playing", () => {
     started = true;
     frame.classList.add("presenter-active");
     if (sceneVideo) hero.classList.add("scene-video-active");
     updatePlay();
-    stopDrawing();
-    if (renderer) draw();
+    updateSound();
   });
-  video.addEventListener("pause", () => { stopDrawing(); updatePlay(); });
-  video.addEventListener("ended", () => { stopDrawing(); updatePlay(); });
+
+  video.addEventListener("pause", () => {
+    updatePlay();
+    updateSubtitles();
+  });
+
+  video.addEventListener("ended", () => {
+    updatePlay();
+    if (subtitleBox) subtitleBox.style.display = "none";
+  });
+
+  video.addEventListener("timeupdate", updateSubtitles);
   video.addEventListener("error", unavailable);
-  play.addEventListener("click", () => {
-    if (!video.paused && !video.ended) { userPaused = true; video.pause(); }
-    else { userPaused = false; start(); }
-  });
-  sound.addEventListener("click", () => {
-    video.muted = !video.muted;
-    sound.textContent = video.muted ? "Sound on" : "Mute sound";
-    sound.setAttribute("aria-label", sound.textContent);
-    if (!video.muted) { video.currentTime = 0; userPaused = false; start(); }
-  });
+
+  if (play) {
+    play.addEventListener("click", () => {
+      if (!video.paused && !video.ended) {
+        userPaused = true;
+        video.pause();
+      } else {
+        userPaused = false;
+        start();
+      }
+    });
+  }
+
+  if (sound) {
+    sound.addEventListener("click", () => {
+      video.muted = !video.muted;
+      updateSound();
+      if (!video.muted) {
+        if (video.paused) {
+          userPaused = false;
+          start();
+        }
+      }
+    });
+  }
+
+  if (ccBtn) {
+    ccBtn.addEventListener("click", () => {
+      ccEnabled = !ccEnabled;
+      ccBtn.classList.toggle("active", ccEnabled);
+      if (!ccEnabled && subtitleBox) subtitleBox.style.display = "none";
+      else updateSubtitles();
+    });
+  }
+
+  // Switch video edition seamlessly
+  function switchEdition(editionKey, btnElement) {
+    if (!config.editions || !config.editions[editionKey]) return;
+    const edition = config.editions[editionKey];
+    const wasPlaying = !video.paused && !video.ended;
+    const currentTime = video.currentTime;
+
+    video.src = edition.videoSrc;
+    video.load();
+
+    video.addEventListener("loadedmetadata", function onMeta() {
+      video.removeEventListener("loadedmetadata", onMeta);
+      if (currentTime < video.duration) {
+        video.currentTime = currentTime;
+      }
+      if (wasPlaying || !userPaused) {
+        start();
+      }
+    });
+
+    document.querySelectorAll(".presenter-edition-pill").forEach(p => p.classList.remove("active"));
+    if (btnElement) btnElement.classList.add("active");
+
+    const descElem = document.getElementById("presenter-edition-desc");
+    if (descElem) descElem.textContent = edition.desc;
+  }
+
+  window.switchPresenterEdition = switchEdition;
+
+  window.togglePresenterSound = () => {
+    if (sound) sound.click();
+    else {
+      video.muted = !video.muted;
+      updateSound();
+    }
+  };
+
   const observer = new IntersectionObserver(entries => {
-    visible = entries.some(entry => entry.isIntersecting);
+    const visible = entries.some(entry => entry.isIntersecting);
     if (!visible) video.pause();
     else if (config.autoplay && !reduceMotion.matches && !userPaused && !video.ended && !document.hidden) start();
-  }, {threshold: .35});
+  }, { threshold: .35 });
+
   observer.observe(frame);
+
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) video.pause();
-    else if (visible && config.autoplay && !reduceMotion.matches && !userPaused && !video.ended) start();
+    else if (!userPaused && !video.ended && config.autoplay && !reduceMotion.matches) start();
   });
-  reduceMotion.addEventListener("change", event => { if (event.matches) video.pause(); });
+
+  reduceMotion.addEventListener("change", event => {
+    if (event.matches) video.pause();
+  });
 })();

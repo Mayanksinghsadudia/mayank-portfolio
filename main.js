@@ -1,11 +1,11 @@
-// Portfolio Interactive JavaScript Engine
+// Portfolio Interactive JavaScript Engine & Instagram Portfolio Hub
 
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile Navigation Toggle
   const mobileBtn = document.getElementById('mobile-menu-btn');
   const desktopNav = document.getElementById('desktop-nav');
   
-  if (mobileBtn) {
+  if (mobileBtn && desktopNav) {
     mobileBtn.addEventListener('click', () => {
       desktopNav.classList.toggle('active');
       if (desktopNav.style.display === 'flex') {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Active Section Scroll Tracker
-  const sections = document.querySelectorAll('section.page-section, section.hero-section');
+  const sections = document.querySelectorAll('section.page-section, section.hero-section, section.instagram-portfolio-hub');
   const navLinks = document.querySelectorAll('nav.desktop-nav a');
 
   window.addEventListener('scroll', () => {
@@ -70,6 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Category Filter Function
+  window.filterIgCategory = function(filter) {
+    const targetBtn = document.querySelector(`.filter-btn[data-filter="${filter}"]`);
+    if (targetBtn) targetBtn.click();
+    const projectsSec = document.getElementById('projects');
+    if (projectsSec) projectsSec.scrollIntoView({ behavior: 'smooth' });
+  };
+
   // Category Filter Buttons Click
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -79,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const filter = btn.getAttribute('data-filter');
 
       if (filter !== 'all') {
-        // Automatically show all matching projects when a specific category filter is clicked
         if (viewAllContainer) viewAllContainer.style.display = 'none';
       } else if (!isExpanded) {
         if (viewAllContainer) viewAllContainer.style.display = 'block';
@@ -106,69 +113,176 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Lightbox Modal System
-  const modalBackdrop = document.getElementById('project-modal');
-  const modalImg = document.getElementById('modal-img');
-  const modalTitle = document.getElementById('modal-title');
-  const modalCategory = document.getElementById('modal-category');
-  const modalDesc = document.getElementById('modal-desc');
-  const modalTools = document.getElementById('modal-tools');
-  const modalClose = document.getElementById('modal-close');
+  // =========================================================================
+  // INSTAGRAM PORTFOLIO HUB INTERACTIONS
+  // =========================================================================
 
-  const projectData = {
-    'dobby': {
-      title: 'HP7 Dobby Geometric Polygon Art',
-      category: 'Illustration & Art Study',
-      image: 'assets/dobby_lowpoly.jpg',
-      desc: 'High-contrast low-poly geometric artwork depicting Dobby from Harry Potter (HP7). Built with meticulous polygon mesh placement, dramatic shadows, and high-chroma eye focal points.',
-      tools: ['Photoshop', 'Illustrator', 'CorelDraw', 'Polygon Mesh']
-    },
-    'swastik': {
-      title: 'Swastik Gifts Visual Identity',
-      category: 'Branding & Logo Design',
-      image: 'assets/swastik_gifts.jpg',
-      desc: 'Minimalist brand identity for Swastik Gifts. Includes monochrome, inverted dark mode, and vibrant purple/orange butterfly gift box concept marks.',
-      tools: ['Illustrator', 'Canva', 'Brand Guidelines']
-    },
-    'dragon': {
-      title: 'Dragon Energy Beverage Packaging',
-      category: 'Package Design & 3D Render',
-      image: 'assets/dragon_energy.jpg',
-      desc: 'High-impact packaging design for 500 ML Ultra Can & 250 ML Ultra Can. Rendered on realistic rustic wooden texture backdrop with frozen ice accents.',
-      tools: ['Photoshop', '3D Mockup', 'CorelDraw', 'Illustrator']
-    },
-    'corporate': {
-      title: 'Jhon Walker Corporate Identity Suite',
-      category: 'Corporate Branding & Stationery',
-      image: 'assets/corporate_identity.jpg',
-      desc: 'Complete high-end corporate identity package featuring geometric M logo motif across leather notebook, letterhead, business cards, binder clips, and writing instruments on maroon paper texture.',
-      tools: ['Illustrator', 'Photoshop', 'InDesign', 'Stationery Suite']
-    },
-    'samridhi': {
-      title: 'Samridhi Haute Couture Poster',
-      category: 'Posters & Event Banner',
-      image: 'assets/samridhi_couture.jpg',
-      desc: 'Sophisticated event banner and promotional poster for Samridhi Haute Couture Exhibition. Combines luxury typography with high-fashion model imagery.',
-      tools: ['Photoshop', 'Canva', 'Typography Art']
+  // Instagram Tab Switcher
+  const igTabs = document.querySelectorAll('.ig-tab');
+  const igReelsPanel = document.getElementById('ig-reels-panel');
+  const igReelVideo = document.getElementById('ig-reel-video');
+
+  window.switchIgTab = function(tabKey) {
+    igTabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-tab') === tabKey));
+
+    if (tabKey === 'reels') {
+      if (igReelsPanel) igReelsPanel.classList.add('active');
+      if (igReelVideo) {
+        igReelVideo.play().catch(() => {});
+      }
+      igReelsPanel?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      if (igReelsPanel) igReelsPanel.classList.remove('active');
+      if (igReelVideo) igReelVideo.pause();
+
+      if (tabKey === 'posts') {
+        const targetBtn = document.querySelector('.filter-btn[data-filter="all"]');
+        if (targetBtn) targetBtn.click();
+        document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+      } else if (tabKey === 'insights') {
+        const targetBtn = document.querySelector('.filter-btn[data-filter="analytics"]');
+        if (targetBtn) targetBtn.click();
+        document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+      } else if (tabKey === 'about') {
+        document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
+  // Avatar Story Ring Click -> Trigger 3D Reel
+  const avatarStoryTrigger = document.getElementById('ig-avatar-story-trigger');
+  if (avatarStoryTrigger) {
+    avatarStoryTrigger.addEventListener('click', () => {
+      window.switchIgTab('reels');
+      showToast('Opening 3D Presenter Story Reel ✨');
+    });
+  }
+
+  // Instagram Follow Button Toggle
+  const followBtn = document.getElementById('ig-follow-btn');
+  const followersCount = document.getElementById('ig-followers-count');
+  let isFollowing = false;
+  let followerNum = 1420;
+
+  if (followBtn) {
+    followBtn.addEventListener('click', () => {
+      isFollowing = !isFollowing;
+      if (isFollowing) {
+        followerNum += 1;
+        followBtn.textContent = 'Following ✓';
+        followBtn.classList.add('is-following');
+        showToast('You are now following @mayanksinghsadudia');
+      } else {
+        followerNum -= 1;
+        followBtn.textContent = 'Follow';
+        followBtn.classList.remove('is-following');
+        showToast('Unfollowed @mayanksinghsadudia');
+      }
+      if (followersCount) {
+        followersCount.textContent = (followerNum / 1000).toFixed(1) + 'k';
+      }
+    });
+  }
+
+  // Instagram Profile Share Button
+  const shareBtn = document.getElementById('ig-share-btn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast('Profile link copied to clipboard!');
+      });
+    });
+  }
+
+  // Reel Video Edition Switcher
+  window.switchReelEdition = function(src, btn) {
+    if (!igReelVideo) return;
+    const wasPlaying = !igReelVideo.paused;
+    igReelVideo.src = src;
+    igReelVideo.load();
+    igReelVideo.play().catch(() => {});
+    document.querySelectorAll('.ig-edition-option').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+  };
+
+  // Reel Sound Toggle
+  const reelSoundBtn = document.getElementById('ig-reel-sound-btn');
+  const reelSoundIcon = document.getElementById('ig-reel-sound-icon');
+  if (reelSoundBtn && igReelVideo) {
+    reelSoundBtn.addEventListener('click', () => {
+      igReelVideo.muted = !igReelVideo.muted;
+      if (reelSoundIcon) {
+        reelSoundIcon.textContent = igReelVideo.muted ? 'volume_off' : 'volume_up';
+      }
+      showToast(igReelVideo.muted ? 'Reel audio muted' : 'Reel audio unmuted 🔊');
+    });
+  }
+
+  // Reel Like Button
+  const reelLikeBtn = document.getElementById('ig-reel-like-btn');
+  const reelLikeCount = document.getElementById('ig-reel-like-count');
+  let reelLiked = false;
+  let reelLikes = 582;
+
+  if (reelLikeBtn) {
+    reelLikeBtn.addEventListener('click', () => {
+      reelLiked = !reelLiked;
+      reelLikes += reelLiked ? 1 : -1;
+      reelLikeBtn.classList.toggle('is-liked', reelLiked);
+      if (reelLikeCount) reelLikeCount.textContent = reelLikes;
+      if (reelLiked) showToast('Liked Mayank’s 3D Presenter Reel! ❤️');
+    });
+  }
+
+  // Reel Share Button
+  const reelShareBtn = document.getElementById('ig-reel-share-btn');
+  if (reelShareBtn) {
+    reelShareBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(window.location.origin + window.location.pathname + '#hero').then(() => {
+        showToast('3D Reel link copied to clipboard!');
+      });
+    });
+  }
+
+  // =========================================================================
+  // INSTAGRAM POST LIGHTBOX MODAL SYSTEM
+  // =========================================================================
+  const modalBackdrop = document.getElementById('ig-project-modal');
+  const modalImg = document.getElementById('ig-modal-img');
+  const modalMediaContainer = document.getElementById('ig-modal-media-container');
+  const modalTitle = document.getElementById('ig-modal-title');
+  const modalCategory = document.getElementById('ig-modal-category');
+  const modalDesc = document.getElementById('ig-modal-desc');
+  const modalTags = document.getElementById('ig-modal-tags');
+  const modalLikesCount = document.getElementById('ig-modal-likes-count');
+  const modalLikeBtn = document.getElementById('ig-modal-like-btn');
+  const modalBookmarkBtn = document.getElementById('ig-modal-bookmark-btn');
+  const modalShareBtn = document.getElementById('ig-modal-share-btn');
+  const modalClose = document.getElementById('ig-modal-close');
+  const commentInput = document.getElementById('ig-comment-input');
+  const commentPostBtn = document.getElementById('ig-comment-post-btn');
+  const commentsStream = document.getElementById('ig-comments-stream');
+  const modalProjectLinks = document.getElementById('ig-modal-project-links');
+
+  let currentPostLikes = 418;
+  let currentPostLiked = false;
+  let currentPostBookmarked = false;
+
   projectCards.forEach(card => {
     card.addEventListener('click', (e) => {
-      // Don't trigger modal if user clicks directly on video controls or PDF download links
-      if (e.target.closest('a, button, video')) return;
+      // Don't trigger modal if user clicks directly on external links
+      if (e.target.closest('a')) return;
 
       const media = card.querySelector('.project-img, video');
       const title = card.querySelector('h3');
       const category = card.querySelector('.text-accent');
       const desc = card.querySelector('p');
+      const metaLinks = card.querySelectorAll('.project-meta a');
       const toolsText = card.querySelector('.project-meta span');
 
       if (media && title) {
-        const modalMediaWrapper = modalImg.parentElement;
-        
-        // Remove any previous modal video
-        const existingVideo = modalMediaWrapper.querySelector('video');
+        // Clear previous video if any
+        const existingVideo = modalMediaContainer.querySelector('video');
         if (existingVideo) existingVideo.remove();
 
         if (media.tagName === 'VIDEO') {
@@ -181,29 +295,61 @@ document.addEventListener('DOMContentLoaded', () => {
           videoElem.muted = true;
           videoElem.playsInline = true;
           videoElem.style.width = '100%';
-          videoElem.style.maxHeight = '70vh';
+          videoElem.style.maxHeight = '80vh';
           videoElem.style.objectFit = 'contain';
-          videoElem.style.borderRadius = '8px';
-          modalMediaWrapper.appendChild(videoElem);
+          modalMediaContainer.appendChild(videoElem);
         } else {
           modalImg.style.display = 'block';
           modalImg.src = media.src;
         }
 
         modalTitle.textContent = title.textContent;
-        modalCategory.textContent = category ? category.textContent : 'GRAPHIC DESIGN PROJECT';
+        modalCategory.textContent = category ? category.textContent : 'PORTFOLIO SHOWCASE';
         modalDesc.textContent = desc ? desc.textContent : '';
 
-        modalTools.innerHTML = '';
-        if (toolsText) {
-          const tools = toolsText.textContent.split('&').map(t => t.trim());
-          tools.forEach(tool => {
-            const span = document.createElement('span');
-            span.className = 'tool-tag highlight';
-            span.textContent = tool;
-            modalTools.appendChild(span);
+        // Generate Hashtags
+        modalTags.innerHTML = '';
+        const catName = category ? category.textContent.toLowerCase() : '';
+        const tags = ['#MayankSingh', '#Portfolio2026'];
+        if (catName.includes('nlp') || catName.includes('sentiment') || catName.includes('analytics')) {
+          tags.push('#DataAnalyst', '#Python', '#PowerBI', '#SQL', '#Streamlit', '#NLP');
+        } else if (catName.includes('brand') || catName.includes('logo')) {
+          tags.push('#GraphicDesign', '#BrandIdentity', '#LogoDesign', '#AdobeIllustrator');
+        } else if (catName.includes('package') || catName.includes('3d')) {
+          tags.push('#PackagingDesign', '#3DRender', '#Mockup', '#Photoshop');
+        } else {
+          tags.push('#CreativeDesign', '#VisualStorytelling', '#IndoreDesigner');
+        }
+
+        tags.forEach(t => {
+          const badge = document.createElement('span');
+          badge.className = 'ig-tag-badge';
+          badge.textContent = t;
+          modalTags.appendChild(badge);
+        });
+
+        // Setup Project Links
+        modalProjectLinks.innerHTML = '';
+        if (metaLinks.length > 0) {
+          metaLinks.forEach(link => {
+            const a = document.createElement('a');
+            a.href = link.href;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.className = 'ig-btn ig-btn-secondary';
+            a.style.fontSize = '12px';
+            a.innerHTML = link.innerHTML;
+            modalProjectLinks.appendChild(a);
           });
         }
+
+        // Randomize initial likes around 380 - 450
+        currentPostLikes = Math.floor(Math.random() * 80) + 380;
+        currentPostLiked = false;
+        currentPostBookmarked = false;
+        modalLikeBtn.classList.remove('is-liked');
+        modalBookmarkBtn.classList.remove('is-liked');
+        modalLikesCount.textContent = `Liked by ${currentPostLikes} creators and recruiters`;
 
         modalBackdrop.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -211,18 +357,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  if (modalClose) {
-    modalClose.addEventListener('click', closeModal);
-  }
-
-  if (modalBackdrop) {
-    modalBackdrop.addEventListener('click', (e) => {
-      if (e.target === modalBackdrop) closeModal();
-    });
-  }
-
+  // Modal Close
   function closeModal() {
-    const modalVideo = modalBackdrop.querySelector('video');
+    const modalVideo = modalMediaContainer.querySelector('video');
     if (modalVideo) {
       modalVideo.pause();
       modalVideo.remove();
@@ -231,16 +368,83 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'auto';
   }
 
-  // Copy to Clipboard Utility
-  window.copyText = function(text, label) {
-    navigator.clipboard.writeText(text).then(() => {
-      showToast(`${label} copied to clipboard!`);
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) closeModal();
     });
-  };
+  }
 
-  // Toast Notification System
+  // Modal Like Heart
+  if (modalLikeBtn) {
+    modalLikeBtn.addEventListener('click', () => {
+      currentPostLiked = !currentPostLiked;
+      currentPostLikes += currentPostLiked ? 1 : -1;
+      modalLikeBtn.classList.toggle('is-liked', currentPostLiked);
+      modalLikesCount.textContent = `Liked by ${currentPostLikes} creators and recruiters`;
+      if (currentPostLiked) showToast('Liked project post! ❤️');
+    });
+  }
+
+  // Modal Bookmark
+  if (modalBookmarkBtn) {
+    modalBookmarkBtn.addEventListener('click', () => {
+      currentPostBookmarked = !currentPostBookmarked;
+      modalBookmarkBtn.classList.toggle('is-liked', currentPostBookmarked);
+      showToast(currentPostBookmarked ? 'Saved to your collection 🔖' : 'Removed from collection');
+    });
+  }
+
+  // Modal Share
+  if (modalShareBtn) {
+    modalShareBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast('Post link copied to clipboard! 📋');
+      });
+    });
+  }
+
+  // Modal Comment Focus
+  const modalCommentFocusBtn = document.getElementById('ig-modal-comment-focus-btn');
+  if (modalCommentFocusBtn && commentInput) {
+    modalCommentFocusBtn.addEventListener('click', () => {
+      commentInput.focus();
+    });
+  }
+
+  // Add Comment Functionality
+  function postComment() {
+    if (!commentInput || !commentInput.value.trim()) return;
+    const text = commentInput.value.trim();
+
+    const item = document.createElement('div');
+    item.className = 'ig-comment-item';
+    item.innerHTML = `
+      <div class="ig-comment-avatar" style="background: #ff6b00; color: #111;">YOU</div>
+      <div class="ig-comment-content">
+        <span class="ig-comment-user">you</span>
+        <span class="ig-comment-text">${text}</span>
+        <div class="ig-comment-meta">Just now • 1 like • Reply</div>
+      </div>
+    `;
+
+    commentsStream.prepend(item);
+    commentInput.value = '';
+    showToast('Your comment was posted! 💬');
+  }
+
+  if (commentPostBtn) commentPostBtn.addEventListener('click', postComment);
+  if (commentInput) {
+    commentInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') postComment();
+    });
+  }
+
+  // =========================================================================
+  // TOAST NOTIFICATION UTILITY
+  // =========================================================================
   function showToast(message) {
-    const toast = document.getElementById('toast-msg');
+    const toast = document.getElementById('ig-toast') || document.getElementById('toast-msg');
     if (toast) {
       toast.textContent = message;
       toast.classList.add('show');
@@ -249,8 +453,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 3500);
     }
   }
+  window.showToast = showToast;
 
-  // Contact Form Submission Handler with Direct FormSubmit Gmail Delivery
+  // Contact Form Submission Handler
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -261,7 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const projectType = document.getElementById('project-type').value;
       const message = document.getElementById('message').value;
 
-      showToast('Sending your inquiry directly to Mayank...');
+      showToast('Sending your message directly to Mayank...');
 
       fetch('https://formsubmit.co/ajax/mayanksadudia@gmail.com', {
         method: 'POST',
@@ -280,18 +485,16 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(response => response.json())
       .then(data => {
-        showToast('Thank you! Your message has been delivered directly to Mayank’s Gmail.');
+        showToast('Thank you! Your inquiry was delivered directly to Mayank.');
         contactForm.reset();
       })
       .catch(() => {
-        // Fallback to mailto trigger
         const subject = `Design Inquiry from ${name} [${projectType.toUpperCase()}]`;
-        const body = `Hi Mayank,\n\nName: ${name}\nEmail: ${email}\nPhone/WhatsApp: ${phone}\nProject Type: ${projectType}\n\nMessage:\n${message}\n\nSent from Portfolio Website`;
+        const body = `Hi Mayank,\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nProject: ${projectType}\n\nMessage:\n${message}`;
         window.location.href = `mailto:mayanksadudia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        showToast('Opening your email client to send message to Mayank.');
+        showToast('Opening email client to reach Mayank.');
         contactForm.reset();
       });
     });
   }
 });
-
