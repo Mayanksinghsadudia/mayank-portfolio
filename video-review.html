@@ -317,6 +317,11 @@
       letter-spacing: 0.08em;
       margin-bottom: 12px;
     }
+    .cand-badge.capcut {
+      background: rgba(255, 80, 0, 0.25);
+      color: #ff6a00;
+      border: 1px solid #ff7711;
+    }
     .cand-badge.rec {
       background: rgba(255, 157, 77, 0.2);
       color: var(--amber);
@@ -399,6 +404,44 @@
       color: #0e0a07;
       border-color: var(--amber);
       font-weight: 800;
+    }
+
+    /* CapCut Project Box */
+    .capcut-package-box {
+      background: rgba(28, 18, 12, 0.88);
+      border: 1px solid rgba(255, 157, 77, 0.35);
+      border-radius: 16px;
+      padding: 22px 26px;
+      margin-bottom: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .capcut-box-info h3 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--peach);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .capcut-box-info p {
+      font-size: 12px;
+      color: #ccc;
+    }
+    .capcut-folder-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--amber);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 4px 10px;
+      border-radius: 8px;
+      margin-top: 6px;
+      display: inline-block;
     }
 
     /* Seams Inspection Section */
@@ -518,12 +561,12 @@
         <div class="video-hud-overlay">
           <div class="hud-badge">
             <span class="live-dot"></span>
-            <span id="hud-name">Candidate 1: 32s Cinematic Take</span>
+            <span id="hud-name">CapCut Kinetic Edition (31s Whip Pan)</span>
           </div>
-          <div class="hud-badge" id="hud-time">00:00.00 / 00:31.25</div>
+          <div class="hud-badge" id="hud-time">00:00.00 / 00:30.67</div>
         </div>
         <video id="player" playsinline loop autoplay controls>
-          <source id="video-src" src="assets/mayank_candidate_1_cinematic_32s.mp4" type="video/mp4">
+          <source id="video-src" src="assets/mayank_candidate_capcut_kinetic_31s.mp4" type="video/mp4">
           Your browser does not support HTML5 video.
         </video>
       </div>
@@ -545,12 +588,21 @@
         <div class="jump-seams-group">
           <span class="jump-title">Jump to Cut:</span>
           <button class="jump-pill" onclick="seekTo(0)">0.0s Intro</button>
-          <button class="jump-pill" onclick="seekTo(7.8)">8.0s Cut 1</button>
-          <button class="jump-pill" onclick="seekTo(11.8)">12.0s Cut 2</button>
-          <button class="jump-pill" onclick="seekTo(19.8)">20.0s Cut 3</button>
-          <button class="jump-pill" onclick="seekTo(23.8)">24.0s Cut 4</button>
+          <button class="jump-pill" onclick="seekTo(7.6)">8.0s Cut 1</button>
+          <button class="jump-pill" onclick="seekTo(11.6)">12.0s Cut 2</button>
+          <button class="jump-pill" onclick="seekTo(19.6)">20.0s Cut 3</button>
+          <button class="jump-pill" onclick="seekTo(23.6)">24.0s Cut 4</button>
           <button class="jump-pill" onclick="seekToEnd()">Loop Seam</button>
         </div>
+      </div>
+    </div>
+
+    <!-- CapCut Ready Package Notice -->
+    <div class="capcut-package-box">
+      <div class="capcut-box-info">
+        <h3><span class="material-symbols-outlined" style="color:var(--amber);">movie_edit</span> CapCut Project Assets Ready</h3>
+        <p>All 5 individual original clips (watermark cleaned, audio normalized) + transition whoosh sound FX are saved for you.</p>
+        <span class="capcut-folder-tag">📁 Saved at: Downloads\Mayank_CapCut_Project_Files</span>
       </div>
     </div>
 
@@ -562,26 +614,48 @@
 
     <div class="candidate-grid">
 
-      <!-- Candidate 1 -->
-      <div class="cand-card selected" id="card-cand1" onclick="switchCandidate('cand1')">
+      <!-- CapCut Kinetic Edition -->
+      <div class="cand-card selected" id="card-capcut" onclick="switchCandidate('capcut')">
         <div>
-          <span class="cand-badge rec">★ Recommended Master</span>
+          <span class="cand-badge capcut">⚡ CapCut Kinetic Edition</span>
           <div class="cand-header">
-            <h3>Candidate 1: Cinematic Studio Take</h3>
-            <div class="cand-dur">Duration: 31.25s • 24 FPS • Full 5 Takes</div>
+            <h3>CapCut Kinetic Reel Edition</h3>
+            <div class="cand-dur">Duration: 30.67s • 24 FPS • Whip Pan + Sound Design</div>
           </div>
           <p class="cand-desc">
-            All 3 of your original speaking clips + both walking bridge takes at <strong>100% natural 1.0x native speed</strong> (no fast-forward). Watermark removed from floor, studio room tone continuous across cuts, seamless cosine loop.
+            Uses signature <strong>CapCut dynamic whip pan transitions</strong> (directional camera slide + micro-push + motion blur) matching your movement across the studio, with subtle transition whoosh sound FX.
           </p>
           <ul class="cand-specs">
-            <li><span class="icon">✓</span> Zero Flowframes / optical flow warping</li>
+            <li><span class="icon">✓</span> CapCut kinetic whip pan camera glides</li>
+            <li><span class="icon">✓</span> Soft transition whoosh sound FX</li>
+            <li><span class="icon">✓</span> 100% natural 1.0x native motion speed</li>
+            <li><span class="icon">✓</span> AI floor sparkle cleanly inpainted</li>
+            <li><span class="icon">✓</span> Seamless cosine loop back to 0.0s</li>
+          </ul>
+        </div>
+        <button class="select-btn">Currently Playing</button>
+      </div>
+
+      <!-- Candidate 1 -->
+      <div class="cand-card" id="card-cand1" onclick="switchCandidate('cand1')">
+        <div>
+          <span class="cand-badge rec">★ Cinematic Master</span>
+          <div class="cand-header">
+            <h3>Candidate 1: Cinematic Studio Take</h3>
+            <div class="cand-dur">Duration: 31.25s • 24 FPS • Soft Dissolve</div>
+          </div>
+          <p class="cand-desc">
+            All 3 of your original speaking clips + walking bridge takes at <strong>100% natural 1.0x speed</strong> with smooth 4-frame cosine dissolves at cut points. Continuous ambient room audio throughout.
+          </p>
+          <ul class="cand-specs">
+            <li><span class="icon">✓</span> Soft non-warping cosine dissolves</li>
             <li><span class="icon">✓</span> Natural 1.0x motion speed throughout</li>
             <li><span class="icon">✓</span> Continuous speech + ambient audio bed</li>
             <li><span class="icon">✓</span> AI floor sparkle cleanly inpainted</li>
             <li><span class="icon">✓</span> Seamless cosine loop back to 0.0s</li>
           </ul>
         </div>
-        <button class="select-btn">Currently Playing</button>
+        <button class="select-btn">Play This Candidate</button>
       </div>
 
       <!-- Candidate 2 -->
@@ -652,14 +726,14 @@
     <!-- Visual Seam Frame Inspector -->
     <h2 class="section-title">
       Visual Seam Frame Breakdown
-      <span class="badge">Candidate 1 Seam Continuity</span>
+      <span class="badge">Seam Continuity Inspection</span>
     </h2>
 
     <div class="seams-panel">
       <div class="seam-item">
         <div class="seam-header">
           <div class="seam-title">Seam 1 (8.0s): Center Speech → Walking in Room</div>
-          <div class="seam-meta">5 Consecutive Seam Frames (F189 to F195) • Cosine Micro-Dissolve</div>
+          <div class="seam-meta">5 Consecutive Seam Frames (F189 to F195) • Smooth Seam</div>
         </div>
         <img src="assets/review/seam_8s_strip.jpg" alt="Seam 1 Frames" class="seam-strip-img">
       </div>
@@ -667,7 +741,7 @@
       <div class="seam-item">
         <div class="seam-header">
           <div class="seam-title">Seam 2 (12.0s): Walking in Room → Explaining Projects & GitHub</div>
-          <div class="seam-meta">5 Consecutive Seam Frames (F285 to F291) • Cosine Micro-Dissolve</div>
+          <div class="seam-meta">5 Consecutive Seam Frames (F285 to F291) • Smooth Seam</div>
         </div>
         <img src="assets/review/seam_12s_strip.jpg" alt="Seam 2 Frames" class="seam-strip-img">
       </div>
@@ -675,7 +749,7 @@
       <div class="seam-item">
         <div class="seam-header">
           <div class="seam-title">Seam 3 (20.0s): Explaining Projects → Walking to Desk</div>
-          <div class="seam-meta">5 Consecutive Seam Frames (F477 to F483) • Cosine Micro-Dissolve</div>
+          <div class="seam-meta">5 Consecutive Seam Frames (F477 to F483) • Smooth Seam</div>
         </div>
         <img src="assets/review/seam_20s_strip.jpg" alt="Seam 3 Frames" class="seam-strip-img">
       </div>
@@ -683,14 +757,14 @@
       <div class="seam-item">
         <div class="seam-header">
           <div class="seam-title">Seam 4 (24.0s): Walking to Desk → Workstation Conclusion</div>
-          <div class="seam-meta">5 Consecutive Seam Frames (F573 to F579) • Cosine Micro-Dissolve</div>
+          <div class="seam-meta">5 Consecutive Seam Frames (F573 to F579) • Smooth Seam</div>
         </div>
         <img src="assets/review/seam_24s_strip.jpg" alt="Seam 4 Frames" class="seam-strip-img">
       </div>
 
       <div class="seam-item">
         <div class="seam-header">
-          <div class="seam-title">Loop Seam (31.25s → 0.0s): End to Start Seamless Loop</div>
+          <div class="seam-title">Loop Seam (End → 0.0s): End to Start Seamless Loop</div>
           <div class="seam-meta">Soft Cosine Dissolve • Zero Black Dip / Blink</div>
         </div>
         <img src="assets/review/seam_loop_strip.jpg" alt="Loop Seam Frames" class="seam-strip-img">
@@ -700,12 +774,12 @@
     <!-- Approval Banner -->
     <div class="approve-banner">
       <div class="approve-text">
-        <h2 id="approve-title">Candidate 1 is currently active for review</h2>
+        <h2 id="approve-title">CapCut Kinetic Edition is currently active for review</h2>
         <p id="approve-sub">Review the playback above. When satisfied, tell me in the chat or click below to update the portfolio.</p>
       </div>
       <button class="approve-btn" onclick="confirmApproval()">
         <span class="material-symbols-outlined">check_circle</span>
-        <span id="btn-approve-label">Approve Candidate 1</span>
+        <span id="btn-approve-label">Approve CapCut Edition</span>
       </button>
     </div>
 
@@ -713,6 +787,11 @@
 
   <script>
     const candidates = {
+      capcut: {
+        name: "CapCut Kinetic Reel Edition",
+        src: "assets/mayank_candidate_capcut_kinetic_31s.mp4",
+        dur: "00:30.67"
+      },
       cand1: {
         name: "Candidate 1: 32s Cinematic Studio Take",
         src: "assets/mayank_candidate_1_cinematic_32s.mp4",
@@ -735,7 +814,7 @@
       }
     };
 
-    let currentCand = 'cand1';
+    let currentCand = 'capcut';
     const player = document.getElementById('player');
     const hudName = document.getElementById('hud-name');
     const hudTime = document.getElementById('hud-time');
