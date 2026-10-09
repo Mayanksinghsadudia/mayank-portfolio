@@ -28,8 +28,9 @@
 
   <!-- Custom Design System Stylesheet -->
   <link rel="stylesheet" href="styles.css?v=reel-3d-20261008" />
-  <link rel="stylesheet" href="presenter.css?v=reel-3d-20261008" />
+  <link rel="stylesheet" href="presenter.css?v=approved-intro-20261009" />
   <link rel="stylesheet" href="instagram-theme.css?v=20261009" />
+  <link rel="stylesheet" href="home-intro.css?v=approved-intro-20261009" />
 </head>
 <body>
 
@@ -112,19 +113,13 @@
 
           <!-- Hero Stage / Presenter Frame & Controls -->
           <div class="hero-stage-container">
-            <div class="presenter-edition-pill-bar">
-              <button type="button" class="presenter-edition-pill active" onclick="window.switchPresenterEdition('motion_attract', this)">✨ Motion Attract (Unified)</button>
-              <button type="button" class="presenter-edition-pill" onclick="window.switchPresenterEdition('match_cut', this)">🎞️ Match Cut</button>
-              <button type="button" class="presenter-edition-pill" onclick="window.switchPresenterEdition('studio_take', this)">🎨 Studio Take</button>
-            </div>
-
             <div class="hero-character" id="home-presenter" aria-label="Mayank's 3D studio introduction">
-              <img src="assets/hero_edited_poster.jpg?v=20261009" alt="Mayank Singh Sadudia in his 3D workstation studio" class="presenter-poster" />
+              <img src="assets/mayank_home_intro_poster.jpg" width="1280" height="720" alt="Mayank Singh Sadudia in his 3D workstation studio" class="presenter-poster" />
               <div class="presenter-subtitles" id="presenter-subtitles" style="display: none;"></div>
               <div class="presenter-controls" hidden>
                 <button type="button" id="presenter-play" aria-label="Play introduction">Play introduction</button>
                 <button type="button" id="presenter-sound" aria-label="Turn introduction sound on">Sound on</button>
-                <button type="button" id="presenter-cc" class="active" aria-label="Toggle subtitles">CC</button>
+                <button type="button" id="presenter-cc" aria-label="Toggle subtitles" aria-pressed="false">CC</button>
               </div>
             </div>
           </div>
@@ -273,7 +268,7 @@
         <div class="ig-reels-panel" id="ig-reels-panel">
           <div class="ig-reel-card">
             <div class="ig-reel-player-stage">
-              <video id="ig-reel-video" class="ig-reel-video" src="assets/mayank_portfolio_hero_edited.mp4" playsinline loop autoplay muted poster="assets/hero_edited_poster.jpg"></video>
+              <video id="ig-reel-video" class="ig-reel-video" src="assets/mayank_home_intro_30s.mp4" playsinline muted controls preload="none" poster="assets/mayank_home_intro_poster.jpg"></video>
               <div class="ig-reel-overlay-badge">
                 <span class="status-pulse-dot"></span>
                 <span>3D PRESENTER REEL</span>
@@ -295,21 +290,9 @@
                 </div>
 
                 <p style="color: #cbd5e1; font-size: 13px; line-height: 1.5; margin-bottom: 12px;">
-                  Unified 3-scene 3D avatar presenter introducing data analytics &amp; brand design capabilities.
+                  Meet Mayank in a 30-second introduction to his data analytics and graphic design portfolio.
                 </p>
 
-                <div class="ig-reel-edition-select">
-                  <span style="font-size: 11px; text-transform: uppercase; color: #a6a6a6; letter-spacing: 0.08em; font-weight: 700;">Select Video Edition:</span>
-                  <button class="ig-edition-option active" onclick="window.switchReelEdition('assets/mayank_portfolio_hero_edited.mp4', this)">
-                    ✨ Motion Attract (Unified 3 Scenes)
-                  </button>
-                  <button class="ig-edition-option" onclick="window.switchReelEdition('assets/mayank_portfolio_hero_matchcut.mp4', this)">
-                    🎞️ Seamless Match Cut
-                  </button>
-                  <button class="ig-edition-option" onclick="window.switchReelEdition('assets/mayank_reel_presenter.mp4', this)">
-                    🎨 Studio Take
-                  </button>
-                </div>
               </div>
 
               <div>
@@ -1497,8 +1480,8 @@
 
   <!-- Main JavaScript File -->
   <script src="main.js?v=clean-3d-20261008"></script>
-  <script src="presenter-config.js?v=fluid-continuous-20261008"></script>
-  <script src="presenter.js?v=fluid-continuous-20261008"></script>
+  <script src="presenter-config.js?v=approved-intro-20261009"></script>
+  <script src="presenter.js?v=approved-intro-20261009"></script>
 
 </body>
 </html>

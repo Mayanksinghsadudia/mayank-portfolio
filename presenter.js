@@ -25,23 +25,25 @@
 
   let started = false;
   let userPaused = false;
-  let ccEnabled = true;
+  let ccEnabled = false;
+  let visible = false;
+  let heardIntroduction = false;
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
 
   // Timed Speech Segments for live closed captions
   const speechSegments = [
-    { start: 0.0, end: 1.2, text: "👋 [Mayank walks in]" },
-    { start: 1.2, end: 6.0, text: "Hi, I'm Mayank Singh Sadudia, a data analyst and graphic designer based in Indore." },
-    { start: 6.0, end: 7.6, text: "I use Python, SQL, Excel, and Power BI to turn data into clear insights." },
-    { start: 7.6, end: 14.5, text: "I also create brand identities, packaging, and engaging visuals. My portfolio brings analytical thinking and creative design together." },
-    { start: 14.5, end: 21.0, text: "Explore my projects, visit my GitHub, and get in touch. I'd love to collaborate." },
-    { start: 21.0, end: 25.0, text: "✨ [Looking forward to collaborating with you!]" }
+    { start: 0, end: 6.8, text: "Hi, I'm Mayank Singh Sadudia, a data analyst and graphic designer based in Indore." },
+    { start: 6.8, end: 8, text: "I use Python." },
+    { start: 11, end: 14.8, text: "I also create brand identities, packaging, and engaging visuals." },
+    { start: 14.8, end: 19, text: "My portfolio brings analytical thinking and creative design together." },
+    { start: 22, end: 26.7, text: "Explore my projects, visit my GitHub, and get in touch." },
+    { start: 26.7, end: 30, text: "I'd love to collaborate." }
   ];
 
   function updateSubtitles() {
     if (!subtitleBox) return;
-    if (!ccEnabled || video.paused || video.ended) {
-      if (!ccEnabled) subtitleBox.style.display = "none";
+    if (!ccEnabled || video.ended) {
+      subtitleBox.style.display = "none";
       return;
     }
     const t = video.currentTime;
@@ -86,6 +88,7 @@
   }
 
   video.addEventListener("loadeddata", () => {
+    frame.classList.add("presenter-active");
     if (controls) controls.hidden = false;
   });
 
@@ -127,6 +130,11 @@
       video.muted = !video.muted;
       updateSound();
       if (!video.muted) {
+        document.getElementById("ig-reel-video")?.pause();
+        if (!heardIntroduction) {
+          video.currentTime = 0;
+          heardIntroduction = true;
+        }
         if (video.paused) {
           userPaused = false;
           start();
@@ -139,6 +147,7 @@
     ccBtn.addEventListener("click", () => {
       ccEnabled = !ccEnabled;
       ccBtn.classList.toggle("active", ccEnabled);
+      ccBtn.setAttribute("aria-pressed", String(ccEnabled));
       if (!ccEnabled && subtitleBox) subtitleBox.style.display = "none";
       else updateSubtitles();
     });
@@ -182,7 +191,7 @@
   };
 
   const observer = new IntersectionObserver(entries => {
-    const visible = entries.some(entry => entry.isIntersecting);
+    visible = entries.some(entry => entry.isIntersecting);
     if (!visible) video.pause();
     else if (config.autoplay && !reduceMotion.matches && !userPaused && !video.ended && !document.hidden) start();
   }, { threshold: .35 });
@@ -191,7 +200,7 @@
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) video.pause();
-    else if (!userPaused && !video.ended && config.autoplay && !reduceMotion.matches) start();
+    else if (visible && !userPaused && !video.ended && config.autoplay && !reduceMotion.matches) start();
   });
 
   reduceMotion.addEventListener("change", event => {
