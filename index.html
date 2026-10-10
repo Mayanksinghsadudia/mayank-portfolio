@@ -72,7 +72,7 @@
             <div class="hero-role-tag">DATA ANALYST &amp; GRAPHIC DESIGNER PORTFOLIO</div>
             
             <h1 class="hero-name-headline">
-              <span class="reeves-name">MAYANK<br />SINGH SADUDIA</span>
+              <span class="reeves-name">MAYANK SINGH SADUDIA</span><br />
               <span class="hero-portfolio-label">PORTFOLIO</span>
             </h1>
 
@@ -111,7 +111,6 @@
 
           <!-- Hero Stage / Presenter Frame & Controls -->
           <div class="hero-stage-container">
-            <div class="hero-scene-label" aria-hidden="true"><span>●</span> MEET MAYANK / 30 SEC</div>
             <div class="hero-character" id="home-presenter" aria-label="Mayank's 3D studio introduction">
               <img src="assets/mayank_home_intro_poster.jpg" width="1280" height="720" alt="Mayank Singh Sadudia in his 3D workstation studio" class="presenter-poster" />
             </div>
@@ -131,7 +130,7 @@
       <span><i>01 /</i> DATA &amp; DASHBOARDS</span>
       <span><i>02 /</i> BRAND IDENTITIES</span>
       <span><i>03 /</i> PACKAGING &amp; VISUALS</span>
-      <span><i>↗</i> ANALYTICAL MIND. CREATIVE EYE.</span>
+      <span><i>04 /</i> CODE &amp; AUTOMATION</span>
     </div>
 
     <!-- 01 ABOUT ME SECTION -->
@@ -141,7 +140,7 @@
         <div class="section-header">
           <div>
             <span class="text-label-caps text-accent">01 // ABOUT ME</span>
-            <h2 class="text-headline-lg font-headline" style="margin-top: 4px;">About Me<br /><span class="reeves-gradient">Analytical Mind. Creative Eye.</span></h2>
+            <h2 class="text-headline-lg font-headline" style="margin-top: 4px;">About Me</h2>
           </div>
           <span class="section-num text-outlined">01</span>
         </div>
@@ -373,43 +372,20 @@
           <span class="section-num text-outlined">04</span>
         </div>
 
-        <!-- Master Split Tabs Switcher -->
-        <div class="project-split-tabs" role="tablist" aria-label="Project section categories">
-          <button class="split-tab-btn active" data-tab="all" role="tab" aria-selected="true">
-            <span class="material-symbols-outlined" style="font-size:18px;">apps</span>
-            ALL PROJECTS <span class="tab-count">35</span>
-          </button>
-          <button class="split-tab-btn" data-tab="analytics" role="tab" aria-selected="false">
-            <span class="material-symbols-outlined" style="font-size:18px;">bar_chart</span>
-            DATA ANALYST PROJECTS <span class="tab-count">4</span>
-          </button>
-          <button class="split-tab-btn" data-tab="design" role="tab" aria-selected="false">
-            <span class="material-symbols-outlined" style="font-size:18px;">palette</span>
-            GRAPHIC DESIGN PROJECTS <span class="tab-count">31</span>
-          </button>
+        <!-- Category Filters -->
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">ALL PROJECTS (35)</button>
+          <button class="filter-btn" data-filter="analytics">DATA ANALYSIS</button>
+          <button class="filter-btn" data-filter="branding">BRANDING &amp; LOGOS</button>
+          <button class="filter-btn" data-filter="packaging">PACKAGING</button>
+          <button class="filter-btn" data-filter="digital-art">DIGITAL ART &amp; MATTE</button>
+          <button class="filter-btn" data-filter="uiux">UI/UX &amp; WEB</button>
+          <button class="filter-btn" data-filter="posters">POSTERS &amp; MEDIA</button>
+          <button class="filter-btn" data-filter="motion">MOTION &amp; VIDEO</button>
         </div>
 
-        <!-- ================= PART 1: DATA ANALYST PROJECTS ================= -->
-        <div class="project-subsection" id="subsection-data-analyst">
-          <div class="project-subsection-header">
-            <div class="subsection-title-group">
-              <span class="subsection-badge"><span class="badge-dot"></span> PART 01 // DATA ANALYTICS &amp; INSIGHTS</span>
-              <h3 class="font-headline text-headline-md">Data Analyst Projects</h3>
-              <p class="subsection-desc">
-                Interactive web apps, sentiment analysis, clinical systems, and retail business analytics built with Python, SQL, Streamlit, and Pandas.
-              </p>
-            </div>
-            <div class="subsection-meta-pills">
-              <span>Python</span>
-              <span>SQL</span>
-              <span>Pandas</span>
-              <span>Streamlit</span>
-              <span>VADER NLP</span>
-            </div>
-          </div>
-
-          <!-- Data Analyst Projects Grid -->
-          <div class="projects-grid analytics-grid">
+        <!-- Projects Grid -->
+        <div class="projects-grid">
           <!-- Card: Amazon Review Sentiment Analysis System -->
           <div class="project-card" data-category="analytics" data-id="amazon-sentiment-analysis">
             <div class="project-img-wrapper">
@@ -490,33 +466,6 @@
               </div>
             </div>
           </div> <!-- close .project-card -->
-        </div> <!-- close .projects-grid.analytics-grid -->
-      </div> <!-- close #subsection-data-analyst -->
-
-        <!-- ================= PART 2: GRAPHIC DESIGN PROJECTS ================= -->
-        <div class="project-subsection" id="subsection-graphic-design" style="margin-top: 60px;">
-          <div class="project-subsection-header">
-            <div class="subsection-title-group">
-              <span class="subsection-badge"><span class="badge-dot" style="background:#ff7711; box-shadow: 0 0 8px #ff7711;"></span> PART 02 // VISUAL STORYTELLING &amp; BRANDING</span>
-              <h3 class="font-headline text-headline-md">Graphic Design Projects</h3>
-              <p class="subsection-desc">
-                Brand identities, vector logos, 3D packaging mockups, low-poly digital art, UI/UX artboards, and marketing media crafted with creative precision.
-              </p>
-            </div>
-            <!-- Category Filters for Design -->
-            <div class="filter-bar design-subfilters">
-              <button class="filter-btn active" data-filter="all-design">ALL DESIGN (31)</button>
-              <button class="filter-btn" data-filter="branding">BRANDING &amp; LOGOS (10)</button>
-              <button class="filter-btn" data-filter="packaging">PACKAGING (4)</button>
-              <button class="filter-btn" data-filter="digital-art">DIGITAL ART &amp; MATTE (5)</button>
-              <button class="filter-btn" data-filter="uiux">UI/UX &amp; WEB (6)</button>
-              <button class="filter-btn" data-filter="posters">POSTERS &amp; MEDIA (4)</button>
-              <button class="filter-btn" data-filter="motion">MOTION &amp; VIDEO (2)</button>
-            </div>
-          </div>
-
-          <!-- Graphic Design Projects Grid -->
-          <div class="projects-grid design-grid">
 
           <!-- Card: REVA 3D Exploding Speaker Website -->
           <div class="project-card" data-category="uiux" data-id="reva-3d-speaker">
@@ -668,7 +617,7 @@
             </div>
           </div>
           <!-- Card: Dragon Energy Beverage 3D Render -->
-          <div class="project-card project-card-extra"" data-category="packaging" data-id="energy-drink-mockup">
+          <div class="project-card project-card-extra" data-category="packaging" data-id="energy-drink-mockup">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/energy_drink_mockup.jpg" alt="Dragon Energy Beverage 3D Render" class="project-img" />
               <div class="project-overlay"></div>
@@ -686,7 +635,7 @@
             </div>
           </div>
           <!-- Card: Armed Forces Flag Day Commemorative Poster -->
-          <div class="project-card project-card-extra"" data-category="posters" data-id="flag-day-poster">
+          <div class="project-card project-card-extra" data-category="posters" data-id="flag-day-poster">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/flag_day_15-01.jpg" alt="Armed Forces Flag Day Commemorative Poster" class="project-img" />
               <div class="project-overlay"></div>
@@ -704,7 +653,7 @@
             </div>
           </div>
           <!-- Card: Luxury Event Invitation Card Design -->
-          <div class="project-card project-card-extra"" data-category="posters" data-id="invitation-card">
+          <div class="project-card project-card-extra" data-category="posters" data-id="invitation-card">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/invitataion_card_.jpg" alt="Luxury Event Invitation Card Design" class="project-img" />
               <div class="project-overlay"></div>
@@ -722,7 +671,7 @@
             </div>
           </div>
           <!-- Card: Brand Logo Mark Design #1 -->
-          <div class="project-card project-card-extra"" data-category="branding" data-id="logo-1">
+          <div class="project-card project-card-extra" data-category="branding" data-id="logo-1">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/log0_1.jpg" alt="Brand Logo Mark Design #1" class="project-img" />
               <div class="project-overlay"></div>
@@ -740,7 +689,7 @@
             </div>
           </div>
           <!-- Card: Minimalist Emblem Mark #3 -->
-          <div class="project-card project-card-extra"" data-category="branding" data-id="logo-3">
+          <div class="project-card project-card-extra" data-category="branding" data-id="logo-3">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/logo_3.jpg" alt="Minimalist Emblem Mark #3" class="project-img" />
               <div class="project-overlay"></div>
@@ -758,7 +707,7 @@
             </div>
           </div>
           <!-- Card: Geometric Brand Symbol #4 -->
-          <div class="project-card project-card-extra"" data-category="branding" data-id="logo-4">
+          <div class="project-card project-card-extra" data-category="branding" data-id="logo-4">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/logo_4.jpg" alt="Geometric Brand Symbol #4" class="project-img" />
               <div class="project-overlay"></div>
@@ -776,7 +725,7 @@
             </div>
           </div>
           <!-- Card: Abstract Creative Mark #5 -->
-          <div class="project-card project-card-extra"" data-category="branding" data-id="logo-5">
+          <div class="project-card project-card-extra" data-category="branding" data-id="logo-5">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/logo_5.jpg" alt="Abstract Creative Mark #5" class="project-img" />
               <div class="project-overlay"></div>
@@ -794,7 +743,7 @@
             </div>
           </div>
           <!-- Card: Vector Logo Emblem #2 -->
-          <div class="project-card project-card-extra"" data-category="branding" data-id="logo-2">
+          <div class="project-card project-card-extra" data-category="branding" data-id="logo-2">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/logo2.jpg" alt="Vector Logo Emblem #2" class="project-img" />
               <div class="project-overlay"></div>
@@ -812,7 +761,7 @@
             </div>
           </div>
           <!-- Card: Surreal Photo Manipulation Artwork -->
-          <div class="project-card project-card-extra"" data-category="digital-art" data-id="manplution">
+          <div class="project-card project-card-extra" data-category="digital-art" data-id="manplution">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/manplution.jpg" alt="Surreal Photo Manipulation Artwork" class="project-img" />
               <div class="project-overlay"></div>
@@ -830,7 +779,7 @@
             </div>
           </div>
           <!-- Card: Fantasy World Matte Painting -->
-          <div class="project-card project-card-extra"" data-category="digital-art" data-id="mate-painting-2">
+          <div class="project-card project-card-extra" data-category="digital-art" data-id="mate-painting-2">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/mate_painting_2.jpg" alt="Fantasy World Matte Painting" class="project-img" />
               <div class="project-overlay"></div>
@@ -848,7 +797,7 @@
             </div>
           </div>
           <!-- Card: Cinematic Environment Matte Painting -->
-          <div class="project-card project-card-extra"" data-category="digital-art" data-id="matte-painting">
+          <div class="project-card project-card-extra" data-category="digital-art" data-id="matte-painting">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/matte_painting.jpg" alt="Cinematic Environment Matte Painting" class="project-img" />
               <div class="project-overlay"></div>
@@ -866,7 +815,7 @@
             </div>
           </div>
           <!-- Card: Pure Dairy Packaging Suite Mockup -->
-          <div class="project-card project-card-extra"" data-category="packaging" data-id="milk-mockup">
+          <div class="project-card project-card-extra" data-category="packaging" data-id="milk-mockup">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/milk_mockup.jpg" alt="Pure Dairy Packaging Suite Mockup" class="project-img" />
               <div class="project-overlay"></div>
@@ -884,7 +833,7 @@
             </div>
           </div>
           <!-- Card: Retail Display Box Package Mockup -->
-          <div class="project-card project-card-extra"" data-category="packaging" data-id="mockup-package-desgin">
+          <div class="project-card project-card-extra" data-category="packaging" data-id="mockup-package-desgin">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/mockup_package_desgin.jpg" alt="Retail Display Box Package Mockup" class="project-img" />
               <div class="project-overlay"></div>
@@ -902,7 +851,7 @@
             </div>
           </div>
           <!-- Card: Music Streaming Web UI Landing Page -->
-          <div class="project-card project-card-extra"" data-category="uiux" data-id="music-website-landing-page">
+          <div class="project-card project-card-extra" data-category="uiux" data-id="music-website-landing-page">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/music_website_landing_page.jpg" alt="Music Streaming Web UI Landing Page" class="project-img" />
               <div class="project-overlay"></div>
@@ -920,7 +869,7 @@
             </div>
           </div>
           <!-- Card: Luxury Box & Pouch Packaging Design -->
-          <div class="project-card project-card-extra"" data-category="packaging" data-id="package-desgin-1">
+          <div class="project-card project-card-extra" data-category="packaging" data-id="package-desgin-1">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/package_desgin_1.jpg" alt="Luxury Box & Pouch Packaging Design" class="project-img" />
               <div class="project-overlay"></div>
@@ -938,7 +887,7 @@
             </div>
           </div>
           <!-- Card: High-Impact Advertising Poster Design -->
-          <div class="project-card project-card-extra"" data-category="posters" data-id="poster-2-01">
+          <div class="project-card project-card-extra" data-category="posters" data-id="poster-2-01">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/poster_2-01.jpg" alt="High-Impact Advertising Poster Design" class="project-img" />
               <div class="project-overlay"></div>
@@ -956,7 +905,7 @@
             </div>
           </div>
           <!-- Card: Vector Digital Portrait Study -->
-          <div class="project-card project-card-extra"" data-category="digital-art" data-id="potrait-01">
+          <div class="project-card project-card-extra" data-category="digital-art" data-id="potrait-01">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/potrait-01.jpg" alt="Vector Digital Portrait Study" class="project-img" />
               <div class="project-overlay"></div>
@@ -974,7 +923,7 @@
             </div>
           </div>
           <!-- Card: Raksha Bandhan Cultural Festival Poster -->
-          <div class="project-card project-card-extra"" data-category="posters" data-id="raksha-bandhan">
+          <div class="project-card project-card-extra" data-category="posters" data-id="raksha-bandhan">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/raksha_bandhan.jpg" alt="Raksha Bandhan Cultural Festival Poster" class="project-img" />
               <div class="project-overlay"></div>
@@ -992,7 +941,7 @@
             </div>
           </div>
           <!-- Card: Screen Composition & UI Showcase -->
-          <div class="project-card project-card-extra"" data-category="uiux" data-id="sc-png">
+          <div class="project-card project-card-extra" data-category="uiux" data-id="sc-png">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/sc.png" alt="Screen Composition & UI Showcase" class="project-img" />
               <div class="project-overlay"></div>
@@ -1010,7 +959,7 @@
             </div>
           </div>
           <!-- Card: Minimalist Visiting Card Mockup -->
-          <div class="project-card project-card-extra"" data-category="branding" data-id="visting-card-mockup">
+          <div class="project-card project-card-extra" data-category="branding" data-id="visting-card-mockup">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/visting_card_mockup.jpg" alt="Minimalist Visiting Card Mockup" class="project-img" />
               <div class="project-overlay"></div>
@@ -1062,7 +1011,7 @@
             </div>
           </div>
           <!-- Card: Web Template Specification (PDF) -->
-          <div class="project-card project-card-extra"" data-category="uiux" data-id="web-template-pdf">
+          <div class="project-card project-card-extra" data-category="uiux" data-id="web-template-pdf">
             <div class="project-img-wrapper">
               <img src="assets/user_projects/sc.png" alt="Web Template Specification (PDF)" class="project-img" />
               <div class="project-overlay"></div>
@@ -1078,20 +1027,20 @@
                 <span class="material-symbols-outlined" style="font-size: 18px; color: var(--color-primary);">description</span>
               </div>
             </div>
-          </div>
-                <!-- View All Projects Button -->
+          </div> <!-- close last .project-card -->
+
+        </div> <!-- close .projects-grid -->
+
+        <!-- View All Projects Button -->
         <div style="text-align: center; margin-top: 40px;" id="view-all-container">
           <button id="view-all-projects-btn" class="btn-primary" style="padding: 14px 32px; font-size: 14px; letter-spacing: 1px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;">
             <span class="material-symbols-outlined">grid_view</span>
-            View All Graphic Design Projects (31)
+            View All Projects (35)
           </button>
         </div>
 
-      </div> <!-- close .projects-grid.design-grid -->
-    </div> <!-- close #subsection-graphic-design -->
-
-  </div> <!-- close .container -->
-</section>
+      </div> <!-- close .container -->
+    </section>
 
 <!-- 05 CONTACT SECTION -->
 <section class="page-section" id="contact" style="border-bottom: none;">
@@ -1291,3 +1240,4 @@
   <script src="neon-studio.js?v=midnight-20261009"></script>
 </body>
 </html>
+
