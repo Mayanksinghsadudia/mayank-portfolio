@@ -22,8 +22,8 @@ main, footer { position: relative; }
 #hero .hero-grid { min-height: 500px; }
 #hero .hero-content { width: 48%; max-width: 580px; }
 #hero .hero-role-tag { display: flex; align-items: center; gap: 12px; color: var(--neon-peach); font-size: 10px; letter-spacing: .16em; }
-#hero .hero-name-headline { font: 400 clamp(40px, 4.4vw, 62px)/1.02 var(--font-display) !important; letter-spacing: .01em; margin: 20px 0; }
-.hero-name-headline .reeves-name { display: inline-block; white-space: nowrap; }
+#hero .hero-role-tag::before { content: ''; width: 28px; height: 1px; background: #ff9d4d80; flex-shrink: 0; }
+#hero .hero-name-headline { font: 400 clamp(74px, 8.4vw, 120px)/.94 var(--font-display) !important; letter-spacing: .008em; margin: 24px 0; }
 .reeves-name, .reeves-gradient { background: linear-gradient(110deg, #fff0df 0%, #ffc18b 34%, #ff9d4d 65%, #df6634 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 #hero .hero-statement-headline { font: 500 20px/1.5 'Space Grotesk', sans-serif; max-width: 460px; }
 #hero .hero-statement-headline span { color: var(--neon-amber); }
@@ -65,7 +65,7 @@ footer { background: #0e0b09; }
   #hero.hero-reel-theme { padding: 24px 0 66px; }
   #hero .hero-content { width: 100%; max-width: 700px; }
   #hero .hero-stage-container { width: 100%; }
-  #hero .hero-name-headline { font-size: clamp(34px, 5.5vw, 52px) !important; }
+  #hero .hero-name-headline { font-size: clamp(64px, 11vw, 100px) !important; line-height: .95; }
   #hero .hero-role-tag { margin-bottom: 0; }
   #hero .presenter-controls { right: 12px; bottom: 12px; }
   .hero-scene-label { right: 12px; }
@@ -78,8 +78,7 @@ footer { background: #0e0b09; }
   .app-header.reel-header { padding: 0 18px; }
   .reeves-availability { display: none; }
   .container, #hero .hero-container { padding: 0 18px; }
-  #hero .hero-name-headline { font-size: clamp(24px, 6.2vw, 36px) !important; }
-  .hero-portfolio-label { font-size: clamp(18px, 4.5vw, 24px) !important; }
+  #hero .hero-name-headline { font-size: clamp(48px, 13vw, 76px) !important; line-height: .96; }
   #hero .hero-statement-headline { font-size: 18px; }
   #hero .hero-role-tag { font-size: 8px; }
   #about .hero-avatar-container { padding: 12px; }
@@ -154,23 +153,3 @@ footer { background: #0e0b09; }
   }
   .reel-scroll-indicator .scroll-label { font-size: 10px !important; }
 }
-
-/* Hero Portfolio Label */
-.hero-portfolio-label {
-  display: block;
-  font-family: var(--font-display);
-  font-size: clamp(24px, 2.8vw, 38px) !important;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  background: linear-gradient(110deg, #ffc18b 0%, #ff9d4d 50%, #e06028 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-transform: uppercase;
-  margin-top: 6px;
-  line-height: 1;
-}
-
-
-
-
