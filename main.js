@@ -44,19 +44,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Project Gallery Filter & View All Toggle Logic
+  // Project Section Master Split Tabs & Category Filters
+  const splitTabBtns = document.querySelectorAll('.split-tab-btn');
+  const subsectionAnalytics = document.getElementById('subsection-data-analyst');
+  const subsectionDesign = document.getElementById('subsection-graphic-design');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
   const viewAllBtn = document.getElementById('view-all-projects-btn');
   const viewAllContainer = document.getElementById('view-all-container');
 
-  let isExpanded = false;
+  let isDesignExpanded = false;
 
-  // View All Projects Button Click
+  // 1. Master Split Tabs (All Projects vs Data Analyst vs Graphic Design)
+  if (splitTabBtns.length > 0) {
+    splitTabBtns.forEach(tab => {
+      tab.addEventListener('click', () => {
+        splitTabBtns.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        const tabType = tab.getAttribute('data-tab');
+
+        if (tabType === 'analytics') {
+          if (subsectionAnalytics) subsectionAnalytics.style.display = 'block';
+          if (subsectionDesign) subsectionDesign.style.display = 'none';
+        } else if (tabType === 'design') {
+          if (subsectionAnalytics) subsectionAnalytics.style.display = 'none';
+          if (subsectionDesign) subsectionDesign.style.display = 'block';
+        } else {
+          // 'all'
+          if (subsectionAnalytics) subsectionAnalytics.style.display = 'block';
+          if (subsectionDesign) subsectionDesign.style.display = 'block';
+        }
+      });
+    });
+  }
+
+  // 2. View All Graphic Design Projects Button Click
   if (viewAllBtn) {
     viewAllBtn.addEventListener('click', () => {
-      isExpanded = true;
-      projectCards.forEach(card => {
+      isDesignExpanded = true;
+      const designCards = subsectionDesign ? subsectionDesign.querySelectorAll('.project-card') : [];
+      designCards.forEach(card => {
         card.classList.add('show-extra');
         card.style.display = 'block';
         card.style.opacity = '1';
@@ -66,25 +98,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Category Filter Buttons Click
+  // 3. Graphic Design Category Sub-Filters
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       const filter = btn.getAttribute('data-filter');
+      const designCards = subsectionDesign ? subsectionDesign.querySelectorAll('.project-card') : [];
 
-      if (filter !== 'all') {
+      if (filter !== 'all-design' && filter !== 'all') {
         if (viewAllContainer) viewAllContainer.style.display = 'none';
-      } else if (!isExpanded) {
+      } else if (!isDesignExpanded) {
         if (viewAllContainer) viewAllContainer.style.display = 'block';
       }
 
-      projectCards.forEach((card, index) => {
+      designCards.forEach((card, index) => {
         const category = card.getAttribute('data-category');
-        const isMatch = (filter === 'all' || category === filter);
+        const isMatch = (filter === 'all-design' || filter === 'all' || category === filter);
 
-        if (filter === 'all' && !isExpanded && index >= 6) {
+        if ((filter === 'all-design' || filter === 'all') && !isDesignExpanded && index >= 6) {
           card.style.display = 'none';
         } else if (isMatch) {
           card.style.display = 'block';
