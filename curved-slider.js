@@ -1,106 +1,399 @@
 /**
- * 3D Curved Slider Engine (Infinite Cylinder Arc)
- * Inspired by Dribbble Shot 27605260 (3D Curved Slider for Elementor by Devzeno Studio)
- * Implements concave cylinder 3D perspective, infinite continuous looping,
- * interactive DRAG cursor follower, momentum swipe, and keyboard controls.
+ * 3D Curved Slider Engine (Infinite Cylinder Arc - All 35 Projects)
+ * Styled with Mayank's Signature Neon Amber & Tangerine Theme (#ff9d4d, #ff6b00)
  */
 
 (function () {
   'use strict';
 
-  // Curated Portfolio Projects for Mayank Singh Sadudia
-  const PROJECTS = [
-    {
-      id: 'mustang-1968',
-      tag: 'Interactive 3D Web',
-      title: 'Ford Mustang 1968 3D Experience',
-      desc: 'Real-time 3D automotive showcase with interactive camera orbit, lighting controls, and shaders.',
-      img: 'assets/user_projects/ford_mustang_1968.jpg',
-      url: 'https://mayanksinghsadudia.github.io/ford-mustang-1968-showcase/',
-      isExternal: true
-    },
-    {
-      id: 'reva-speaker',
-      tag: '3D Hardware Web App',
-      title: 'REVA 3D Exploding Speaker',
-      desc: 'Interactive audio hardware visualization featuring exploded view component animation and sound mechanics.',
-      img: 'assets/user_projects/reva_speaker.jpg',
-      url: 'https://mayanksinghsadudia.github.io/reva-3d-speaker-website/',
-      isExternal: true
-    },
-    {
-      id: 'amazon-nlp',
-      tag: 'NLP & Data Analytics',
-      title: 'Amazon Review Sentiment Classifier',
-      desc: 'Natural Language Processing pipeline classifying reviews with VADER & Google Sheets live integration.',
-      img: 'assets/user_projects/amazon-project.svg',
-      url: 'amazon-sentiment-analysis.html',
-      isExternal: false
-    },
-    {
-      id: 'retail-analysis',
-      tag: 'Data Science · Python & SQL',
-      title: 'Online Retail Sales Analysis',
-      desc: 'Statistical portfolio study of 541,909 historical transactions: country sales distributions and metrics.',
-      img: 'retail-analysis-preview.png',
-      url: 'retail-analysis.html',
-      isExternal: false
-    },
-    {
-      id: 'customer-management',
-      tag: 'Business Reporting',
-      title: 'Customer Management System',
-      desc: 'Relational SQLite architecture with customer profiling, SQL revenue aggregations, and business metrics.',
-      img: 'assets/user_projects/customer-project.svg',
-      url: 'cms-analysis.html',
-      isExternal: false
-    },
-    {
-      id: 'lifecare-health',
-      tag: 'Healthcare Analytics',
-      title: 'Lifecare Clinical Portal',
-      desc: 'Medical triage prototype featuring patient and doctor indexing, appointment requests, and clinical workflow.',
-      img: 'assets/user_projects/lifecare-project.svg',
-      url: 'lifecare-health-system.html',
-      isExternal: false
-    },
-    {
-      id: 'red-chillies-vfx',
-      tag: 'Digital Art & Matte',
-      title: 'Red Chillies VFX Studio Matte Art',
-      desc: 'Atmospheric digital landscape compositing and cinematic matte painting for visual storytelling.',
-      img: 'assets/user_projects/matte_painting.jpg',
-      url: 'assets/user_projects/matte_painting.jpg',
-      isExternal: true
-    },
-    {
-      id: 'motion-reel',
-      tag: 'Motion Design & Video',
-      title: 'Cinematic Motion Graphics Reel',
-      desc: 'High-energy typography animation, dynamic visual compositing, and creative kinetic effects in After Effects.',
-      img: 'assets/user_projects/video1_poster.jpg',
-      url: 'assets/user_projects/video1.mp4',
-      isExternal: true
-    },
-    {
-      id: 'energy-drink',
-      tag: 'Branding & Packaging',
-      title: 'Torq Energy Drink Packaging Design',
-      desc: '3D structural packaging mockup, typography hierarchy, and dynamic label branding for retail products.',
-      img: 'assets/user_projects/energy_drink_mockup.jpg',
-      url: 'assets/user_projects/energy_drink_mockup.jpg',
-      isExternal: true
-    },
-    {
-      id: 'music-web',
-      tag: 'UI/UX & Web Design',
-      title: 'BeatWave Music Streaming Platform',
-      desc: 'Dark-mode audio interface design, artist spotlight components, and design system documentation.',
-      img: 'assets/user_projects/music_website_landing_page.jpg',
-      url: 'assets/user_projects/music_website_landing_page.jpg',
-      isExternal: true
-    }
-  ];
+  // All 35 Portfolio Projects for Mayank Singh Sadudia
+  const ALL_PROJECTS = [
+  {
+    "id": "amazon-sentiment-analysis",
+    "category": "analytics",
+    "tag": "NLP & SENTIMENT ANALYSIS \u00b7 PYTHON",
+    "title": "Amazon Review System",
+    "desc": "Classifies review text from Google Sheets as positive, neutral or negative with VADER, then explores the results with interactive charts.",
+    "img": "assets/user_projects/amazon-project.svg",
+    "url": "amazon-sentiment-analysis.html",
+    "linkText": "View Project",
+    "isExternal": false
+  },
+  {
+    "id": "customer-management-system",
+    "category": "analytics",
+    "tag": "BUSINESS REPORTING \u00b7 PYTHON & SQLITE",
+    "title": "Customer Management System",
+    "desc": "Stores customer profiles and orders in SQLite, with SQL summaries for total customers, orders and revenue, plus customer-level charts.",
+    "img": "assets/user_projects/customer-project.svg",
+    "url": "cms-analysis.html",
+    "linkText": "View Project",
+    "isExternal": false
+  },
+  {
+    "id": "lifecare-health-system",
+    "category": "analytics",
+    "tag": "HEALTHCARE DATABASE APP \u00b7 FLASK & SQLITE",
+    "title": "Lifecare Health System",
+    "desc": "An MCA academic prototype for patient and doctor registration, administrator approvals, appointment requests and profile management.",
+    "img": "assets/user_projects/lifecare-project.svg",
+    "url": "lifecare-health-system.html",
+    "linkText": "View Project",
+    "isExternal": false
+  },
+  {
+    "id": "retail-sales-analysis",
+    "category": "analytics",
+    "tag": "DATA ANALYSIS \u00b7 PYTHON & SQL",
+    "title": "Online Retail Sales Analysis",
+    "desc": "A portfolio study of 541,909 historical UCI invoice lines: data preparation, monthly sales, country mix, and repeat purchasing, with documented definitions and limitations.",
+    "img": "retail-analysis-preview.png",
+    "url": "retail-analysis.html",
+    "linkText": "View Analysis",
+    "isExternal": false
+  },
+  {
+    "id": "reva-3d-speaker",
+    "category": "uiux",
+    "tag": "INTERACTIVE 3D WEB APPLICATION",
+    "title": "3D Exploding Speaker Web Application",
+    "desc": "Interactive 3D audio hardware showcase featuring exploded view component animation, dynamic woofer mechanics, and audio visualizer.",
+    "img": "assets/user_projects/reva_speaker.jpg",
+    "url": "https://mayanksinghsadudia.github.io/reva-3d-speaker-website/",
+    "linkText": "Visit Live Website",
+    "isExternal": true
+  },
+  {
+    "id": "ford-mustang-1968",
+    "category": "uiux",
+    "tag": "3D AUTOMOTIVE UI/UX WEB APPLICATION",
+    "title": "Ford Mustang Fastback (1968 Edition)",
+    "desc": "High-precision 3D automotive web showcase and interactive model study of the iconic 1968 Ford Mustang Fastback muscle car.",
+    "img": "assets/user_projects/ford_mustang_1968.jpg",
+    "url": "https://mayanksinghsadudia.github.io/ford-mustang-1968-showcase/",
+    "linkText": "Visit Live Website",
+    "isExternal": true
+  },
+  {
+    "id": "artboard-1",
+    "category": "uiux",
+    "tag": "UI/UX & DASHBOARD",
+    "title": "Creative Artboard & UI Layout 1",
+    "desc": "High-resolution creative artboard layout for dashboard UI and interactive web templates.",
+    "img": "assets/user_projects/artboard_1.jpg",
+    "url": "assets/user_projects/artboard_1.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "broucher-mockup",
+    "category": "branding",
+    "tag": "PRINT & EDITORIAL",
+    "title": "Corporate Tri-Fold Brochure Mockup",
+    "desc": "Tri-fold corporate brochure showcase presenting grid layouts, typography hierarchy, and corporate imagery.",
+    "img": "assets/user_projects/broucher_mockup.jpg",
+    "url": "assets/user_projects/broucher_mockup.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "business-statinary-black",
+    "category": "branding",
+    "tag": "PREMIUM DARK BRANDING",
+    "title": "Black Edition Stationery Kit",
+    "desc": "Luxury dark obsidian stationery collection featuring metallic foil accenting and grid symmetry.",
+    "img": "assets/user_projects/business_statinary_black.jpg",
+    "url": "assets/user_projects/business_statinary_black.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "bussuness-statinary-mockup",
+    "category": "branding",
+    "tag": "BRAND IDENTITY & MOCKUP",
+    "title": "Corporate Brand Stationery Suite Mockup",
+    "desc": "Complete brand identity mockup suite including letterhead, notepad, envelope, and business cards.",
+    "img": "assets/user_projects/bussuness_statinary_mockup.jpg",
+    "url": "assets/user_projects/bussuness_statinary_mockup.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "bussuness-statinary",
+    "category": "branding",
+    "tag": "BRAND IDENTITY PRINT",
+    "title": "Corporate Stationery Print Layout",
+    "desc": "Clean print design layout for corporate letterheads, branded envelopes, and office stationery.",
+    "img": "assets/user_projects/bussuness_statinary.jpg",
+    "url": "assets/user_projects/bussuness_statinary.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "dobby-poly-art",
+    "category": "digital-art",
+    "tag": "GEOMETRIC POLYGON ART",
+    "title": "HP7 Dobby Low-Poly Vector Art",
+    "desc": "Detailed geometric low-poly vector portrait study of Dobby with dramatic high-contrast illumination.",
+    "img": "assets/user_projects/dobby_poly_art.jpg",
+    "url": "assets/user_projects/dobby_poly_art.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "energy-drink-mockup",
+    "category": "packaging",
+    "tag": "3D BEVERAGE PACKAGING",
+    "title": "Dragon Energy Beverage 3D Render",
+    "desc": "500 ML & 250 ML matte black aluminum energy drink can packaging with vibrant dragon graphics.",
+    "img": "assets/user_projects/energy_drink_mockup.jpg",
+    "url": "assets/user_projects/energy_drink_mockup.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "flag-day-poster",
+    "category": "posters",
+    "tag": "PATRIOTIC COMMEMORATIVE POSTER",
+    "title": "Armed Forces Flag Day Commemorative Poster",
+    "desc": "Patriotic commemorative poster honoring Indian Armed Forces with bold typography and national flag accents.",
+    "img": "assets/user_projects/flag_day_15-01.jpg",
+    "url": "assets/user_projects/flag_day_15-01.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "invitation-card",
+    "category": "posters",
+    "tag": "EVENT & STATIONERY ART",
+    "title": "Luxury Event Invitation Card Design",
+    "desc": "Elegant floral border invitation card design crafted with ornate golden accents and classic calligraphy.",
+    "img": "assets/user_projects/invitataion_card_.jpg",
+    "url": "assets/user_projects/invitataion_card_.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "logo-1",
+    "category": "branding",
+    "tag": "VECTOR LOGO SUITE",
+    "title": "Brand Logo Mark Design #1",
+    "desc": "Geometric logo mark explorations across multiple color variations and brand guidelines.",
+    "img": "assets/user_projects/log0_1.jpg",
+    "url": "assets/user_projects/log0_1.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "logo-3",
+    "category": "branding",
+    "tag": "VECTOR LOGO SUITE",
+    "title": "Minimalist Emblem Mark #3",
+    "desc": "High-impact visual monogram mark designed for modern tech and design agencies.",
+    "img": "assets/user_projects/logo_3.jpg",
+    "url": "assets/user_projects/logo_3.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "logo-4",
+    "category": "branding",
+    "tag": "VECTOR LOGO SUITE",
+    "title": "Geometric Brand Symbol #4",
+    "desc": "Symmetrical vector brand mark engineered for digital app icons and print stationery.",
+    "img": "assets/user_projects/logo_4.jpg",
+    "url": "assets/user_projects/logo_4.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "logo-5",
+    "category": "branding",
+    "tag": "VECTOR LOGO SUITE",
+    "title": "Abstract Creative Mark #5",
+    "desc": "Modern dynamic abstract icon designed for creative agencies and tech startups.",
+    "img": "assets/user_projects/logo_5.jpg",
+    "url": "assets/user_projects/logo_5.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "logo-2",
+    "category": "branding",
+    "tag": "VECTOR LOGO SUITE",
+    "title": "Vector Logo Emblem #2",
+    "desc": "Clean minimalist corporate logo design with geometric grid symmetry.",
+    "img": "assets/user_projects/logo2.jpg",
+    "url": "assets/user_projects/logo2.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "manplution",
+    "category": "digital-art",
+    "tag": "COMPOSITING & DIGITAL ART",
+    "title": "Surreal Photo Manipulation Artwork",
+    "desc": "Surreal digital composition blending multiple photographic elements, dramatic color grading, and lighting FX.",
+    "img": "assets/user_projects/manplution.jpg",
+    "url": "assets/user_projects/manplution.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "mate-painting-2",
+    "category": "digital-art",
+    "tag": "CONCEPT ART & ENVIRONMENT",
+    "title": "Fantasy World Matte Painting",
+    "desc": "Surreal environmental concept art depicting mystical architecture and dramatic natural lighting.",
+    "img": "assets/user_projects/mate_painting_2.jpg",
+    "url": "assets/user_projects/mate_painting_2.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "matte-painting",
+    "category": "digital-art",
+    "tag": "CONCEPT ART & ENVIRONMENT",
+    "title": "Cinematic Environment Matte Painting",
+    "desc": "Atmospheric digital landscape matte painting created with multi-layered photo bashing and digital painting.",
+    "img": "assets/user_projects/matte_painting.jpg",
+    "url": "assets/user_projects/matte_painting.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "milk-mockup",
+    "category": "packaging",
+    "tag": "PRODUCT CARTON & BOTTLE",
+    "title": "Pure Dairy Packaging Suite Mockup",
+    "desc": "Organic milk bottle and box package mockup with clean minimalist typography and cow motif.",
+    "img": "assets/user_projects/milk_mockup.jpg",
+    "url": "assets/user_projects/milk_mockup.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "mockup-package-desgin",
+    "category": "packaging",
+    "tag": "COMMERCIAL PACKAGING",
+    "title": "Retail Display Box Package Mockup",
+    "desc": "3D retail box display mockup highlighting structural folds, embossing, and product branding.",
+    "img": "assets/user_projects/mockup_package_desgin.jpg",
+    "url": "assets/user_projects/mockup_package_desgin.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "music-website-landing-page",
+    "category": "uiux",
+    "tag": "DARK MODE WEB DESIGN",
+    "title": "Music Streaming Web UI Landing Page",
+    "desc": "Modern dark mode web landing page for music discovery, featuring hero player visuals and glassmorphism elements.",
+    "img": "assets/user_projects/music_website_landing_page.jpg",
+    "url": "assets/user_projects/music_website_landing_page.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "package-desgin-1",
+    "category": "packaging",
+    "tag": "RETAIL PRODUCT PACKAGING",
+    "title": "Luxury Box & Pouch Packaging Design",
+    "desc": "Premium product box and foil pouch packaging design rendered with realistic lighting.",
+    "img": "assets/user_projects/package_desgin_1.jpg",
+    "url": "assets/user_projects/package_desgin_1.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "poster-2-01",
+    "category": "posters",
+    "tag": "ADVERTISING & PROMOTIONAL POSTER",
+    "title": "High-Impact Advertising Poster Design",
+    "desc": "Bold advertising poster layout engineered for maximum visual contrast and instant audience engagement.",
+    "img": "assets/user_projects/poster_2-01.jpg",
+    "url": "assets/user_projects/poster_2-01.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "potrait-01",
+    "category": "digital-art",
+    "tag": "DIGITAL ILLUSTRATION",
+    "title": "Vector Digital Portrait Study",
+    "desc": "Hand-crafted vector digital portrait emphasizing contour shading, skin highlights, and hair texturing.",
+    "img": "assets/user_projects/potrait-01.jpg",
+    "url": "assets/user_projects/potrait-01.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "raksha-bandhan",
+    "category": "posters",
+    "tag": "FESTIVE SOCIAL MEDIA ART",
+    "title": "Raksha Bandhan Cultural Festival Poster",
+    "desc": "Vibrant Indian cultural festival banner celebrating traditional Rakhi ties with ornate vector graphics.",
+    "img": "assets/user_projects/raksha_bandhan.jpg",
+    "url": "assets/user_projects/raksha_bandhan.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "sc-png",
+    "category": "uiux",
+    "tag": "UI/UX & COMPOSITING",
+    "title": "Screen Composition & UI Showcase",
+    "desc": "Screen composition showcase demonstrating user interface layout, typography, and visual hierarchy.",
+    "img": "assets/user_projects/sc.png",
+    "url": "assets/user_projects/sc.png",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "visting-card-mockup",
+    "category": "branding",
+    "tag": "CORPORATE CARD MOCKUP",
+    "title": "Minimalist Visiting Card Mockup",
+    "desc": "Dual-sided clean business card layout with rounded edges and tactile paper texture rendering.",
+    "img": "assets/user_projects/visting_card_mockup.jpg",
+    "url": "assets/user_projects/visting_card_mockup.jpg",
+    "linkText": "View Project",
+    "isExternal": true
+  },
+  {
+    "id": "video-1",
+    "category": "motion",
+    "tag": "MOTION GRAPHICS & VIDEO",
+    "title": "Motion Design Video Reel 1",
+    "desc": "Dynamic motion graphics video showcase displaying animated visual effects, transitions, and motion editing.",
+    "img": "assets/user_projects/video1_poster.jpg",
+    "url": "assets/user_projects/video1.mp4",
+    "linkText": "Watch Video",
+    "isExternal": true
+  },
+  {
+    "id": "video-2",
+    "category": "motion",
+    "tag": "MOTION GRAPHICS & VIDEO",
+    "title": "Motion Graphics Reel 2",
+    "desc": "High-energy motion graphic reel presenting typography animation, visual compositing, and creative transitions.",
+    "img": "assets/user_projects/video2_poster.jpg",
+    "url": "assets/user_projects/video2.mp4",
+    "linkText": "Watch Video",
+    "isExternal": true
+  },
+  {
+    "id": "web-template-pdf",
+    "category": "uiux",
+    "tag": "WEB DESIGN DOCUMENTATION",
+    "title": "Web Template Specification (PDF)",
+    "desc": "Comprehensive web template design specification document containing full website wireframes and component layouts.",
+    "img": "assets/user_projects/sc.png",
+    "url": "assets/user_projects/web_template.pdf",
+    "linkText": "Download PDF",
+    "isExternal": true
+  }
+];
 
   class CurvedSlider {
     constructor() {
@@ -109,11 +402,13 @@
       this.cursor = document.getElementById('curvedSliderCursor');
       this.prevBtn = document.getElementById('sliderPrevBtn');
       this.nextBtn = document.getElementById('sliderNextBtn');
-      this.dotsContainer = document.getElementById('sliderDots');
+      this.counterCurrent = document.getElementById('sliderCounterCurrent');
+      this.counterTotal = document.getElementById('sliderCounterTotal');
+      this.progressBar = document.getElementById('sliderProgressBar');
 
       if (!this.viewport || !this.stage) return;
 
-      this.projects = PROJECTS;
+      this.projects = ALL_PROJECTS;
       this.total = this.projects.length;
 
       // Continuous offset for infinite looping
@@ -138,7 +433,7 @@
 
       // Initialize
       this.initCards();
-      this.initDots();
+      this.initCounter();
       this.bindEvents();
       this.startLoop();
       this.startAutoplay();
@@ -152,6 +447,7 @@
         const card = document.createElement('div');
         card.className = 'curved-slider-card';
         card.setAttribute('data-index', idx);
+        card.setAttribute('data-category', proj.category);
 
         card.innerHTML = `
           <div class="curved-slider-card-media">
@@ -165,7 +461,7 @@
               <h3 class="curved-slider-card-title">${proj.title}</h3>
               <p class="curved-slider-card-desc">${proj.desc}</p>
               <a href="${proj.url}" ${proj.isExternal ? 'target="_blank" rel="noopener noreferrer"' : ''} class="curved-slider-card-link">
-                View Project 
+                ${proj.linkText}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="7" y1="17" x2="17" y2="7"></line>
                   <polyline points="7 7 17 7 17 17"></polyline>
@@ -175,7 +471,7 @@
           </div>
         `;
 
-        // Card click handling
+        // Card click handling: click side card brings to center, click center card opens link
         card.addEventListener('click', (e) => {
           if (this.hasDraggedSignificantly) return;
           const activeIdx = this.getWrappedIndex(Math.round(this.targetOffset));
@@ -190,19 +486,11 @@
       });
     }
 
-    initDots() {
-      if (!this.dotsContainer) return;
-      this.dotsContainer.innerHTML = '';
-      this.dots = [];
-
-      this.projects.forEach((_, idx) => {
-        const dot = document.createElement('div');
-        dot.className = `curved-slider-dot ${idx === 0 ? 'is-active' : ''}`;
-        dot.setAttribute('data-index', idx);
-        dot.addEventListener('click', () => this.goToNearest(idx));
-        this.dotsContainer.appendChild(dot);
-        this.dots.push(dot);
-      });
+    initCounter() {
+      if (this.counterTotal) {
+        this.counterTotal.textContent = String(this.total).padStart(2, '0');
+      }
+      this.updateCounter();
     }
 
     getWrappedIndex(idx) {
@@ -214,14 +502,14 @@
       if (this.prevBtn) {
         this.prevBtn.addEventListener('click', () => {
           this.targetOffset -= 1;
-          this.updateDots();
+          this.updateCounter();
           this.resetAutoplay();
         });
       }
       if (this.nextBtn) {
         this.nextBtn.addEventListener('click', () => {
           this.targetOffset += 1;
-          this.updateDots();
+          this.updateCounter();
           this.resetAutoplay();
         });
       }
@@ -253,11 +541,11 @@
 
         if (e.key === 'ArrowLeft') {
           this.targetOffset -= 1;
-          this.updateDots();
+          this.updateCounter();
           this.resetAutoplay();
         } else if (e.key === 'ArrowRight') {
           this.targetOffset += 1;
-          this.updateDots();
+          this.updateCounter();
           this.resetAutoplay();
         }
       });
@@ -284,9 +572,10 @@
         this.hasDraggedSignificantly = true;
       }
 
-      const stepWidth = window.innerWidth < 768 ? 260 : 340;
+      const stepWidth = window.innerWidth < 768 ? 260 : 330;
       const deltaIndex = -diffX / stepWidth;
       this.targetOffset = this.dragStartOffset + deltaIndex;
+      this.updateCounter();
     }
 
     onPointerUp() {
@@ -297,7 +586,7 @@
 
       // Snap smoothly to nearest integer
       this.targetOffset = Math.round(this.targetOffset);
-      this.updateDots();
+      this.updateCounter();
       this.startAutoplay();
     }
 
@@ -309,20 +598,18 @@
       if (diff < -this.total / 2) diff += this.total;
 
       this.targetOffset = Math.round(this.targetOffset) + diff;
-      this.updateDots();
+      this.updateCounter();
       this.resetAutoplay();
     }
 
-    updateDots() {
+    updateCounter() {
       const activeIdx = this.getWrappedIndex(Math.round(this.targetOffset));
-      if (this.dots) {
-        this.dots.forEach((dot, idx) => {
-          if (idx === activeIdx) {
-            dot.classList.add('is-active');
-          } else {
-            dot.classList.remove('is-active');
-          }
-        });
+      if (this.counterCurrent) {
+        this.counterCurrent.textContent = String(activeIdx + 1).padStart(2, '0');
+      }
+      if (this.progressBar) {
+        const pct = ((activeIdx + 1) / this.total) * 100;
+        this.progressBar.style.width = `${pct.toFixed(1)}%`;
       }
     }
 
@@ -331,7 +618,7 @@
       this.autoplayTimer = setInterval(() => {
         if (!this.isHovered && !this.isDragging) {
           this.targetOffset += 1;
-          this.updateDots();
+          this.updateCounter();
         }
       }, 4500);
     }

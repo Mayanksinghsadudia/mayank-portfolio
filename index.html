@@ -360,15 +360,17 @@
       </div>
     </section>
 
-    <!-- 04 PROJECTS SECTION: 3D CURVED SLIDER (Inspired by Dribbble 27605260) -->
+    <!-- 04 PROJECTS SECTION: 3D CURVED SLIDER (All 35 Projects · Neon Amber Theme) -->
     <section class="page-section curved-slider-section" id="projects">
       <div class="curved-slider-container">
         
-        <!-- Header matching Dribbble shot 27605260 -->
-        <div class="curved-slider-header">
-          <span class="curved-slider-eyebrow">CURATED VISUAL EXPERIENCE</span>
-          <h2 class="curved-slider-title">DESIGN THAT HOLDS ATTENTION</h2>
-          <p class="curved-slider-subtitle">Bold imagery, thoughtful rhythm, and seamless interaction—crafted to make every swipe memorable.</p>
+        <!-- Section Header: Only the project -->
+        <div class="section-header">
+          <div>
+            <span class="text-label-caps text-accent">04 // FEATURED PROJECTS</span>
+            <h2 class="text-headline-lg font-headline" style="margin-top: 4px;">Projects.</h2>
+          </div>
+          <span class="section-num text-outlined">04</span>
         </div>
 
         <!-- 3D Slider Viewport -->
@@ -384,7 +386,7 @@
           </div>
         </div>
 
-        <!-- Bottom Navigation & Pagination Controls -->
+        <!-- Bottom Navigation & Counter Controls -->
         <div class="curved-slider-controls">
           <button class="curved-slider-nav-btn prev" id="sliderPrevBtn" aria-label="Previous Slide">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -392,8 +394,14 @@
             </svg>
           </button>
           
-          <div class="curved-slider-dots" id="sliderDots">
-            <!-- Indicators injected by curved-slider.js -->
+          <!-- Counter & Progress Bar Pill -->
+          <div class="curved-slider-counter-pill">
+            <div class="curved-slider-counter-text">
+              PROJECT <span class="cur-num" id="sliderCounterCurrent">01</span> / <span id="sliderCounterTotal">35</span>
+            </div>
+            <div class="curved-slider-progress-track">
+              <div class="curved-slider-progress-bar" id="sliderProgressBar"></div>
+            </div>
           </div>
 
           <button class="curved-slider-nav-btn next" id="sliderNextBtn" aria-label="Next Slide">
