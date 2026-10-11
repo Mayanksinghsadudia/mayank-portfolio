@@ -1,6 +1,6 @@
 import urllib.request
 
-raw_url = "https://raw.githubusercontent.com/Mayanksinghsadudia/mayank-portfolio/main/index.html"
+raw_url = "https://raw.githubusercontent.com/Mayanksinghsadudia/mayanksinghsadudiaportfolio/main/index.html"
 
 with urllib.request.urlopen(raw_url) as resp:
     html = resp.read().decode('utf-8')
