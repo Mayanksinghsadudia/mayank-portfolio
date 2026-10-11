@@ -364,19 +364,24 @@
     <section class="page-section curved-slider-section" id="projects">
       <div class="curved-slider-container">
         
-        <!-- Section Header: Only the project -->
+        <!-- Section Header: Only the project on topic in left side bar -->
         <div class="section-header">
           <div>
-            <span class="text-label-caps text-accent">04 // FEATURED PROJECTS</span>
-            <h2 class="text-headline-lg font-headline" style="margin-top: 4px;">Projects.</h2>
+            <span class="text-label-caps text-accent">04 // PROJECT</span>
+            <h2 class="text-headline-lg font-headline" style="margin-top: 4px;">Project.</h2>
           </div>
           <span class="section-num text-outlined">04</span>
         </div>
 
         <!-- 3D Slider Viewport -->
         <div class="curved-slider-viewport" id="curvedSliderViewport">
-          <!-- Floating "DRAG" Cursor Badge -->
+          <!-- Floating "DRAG" Cursor Badge (Neon Amber #ff9d4d) -->
           <div class="curved-slider-cursor" id="curvedSliderCursor">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;">
+              <polyline points="18 8 22 12 18 16"></polyline>
+              <polyline points="6 8 2 12 6 16"></polyline>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+            </svg>
             <span>DRAG</span>
           </div>
 
@@ -394,8 +399,16 @@
             </svg>
           </button>
           
-          <!-- Counter & Progress Bar Pill -->
+          <!-- Counter & Progress Bar Pill with Drag Indicator -->
           <div class="curved-slider-counter-pill">
+            <span class="curved-slider-drag-label">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="18 8 22 12 18 16"></polyline>
+                <polyline points="6 8 2 12 6 16"></polyline>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+              </svg>
+              DRAG
+            </span>
             <div class="curved-slider-counter-text">
               PROJECT <span class="cur-num" id="sliderCounterCurrent">01</span> / <span id="sliderCounterTotal">35</span>
             </div>

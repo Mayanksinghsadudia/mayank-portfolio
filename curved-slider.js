@@ -448,10 +448,11 @@
         card.className = 'curved-slider-card';
         card.setAttribute('data-index', idx);
         card.setAttribute('data-category', proj.category);
+        card.setAttribute('draggable', 'false');
 
         card.innerHTML = `
           <div class="curved-slider-card-media">
-            <img src="${proj.img}" alt="${proj.title}" class="curved-slider-card-img" loading="lazy" />
+            <img src="${proj.img}" alt="${proj.title}" class="curved-slider-card-img" draggable="false" loading="lazy" />
           </div>
           <div class="curved-slider-card-overlay">
             <div class="curved-slider-card-top">
@@ -517,8 +518,51 @@
       // Pointer drag interaction
       this.viewport.addEventListener('pointerdown', (e) => this.onPointerDown(e));
       window.addEventListener('pointermove', (e) => this.onPointerMove(e));
-      window.addEventListener('pointerup', () => this.onPointerUp());
-      window.addEventListener('pointercancel', () => this.onPointerUp());
+      window.addEventListener('pointerup', (e) => this.onPointerUp(e));
+      window.addEventListener('pointercancel', (e) => this.onPointerUp(e));
+
+      // Touch events support
+      let touchStartX = 0;
+      this.viewport.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          if (e.target.closest('a')) return;
+          this.isDragging = true;
+          this.hasDraggedSignificantly = false;
+          touchStartX = e.touches[0].clientX;
+          this.dragStartOffset = this.targetOffset;
+          this.stopAutoplay();
+        }
+      }, { passive: true });
+
+      this.viewport.addEventListener('touchmove', (e) => {
+        if (!this.isDragging || e.touches.length !== 1) return;
+        const diffX = e.touches[0].clientX - touchStartX;
+        if (Math.abs(diffX) > 6) {
+          this.hasDraggedSignificantly = true;
+        }
+        const stepWidth = window.innerWidth < 768 ? 240 : 320;
+        this.targetOffset = this.dragStartOffset - (diffX / stepWidth);
+        this.updateCounter();
+      }, { passive: true });
+
+      this.viewport.addEventListener('touchend', () => {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+        this.targetOffset = Math.round(this.targetOffset);
+        this.updateCounter();
+        this.startAutoplay();
+      });
+
+      // Horizontal trackpad / wheel swipe
+      this.viewport.addEventListener('wheel', (e) => {
+        const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
+        if (Math.abs(delta) > 10) {
+          e.preventDefault();
+          this.targetOffset += delta * 0.002;
+          this.updateCounter();
+          this.resetAutoplay();
+        }
+      }, { passive: false });
 
       // Cursor follower hover
       this.viewport.addEventListener('mouseenter', () => {
@@ -552,6 +596,7 @@
     }
 
     onPointerDown(e) {
+      if (e.target.closest('a')) return;
       this.isDragging = true;
       this.hasDraggedSignificantly = false;
       this.startX = e.clientX;
@@ -559,6 +604,12 @@
       this.viewport.classList.add('is-dragging');
       if (this.cursor) this.cursor.classList.add('is-active');
       this.stopAutoplay();
+
+      try {
+        if (this.viewport.setPointerCapture && e.pointerId !== undefined) {
+          this.viewport.setPointerCapture(e.pointerId);
+        }
+      } catch (err) {}
     }
 
     onPointerMove(e) {
@@ -572,17 +623,23 @@
         this.hasDraggedSignificantly = true;
       }
 
-      const stepWidth = window.innerWidth < 768 ? 260 : 330;
+      const stepWidth = window.innerWidth < 768 ? 240 : 320;
       const deltaIndex = -diffX / stepWidth;
       this.targetOffset = this.dragStartOffset + deltaIndex;
       this.updateCounter();
     }
 
-    onPointerUp() {
+    onPointerUp(e) {
       if (!this.isDragging) return;
       this.isDragging = false;
       this.viewport.classList.remove('is-dragging');
       if (this.cursor) this.cursor.classList.remove('is-active');
+
+      try {
+        if (this.viewport.releasePointerCapture && e && e.pointerId !== undefined) {
+          this.viewport.releasePointerCapture(e.pointerId);
+        }
+      } catch (err) {}
 
       // Snap smoothly to nearest integer
       this.targetOffset = Math.round(this.targetOffset);

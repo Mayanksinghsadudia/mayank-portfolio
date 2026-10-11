@@ -6,23 +6,23 @@
   position: relative;
   width: 100%;
   padding: 60px 0 70px;
-  background: #090807;
-  background: radial-gradient(circle at 50% 25%, #1d130a 0%, #0a0806 65%, #050403 100%);
-  color: #ffffff;
+  background: var(--bg-primary, #100d0b);
+  background: radial-gradient(circle at 50% 25%, #22150d 0%, #100d0b 65%, #080605 100%);
+  color: var(--color-on-surface, #fff1e7);
   overflow: hidden;
-  border-top: 1px solid rgba(255, 157, 77, 0.12);
-  border-bottom: 1px solid rgba(255, 157, 77, 0.12);
+  border-top: 1px solid var(--color-border, #443329);
+  border-bottom: 1px solid var(--color-border, #443329);
 }
 
 .curved-slider-container {
   width: 100%;
-  max-width: 1440px;
+  max-width: var(--container-max, 1360px);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 40px;
   box-sizing: border-box;
 }
 
-/* Section Header - Matching rest of site */
+/* Section Header - Aligned on the left side bar matching rest of site */
 .curved-slider-section .section-header {
   margin-bottom: 30px;
 }
@@ -57,29 +57,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-/* Floating "DRAG" Cursor Badge (Signature Neon Amber) */
+/* Floating "DRAG" Cursor Badge (Matches Website Neon Amber Theme & Dark Text) */
 .curved-slider-cursor {
   position: fixed;
-  width: 68px;
-  height: 68px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #ff9d4d 0%, #ff6b00 100%);
-  color: #ffffff;
-  font-family: 'Space Grotesk', sans-serif;
+  background: var(--neon-amber, #ff9d4d);
+  color: #100d0b !important;
+  font-family: var(--font-headline, 'Space Grotesk'), sans-serif;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.16em;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  z-index: 100;
-  box-shadow: 0 10px 28px rgba(255, 122, 41, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.35);
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(255, 157, 77, 0.45), 0 0 16px rgba(255, 157, 77, 0.3);
+  border: 1.5px solid rgba(255, 195, 148, 0.7);
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.4);
-  transition: opacity 0.25s ease, transform 0.12s ease-out;
+  transition: opacity 0.2s ease, transform 0.12s ease-out;
 }
 
 .curved-slider-cursor.is-visible {
@@ -88,8 +91,9 @@
 }
 
 .curved-slider-cursor.is-active {
-  transform: translate(-50%, -50%) scale(0.85);
-  background: linear-gradient(135deg, #e65c00 0%, #ff8c42 100%);
+  transform: translate(-50%, -50%) scale(0.88);
+  background: #ffbb7c;
+  box-shadow: 0 0 28px rgba(255, 157, 77, 0.6);
 }
 
 /* Cards */
@@ -102,28 +106,34 @@
   margin-left: -155px;
   margin-top: -215px;
   border-radius: 20px;
-  background: #14100c;
+  background: #17110e;
   overflow: hidden;
   transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
   will-change: transform, opacity;
   cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .curved-slider-card.is-center {
-  box-shadow: 0 35px 70px -12px rgba(255, 122, 41, 0.38), 0 0 0 1.5px rgba(255, 157, 77, 0.85);
+  box-shadow: 0 35px 70px -12px rgba(255, 157, 77, 0.35), 0 0 0 1.5px var(--neon-amber, #ff9d4d);
 }
 
+/* Media & Image: Disable native drag to allow smooth slider dragging on cards */
 .curved-slider-card-media {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #100d0a;
+  background: #100d0b;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
 }
 
 .curved-slider-card-img {
@@ -131,6 +141,10 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-user-drag: none !important;
 }
 
 .curved-slider-card:hover .curved-slider-card-img {
@@ -140,7 +154,7 @@
 .curved-slider-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 8, 6, 0.15) 0%, rgba(10, 8, 6, 0.4) 40%, rgba(10, 8, 6, 0.96) 100%);
+  background: linear-gradient(180deg, rgba(16, 13, 11, 0.15) 0%, rgba(16, 13, 11, 0.4) 40%, rgba(16, 13, 11, 0.96) 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -157,15 +171,15 @@
 
 .curved-slider-tag {
   display: inline-block;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-headline, 'Space Grotesk'), sans-serif;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #ffc18b;
+  color: var(--neon-peach, #ffc394);
   padding: 5px 12px;
   border-radius: 100px;
-  background: rgba(26, 18, 12, 0.85);
+  background: rgba(27, 20, 16, 0.88);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 157, 77, 0.32);
@@ -176,10 +190,10 @@
 }
 
 .curved-slider-card-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-headline, 'Space Grotesk'), sans-serif;
   font-size: 20px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-on-surface, #fff1e7);
   line-height: 1.25;
   margin: 0 0 8px 0;
 }
@@ -187,7 +201,7 @@
 .curved-slider-card-desc {
   font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--color-text-muted, #baa99b);
   line-height: 1.5;
   margin: 0 0 16px 0;
   display: -webkit-box;
@@ -200,16 +214,16 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-headline, 'Space Grotesk'), sans-serif;
   font-size: 12px;
   font-weight: 700;
-  color: #ff9d4d;
+  color: var(--neon-amber, #ff9d4d);
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 .curved-slider-card:hover .curved-slider-card-link {
-  color: #ffc18b;
+  color: var(--neon-peach, #ffc394);
   transform: translateX(3px);
 }
 
@@ -229,8 +243,8 @@
   height: 48px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 157, 77, 0.25);
-  color: #ffffff;
+  border: 1px solid var(--color-border, #443329);
+  color: var(--neon-amber, #ff9d4d);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -241,7 +255,7 @@
 
 .curved-slider-nav-btn:hover {
   background: rgba(255, 157, 77, 0.2);
-  border-color: rgba(255, 157, 77, 0.65);
+  border-color: var(--neon-amber, #ff9d4d);
   transform: scale(1.08);
   box-shadow: 0 0 16px rgba(255, 157, 77, 0.4);
 }
@@ -250,19 +264,34 @@
   transform: scale(0.96);
 }
 
-/* Counter & Progress Pill */
+/* Counter & Progress Pill (Matches Website Theme) */
 .curved-slider-counter-pill {
   display: inline-flex;
-  flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 14px;
   padding: 8px 22px;
   border-radius: 100px;
-  background: rgba(26, 18, 12, 0.85);
+  background: rgba(27, 20, 16, 0.9);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 157, 77, 0.3);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 157, 77, 0.15);
+  border: 1px solid rgba(255, 157, 77, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 14px rgba(255, 157, 77, 0.15);
+}
+
+/* Visible DRAG badge in the pill */
+.curved-slider-drag-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-headline, 'Space Grotesk'), sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #100d0b;
+  background: var(--neon-amber, #ff9d4d);
+  padding: 3px 10px;
+  border-radius: 100px;
+  box-shadow: 0 2px 10px rgba(255, 157, 77, 0.4);
 }
 
 .curved-slider-counter-text {
@@ -270,21 +299,22 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: #ffc18b;
+  color: var(--neon-peach, #ffc394);
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
 .curved-slider-counter-text .cur-num {
-  color: #ff9d4d;
+  color: var(--neon-amber, #ff9d4d);
   font-size: 14px;
+  font-weight: 800;
 }
 
 .curved-slider-progress-track {
   width: 90px;
-  height: 3px;
-  border-radius: 3px;
+  height: 4px;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.12);
   overflow: hidden;
 }
@@ -293,7 +323,7 @@
   height: 100%;
   width: 3%;
   background: linear-gradient(90deg, #ff9d4d, #ff6b00);
-  border-radius: 3px;
+  border-radius: 4px;
   transition: width 0.2s ease-out;
   box-shadow: 0 0 8px rgba(255, 157, 77, 0.8);
 }
@@ -302,6 +332,9 @@
 @media (max-width: 900px) {
   .curved-slider-section {
     padding: 50px 0 60px;
+  }
+  .curved-slider-container {
+    padding: 0 20px;
   }
   .curved-slider-viewport {
     height: 450px;
@@ -312,9 +345,6 @@
     height: 395px;
     margin-left: -137px;
     margin-top: -197px;
-  }
-  .curved-slider-cursor {
-    display: none !important;
   }
 }
 
@@ -331,5 +361,8 @@
   }
   .curved-slider-card-title {
     font-size: 17px;
+  }
+  .curved-slider-progress-track {
+    display: none;
   }
 }
