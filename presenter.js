@@ -55,15 +55,17 @@
     hero?.classList.remove("scene-video-active");
   });
 
-  // Seamless auto-unmute on any natural user interaction (scroll, move, touch, key) - no buttons needed!
+  // Seamless auto-unmute on first user activation gesture (click, tap, scroll, key)
+  const activationEvents = ["pointerdown", "touchstart", "click", "keydown", "wheel"];
   function autoUnmute() {
+    activationEvents.forEach(evt => window.removeEventListener(evt, autoUnmute));
     if (video.muted) {
       video.muted = false;
       video.play().catch(() => {});
     }
   }
-  ["pointerdown", "touchstart", "mousemove", "scroll", "wheel", "keydown"].forEach(evt => {
-    window.addEventListener(evt, autoUnmute, { passive: true, once: evt === "pointerdown" || evt === "touchstart" });
+  activationEvents.forEach(evt => {
+    window.addEventListener(evt, autoUnmute, { passive: true, once: true });
   });
 
   const observer = new IntersectionObserver(entries => {
